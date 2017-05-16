@@ -13,5 +13,6 @@ deploy:
   keyfile: kiss-my-app-29c0b19a8d6d.json
   project: kiss-my-app
   default: true
+  skip_cleanup: true
   on: 
     branch: develop
