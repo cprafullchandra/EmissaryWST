@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "kiss-my-app",
+  "private_key_id": "29c0b19a8d6da4d835f14dc7b788dd0edc6dbb05",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCp8Uhrn/g7IWgD\nIDkB0dUNCfYQG3Ad32rZEMR57X21R46vsz+JVRbYsuEPtWNqUcIq2tdpERhMZfG/\nqNacHWABhiJ30g3eO3xpgeMcmx01kjny8pQDRsc0MsggCYppwCl5ULRUKhPABIDP\nzlZxNX20mQAA1RRX8aRS9e+Tyc8cUjQBWsD0WbozQxQ4z0jyVOPnutOHSGN04UI5\n+Gf/P/rs4EDZN/f8e8eIbuQ+6/EwBtsD3mPwlhQl/GWbO+MiWJKmlefC+MQ0ILJ4\n3xcGzcgZ4tr4XJwhpu2yytZDb4W2CuQH15KNSWTRY13yoxwgFNiwdGop1BQBPv2y\nOsCB2niHAgMBAAECggEBAKERABSRP1G7rbsYtS8WUxjSkhZeCvslHz2v+KefAX/o\n3EGGX/enX8nucATVY+4Go0K+u17nRuJR1LhUK2M3LCEFonFx8pboRlgxNLGOCjcV\n6jpq0wHv+Slt3+MNZ9QmvqguZ1tFrgZVvkg2RhNyITwjrq8bRPa9HYNLeM/Xe6ZY\na48Umz6/ICe0zuv7EP+7E4LUhyO4rT93lJjtaqcE+HPyXb8EIparV//a54senQyy\nFLQSwPJw7B8eQl9HeWMkDzo2TRjAqC3F2BMAM5QVI2F27NC0QJJAId8n/PrUBAPc\nmWxDMaIkE0XZGxG/e2vO/91v/GLdXZAJdtQ3n1wvJeECgYEA8AEw77JcxQrumP3M\nFHjX535wz2SCCCq85E+2oARUPQ2s+osuGZKvvYzsuldLxfX8LizHPm4yoxKgJvaJ\nkNKgg5tJJDMUO1BymcUMGm88oqGUyMzyvRtN/B5EEpVAkKq1eoUNFbqS02oRdfbm\n3ARnuIpzmieaKUcvTGlPF5H+Q0kCgYEAtUS8RI/ueJysuBfISfPJts79bnGPsaIs\nQ2deJZF+4TjQVhWVVybuSzQiLXDek0FMjhGb60jlCumw3DmUotV2YtDRgJekXjsF\nllyyC68D3XlRTREStJaWUeKQB2JgpnT2xzzKJmpZ1FYZVNG18rGSYw3o5oyu8qzo\n3Wb2zloxDU8CgYEAm/G6MVTscF+dDq2B6B9o8hK3DBqbXuEeIR8mY6zMa2syZQ0A\nJD+qjvg9bQqBwpwFgp83yvnhTxIwG4D/e6lQAJNqn+nMkInCHOXq6lYyyN1ChoKc\nioFuV4323zg5XoZ9KqG/EcpL0rDNrZ+C+5ylJERZvuVShtWpBvY6HO+QjXkCgYBS\na8GLD0LoVpz2S+IHNjFGzRFQ8ZPbuhiUQWD+hgyCDdo0+jVgXlRFn5vWu5aIsE1F\n393cetWiQ6XmTMw3ygW9YqOP6+OR8RZWSymtxFNmla4Q861krYAGFZVVtjaqGU7I\nQuzL0NmtgcSc24n2oyUjowR+KAO4VkS/vvyD0WCyYwKBgQCXhh9mAdm0zIpOZPYF\np8As///d+08VgUKAr0X1FRaYt5Uhl8A91d54DOXFWXte+Qyx8bc5LABE3Bm2Y1w+\nTTlcnIjIyU42FWKbb9es/1BvlIOrCaAzM3aFY4/u4q+enFp8VXzVNz9ZK4zY6Rco\n9rVmoYKEPKFiiW7QHYQP3ta0Eg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "travis@kiss-my-app.iam.gserviceaccount.com",
+  "client_id": "102085201620775443631",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/travis%40kiss-my-app.iam.gserviceaccount.com"
+}

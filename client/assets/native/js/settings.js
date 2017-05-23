@@ -25,9 +25,9 @@ $(document).ready(function(){
    $('.update-btn').click(updateEmployeeInfo);
    $("#setting-list").html(compiledHtml);
 
-   /***
-    * Makes a get request to display list of employees
-    * @param none
+   /**
+    * @func getEmployee
+    * @desc Makes a get request to display list of employees
     * @returns displays the employee list
     */
    function getEmployee() {
@@ -46,10 +46,10 @@ $(document).ready(function(){
        return json;
    }
 
-   /***
-    * Grabs elements from the check in and puts it into an object
-    * @param none
-    * @returns new employee object
+   /**
+    * @func grabFormElementsUpdate
+    * @desc Grabs elements from the check in and puts it into an object
+    * @returns {employee} new employee object
     */
    function grabFormElementsUpdate(){
        var newEmployee = {};
@@ -60,10 +60,10 @@ $(document).ready(function(){
        return newEmployee;
    }
 
-   /***
-    * Update the current employee information
-    * @param id
-    * @returns {string}
+   /**
+    * @func updateEmployeeInfo
+    * @desc Update the current employee information.
+    * @returns {string} updated employee info
     */
    function updateEmployeeInfo(){
        var data = grabFormElementsUpdate();
@@ -73,10 +73,10 @@ $(document).ready(function(){
        document.getElementById("settings-form").reset();
    }
 
-   /***
-    * Makes a put request to update info of employee
-    * @param obj
-    * @returns updates the employee's information
+   /**
+    * @func updateEmployee
+    * @desc Makes a put request to update info of employee
+    * @param {employee} obj employee
     */
    function updateEmployee(obj) {
        $.ajax({

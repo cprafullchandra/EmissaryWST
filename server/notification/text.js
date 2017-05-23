@@ -32,7 +32,7 @@ exports.sendText = function(patientName, employees, done) {
         //res.json({message: "Text was sent."});
         console.log("Text was sent.");
       }
-      if(done && len-1 == i) done();
+      if(done && len-1 === i) done();
     };
   };
   // iterate through all employees 

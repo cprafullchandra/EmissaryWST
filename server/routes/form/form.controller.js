@@ -156,12 +156,13 @@ module.exports.submitted_form.findByPatientInfo = function(req, res) {
     res.status(400).json({error: "You must specify either both first and last name or email"});
     return;
   }
+
   if(firstName) query.firstName = firstName;
   if(lastName) query.lastName = lastName;
   if(patientEmail) query.patientEmail = patientEmail;
 
 
-  if(req.query.mostRecent == "true") {
+  if(req.query.mostRecent === "true") {
     SubmittedForm.findOne(query).sort('-date').exec(function (err, submittedForm) {
       if (err) {
         res.status(400).json({error: "An error occured while finding visitorList form"});
