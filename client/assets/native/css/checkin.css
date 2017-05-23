@@ -13,7 +13,8 @@ body {
 }
 
 .check-in-page {
-    background-color: #1C7F79;
+    /*background-color: #1C7F79;*/
+    background-image: url("http://www.aporhopi.org/assets/blueb-0c434e2c0a3eeaf33755fc9dacbf994fa3436ba7d65e556f1eafc7ec18f919de.png");
     background-size: cover;
     height: 100vh;
 }
