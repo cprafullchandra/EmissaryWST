@@ -1,5 +1,3 @@
-/* csslint outline-none: false */
-
 body {
     font-family: "Helvetica Neue";
 }
@@ -78,7 +76,7 @@ body {
     width: 100%;
 }
 
-.visitor-fields:focus {
+.visitor-fields:focus { /* csslint allow: outline-none*/
     outline: none;
 }
 
