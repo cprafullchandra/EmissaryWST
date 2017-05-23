@@ -26,8 +26,7 @@ body {
     left: 50%;
     margin-left: -137.5px;
     position: absolute;
-    /* background-color: #f1f1f1; */
-    /* background-color: #0cb4a4;*/
+    /*background-color: #0cb4a4;*/
     width: 275px;
     /*background-color: #0abcb3;*/
 
@@ -96,9 +95,7 @@ body {
     margin-left: -75px;
     margin-top: 25px;
     position: absolute;
-    /*background-color: #fff;*/
     width: 150px;
-    /*background-color: #0abcb3;*/
 }
 
 .hide {
