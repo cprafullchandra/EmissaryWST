@@ -2,7 +2,7 @@ body {
     font-family: "Helvetica Neue";
 }
 
-.clock{
+.clock {
     color: #f1f1f1;
     font-size: 1250%;
     margin-top: 0;
@@ -10,19 +10,19 @@ body {
     text-align: center;
 }
 
-.check-in-page{
+.check-in-page {
     /*background-color: #cf4646;*/
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -webkit-background-size: cover;
     background-color: #1C7F79;
     background-size: cover;
     height: 100vh;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
     /*background: url(../../images/backgrounds/1.png) no-repeat center center fixed;*/
 }
 
-.tap-to-check{
-    background-color:#f1f1f1;
+.tap-to-check {
+    background-color: #f1f1f1;
     border-radius: 3px;
     bottom: 15%;
     display: block;
@@ -30,34 +30,34 @@ body {
     left: 50%;
     margin-left: -137.5px;
     position: absolute;
-   /* background-color: #f1f1f1; */
-   /* background-color: #0cb4a4;*/
+    /* background-color: #f1f1f1; */
+    /* background-color: #0cb4a4;*/
     width: 275px;
     /*background-color: #0abcb3;*/
 
 }
 
-.tap-to-check:hover{
+.tap-to-check:hover {
     cursor: pointer;
 }
 
-.tap-to-check > p{
+.tap-to-check > p {
     color: #333;
     font-family: "Helvetica Neue";
     font-size: 32px;
     text-align: center;
     /*color: #fff;*/
 }
-.check-in{
+
+.check-in {
 
     left: 50%;
     margin-left: -200px;
     opacity: 0;
-    position:absolute;
+    position: absolute;
     text-align: center;
     top: 5%;
     width: 400px;
-
 
 }
 
@@ -67,9 +67,7 @@ body {
     margin-bottom: 75px;
 }
 
-
-
-.check-in > .visitor-fields{
+.check-in > .visitor-fields {
     /*background-color: transparent;*/
     border: none;
     border-bottom: 2px solid #f1f1f1;
@@ -83,15 +81,14 @@ body {
 }
 
 /*.check-in > input:focus{*/
-   /*outline: none;*/
+/*outline: none;*/
 /*}*/
 
 .check-in > input::-webkit-input-placeholder {
     color: #f1f1f1;
 }
 
-
-.submit-check-in{
+.submit-check-in {
     background-color: #f1f1f1;
     border: none;
     border-radius: 3px;
@@ -108,6 +105,6 @@ body {
     /*background-color: #0abcb3;*/
 }
 
-.hide{
+.hide {
     display: none
 }
