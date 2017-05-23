@@ -56,14 +56,14 @@ body {
 
 }
 
-.check-in-h1 {
+.check-in-header {
     color: #f1f1f1;
     font-size: 52px;
     margin-bottom: 75px;
 }
 
-.check-in > .visitor-fields {
-    /*background-color: transparent;*/
+.visitor-fields {
+    background-color: transparent;
     border: none;
     border-bottom: 2px solid #f1f1f1;
     color: #f1f1f1;
@@ -75,9 +75,9 @@ body {
     width: 100%;
 }
 
-/*.check-in > input:focus{*/
-/*outline: none;*/
-/*}*/
+.check-in > input:focus {
+    outline: none;
+}
 
 .check-in > input::-webkit-input-placeholder {
     color: #f1f1f1;
