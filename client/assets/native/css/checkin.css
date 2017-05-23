@@ -11,14 +11,9 @@ body {
 }
 
 .check-in-page {
-    /*background-color: #cf4646;*/
     background-color: #1C7F79;
     background-size: cover;
     height: 100vh;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -webkit-background-size: cover;
-    /*background: url(../../images/backgrounds/1.png) no-repeat center center fixed;*/
 }
 
 .tap-to-check {
