@@ -31,7 +31,11 @@ $(document).ready(function(){
         return false;
     });
 
-    //Grab Company Data from form
+    /**
+     * @function grabCompanyData
+     * @desc Grab company data from the forms.
+     * @return {company} company
+     */
     function grabCompanyData(){
         var company = {};
         company.name = $('#form-company-name').val();
@@ -40,7 +44,11 @@ $(document).ready(function(){
         return company;
     }
 
-    //Grab employee data from form
+    /**
+     * @function grabEmployeeData
+     * @desc Grab employee data from the forms.
+     * @return {employee} employee 
+     */
     function grabEmployeeData(){
         var employee = {};
         employee.first_name = $('#form-employee-first').val();
@@ -53,7 +61,12 @@ $(document).ready(function(){
         return employee;
     }
 
-    //Ajax function to create a POST request to server
+    /**
+     * @function ajaxPost
+     * @param {url} url
+     * @param {data} data
+     * @desc Ajax function to create a POST request to server.
+     */
     function ajaxPost(url, data){
         $.ajax({
             type: "POST",
@@ -81,6 +94,10 @@ $(document).ready(function(){
         });
     }
 
+    /**
+     * @function transitionToNextStep
+     * @desc Bring up the employees form after the company form is filled?
+     */
     function transitionToNextStep () {
         var next_step = true;
 

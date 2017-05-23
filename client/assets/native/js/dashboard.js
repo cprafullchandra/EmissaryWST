@@ -119,7 +119,10 @@ $(document).ready(function(){
     });
 */
     /***
-     * Compare appointment Date to today's Date
+     * @function compareDate
+     * @desc Compare appointment Date to today's Date
+     * @param {obj} appointment object
+     * @returns {boolean} If appointment date is equal to today's date
      */
     function compareDate(appointment){
       var today = new Date();

@@ -21,7 +21,7 @@ $(function() {
 
 /**
  * @func ajaxPostUser
- * @desc Ajax function to create a POST request to server.
+ * @desc Ajax function to create a POST request to server (user).
  * @param {url} url
  * @param {data} data
  */
@@ -54,6 +54,11 @@ function ajaxPostUser(url, data){
 }
 // ex) company_id : 56e8a51293a19986040e93fe
 //Ajax function to create a POST request to server
+/**
+ * @func ajaxGetCompanyInfo
+ * @desc Ajax function to create a POST request to server (company).
+ * @param {url} url
+ */
 function ajaxGetCompanyInfo(url){
    $.ajax({
        type: "GET",
@@ -72,6 +77,7 @@ function ajaxGetCompanyInfo(url){
 
 /**
  * @func grabUserData
+ * @desc Grab the corresponding user's information
  * @returns user
  */
 function grabUserData(){
@@ -82,7 +88,11 @@ function grabUserData(){
 }
 
 
-
+/**
+ * @func handleError
+ * @desc Checks for valid username/password entry
+ * @returns {boolean} True
+ */
 function handleError()
 {
    errorlog.innerHTML="Not Valid Username and Password, please type valid one.";

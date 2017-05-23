@@ -7,8 +7,11 @@
 [![codecov](https://codecov.io/gh/cse112-kissmyapp/kissmyapp-cse112/branch/master/graph/badge.svg)](https://codecov.io/gh/cse112-kissmyapp/kissmyapp-cse112)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-### Currently Deployed on:
+### Past Deployment:
 http://webstormtroopers.herokuapp.com
+
+### Our Deployment:
+http://kiss-my-app.appspot.com/
 
 ### Description:
 **Emissary is a visitor check-in SaaS application targetted for small businesses.**

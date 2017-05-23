@@ -36,7 +36,10 @@ $(document).ready(function(){
         $('#clock').addClass('hide');
     }
 
-    //When a patient submits their form
+    /**
+     * @function submitForm
+     * @desc When a client submits their form
+     */
     function submitForm(){
         //event.preventDefault();
         var data = grabFormElements();
@@ -60,7 +63,11 @@ $(document).ready(function(){
         },0);
 
     }
-    //Grabs elements from the check in and puts it into an object
+
+    /**
+     * @function grabFormElements
+     * @desc Grabs elements from the check in and puts it into an object
+     */
     function grabFormElements(){
         var newVisitor = {};
         newVisitor.company_id = companyData._id;
@@ -71,7 +78,10 @@ $(document).ready(function(){
         return newVisitor;
     }
 
-    //CLOCK
+    /**
+     * @function updateClock
+     * @desc gives the current time
+     */
     function updateClock () {
         var currentTime = new Date ( );
         var currentHours = currentTime.getHours ( );

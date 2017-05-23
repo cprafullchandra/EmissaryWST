@@ -56,8 +56,8 @@ $(document).ready(function(){
    }
 
    /**
-     *@function submitForm
-     *@desc Is calld when a patient submits their form. It updates the appt list.
+     * @function submitForm
+     * @desc Is calld when a patient submits their form. It updates the appt list.
      */
     function submitForm(){
         var d = grabFormElements();
