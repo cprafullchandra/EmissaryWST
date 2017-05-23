@@ -76,9 +76,9 @@ body {
     width: 100%;
 }
 
-.visitor-fields:focus { /* csslint allow: outline-none*/
-    outline: none;
-}
+/*.visitor-fields:focus { !* csslint allow: outline-none*!*/
+    /*outline: none;*/
+/*}*/
 
 .check-in > input::-webkit-input-placeholder {
     color: #f1f1f1;
