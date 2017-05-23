@@ -33,7 +33,7 @@ var winstonConfig = require("./config/winston");
  */
 var app = express();
 app.use(function(req, res, next) {
-    if (req.path.substr(-5) == '.html' && req.path.length > 1) {
+    if (req.path.substr(-5) === '.html' && req.path.length > 1) {
         var query = req.url.slice(req.path.length);
         res.redirect(301, req.path.slice(0, -5) + query);
         //res.sendFile(path.join(__dirname,'../dist/assets/views/checkin.html'))
@@ -141,7 +141,7 @@ app.use(errorHandler());
 
 var server = require('http').createServer(app);
 
-var io = require('socket.io')(server)
+var io = require('socket.io')(server);
 server.listen(app.get('port'), function() {
   console.log('Express server listening on port %d in %s mode',
     app.get('port'),

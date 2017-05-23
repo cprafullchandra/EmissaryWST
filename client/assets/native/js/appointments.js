@@ -6,7 +6,7 @@ $(document).ready(function(){
     var myCompanyId = companyData._id;
     var curUser = JSON.parse(localStorage.getItem('currentUser'));
 
-  
+
     $('#user-name').text(curUser.first_name + ' ' +  curUser.last_name);
 
     var appts = getAppts();
@@ -33,7 +33,7 @@ $(document).ready(function(){
 
     $("#appt-list").html(compiledHtml);
     $('.save-btn').click(submitForm);
-    
+
    /**
      *@function getApps
      *@desc Makes a get request to display list of appts
@@ -56,8 +56,8 @@ $(document).ready(function(){
    }
 
    /**
-     *@function submitForm
-     *@desc Is calld when a patient submits their form. It updates the appt list.
+     * @function submitForm
+     * @desc Is calld when a patient submits their form. It updates the appt list.
      */
     function submitForm(){
         var d = grabFormElements();
@@ -185,20 +185,20 @@ $(document).ready(function(){
       if(ampm === "PM"){
         formattedHour = time.substr(0,2);
 
-        if(formattedHour == '12')
+        if(formattedHour === '12')
           formattedHour = 12;
         else
-          formattedHour = 12 + parseInt(time.substr(0,2));
+          formattedHour = 12 + parseInt(time.substr(0,2), 10);
 
         formattedTime = formattedHour + time.substr(colon,3) + ":00";
       }
       else{
 
-        formattedHour = parseInt(time.substr(0,2));
+        formattedHour = parseInt(time.substr(0,2), 10);
         if(formattedHour < 10){
           formattedHour = '0' + formattedHour;
         }
-        if(formattedHour == 12){
+        if(formattedHour === 12){
           formattedHour = '00';
         }
         formattedTime = formattedHour + time.substr(colon,3) + ':00';

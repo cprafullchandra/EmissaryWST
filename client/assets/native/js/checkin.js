@@ -36,7 +36,10 @@ $(document).ready(function(){
         $('#clock').addClass('hide');
     }
 
-    //When a patient submits their form
+    /**
+     * @function submitForm
+     * @desc When a client submits their form
+     */
     function submitForm(){
         //event.preventDefault();
         var data = grabFormElements();
@@ -60,7 +63,11 @@ $(document).ready(function(){
         },0);
 
     }
-    //Grabs elements from the check in and puts it into an object
+
+    /**
+     * @function grabFormElements
+     * @desc Grabs elements from the check in and puts it into an object
+     */
     function grabFormElements(){
         var newVisitor = {};
         newVisitor.company_id = companyData._id;
@@ -71,7 +78,10 @@ $(document).ready(function(){
         return newVisitor;
     }
 
-    //CLOCK
+    /**
+     * @function updateClock
+     * @desc gives the current time
+     */
     function updateClock () {
         var currentTime = new Date ( );
         var currentHours = currentTime.getHours ( );
@@ -85,7 +95,7 @@ $(document).ready(function(){
         currentHours = ( currentHours > 12 ) ? currentHours - 12 : currentHours;
 
         // Convert an hours component of "0" to "12"
-        currentHours = ( currentHours == 0 ) ? 12 : currentHours;
+        currentHours = ( currentHours === 0 ) ? 12 : currentHours;
 
         // Compose the string for display
         var currentTimeString = currentHours + ":" + currentMinutes;
@@ -106,9 +116,9 @@ $(document).ready(function(){
 
         for (var i = 0, len = cookieArray.length; i < len; i++) {
             var cookie = cookieArray[i];
-            while (cookie.charAt(0) == ' ')
+            while (cookie.charAt(0) === ' ')
                 cookie.substring(1);
-            if (cookie.indexOf(name) == 0)
+            if (cookie.indexOf(name) === 0)
                 return cookie.substring(name.length, cookie.length);
         }
 

@@ -9,6 +9,7 @@ npm-debug.log
 .DS_Store
 server/log
 newrelic_agent.log
+coverage/
 
 mobile/platforms/
 mobile/plugins/

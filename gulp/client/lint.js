@@ -13,8 +13,9 @@ gulp.task('lint:client', function() {
 
 /* This will validate the html files
  */
-gulp.task('lint:html', ['htmlify'],function(){
-  return gulp.src('./dist/**/*.html')
+gulp.task('lint:html', function(){
+  return gulp.src(['./client/assets/native/*.html', 
+      './client/assets/views/*.html'])
     .pipe(htmlhint())
     .pipe(htmlhint.reporter())
 });

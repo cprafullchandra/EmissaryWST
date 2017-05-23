@@ -4,33 +4,51 @@
 $(document).ready(function(){
 
     var companyId;
+    var buttonClicked;
 
     //Listener for Initial Sign up of an Employee
     $('#submit-btn').on('click', function(){
-        var employeeData = grabEmployeeData();
-        console.log(employeeData);
-        ajaxPost('/api/employees',employeeData);
-
+        buttonClicked = 'employee';
     });
 
     //Listener for creating a company
     $('#submit-company-btn').on('click',function(){
+        buttonClicked = 'company';
+    });
+
+    $('#company-reg-form').on('submit', function(event) {
         var companyData = grabCompanyData();
         console.log(companyData);
         ajaxPost('/api/companies',companyData);
-    })
+        transitionToNextStep();
+        return false;
+    });
 
-    //Grab Company Data from form
+    $('#employee-reg-form').on('submit', function(event) {
+        var employeeData = grabEmployeeData();
+        console.log(employeeData);
+        ajaxPost('/api/employees',employeeData);
+        return false;
+    });
+
+    /**
+     * @function grabCompanyData
+     * @desc Grab company data from the forms.
+     * @return {company} company
+     */
     function grabCompanyData(){
         var company = {};
         company.name = $('#form-company-name').val();
         company.email = $('#form-email').val();
         company.phone_number = $('#form-phone').val();
         return company;
-
     }
 
-    //Grab employee data from form
+    /**
+     * @function grabEmployeeData
+     * @desc Grab employee data from the forms.
+     * @return {employee} employee 
+     */
     function grabEmployeeData(){
         var employee = {};
         employee.first_name = $('#form-employee-first').val();
@@ -43,7 +61,12 @@ $(document).ready(function(){
         return employee;
     }
 
-    //Ajax function to create a POST request to server
+    /**
+     * @function ajaxPost
+     * @param {url} url
+     * @param {data} data
+     * @desc Ajax function to create a POST request to server.
+     */
     function ajaxPost(url, data){
         $.ajax({
             type: "POST",
@@ -52,101 +75,36 @@ $(document).ready(function(){
             dataType: 'json',
             success: function(response){
                 //console.log(response);
-                if(url == '/api/employees') {
+                if(url === '/api/employees') {
                     localStorage.setItem('userState', 1);
                     localStorage.setItem('currentUser', JSON.stringify(response));
                     location.href = '/visitors.html';
                 }
-                else if (url == '/api/companies') {
+                else if (url === '/api/companies') {
                     localStorage.setItem('currentCompany', JSON.stringify(response));
                     companyId = response._id;
                 }
             },
             error: function(response){
-                console.log(response);
-                var resJSON = JSON.stringify(response);
-                alert(jQuery.parseJSON(resJSON).responseText);
+                //console.log(response);
+                //alert(jQuery.parseJSON(resJSON).responseText);
                 event.preventDefault();
                 location.href = '/signup.html';
             }
         });
     }
 
-    function validateCompany(){
-        var companyName = $('#form-company-name').val();
-        var companyEmail = $('#form-email').val();
-        var companyNumber = $('#form-phone').val();
+    /**
+     * @function transitionToNextStep
+     * @desc Bring up the employees form after the company form is filled?
+     */
+    function transitionToNextStep () {
+        var next_step = true;
 
-        if(companyName == ""){
-            console.log("username cannot be blank");
+        if( next_step ) {
+            $('#company-reg-form').fadeOut(400, function() {
+                $('#employee-reg-form').find('fieldset:first-child').fadeIn();
+            });
         }
-
-        if(validateEmail(companyEmail)){
-            console.log("please enter a valid email");
-        }
-
-
-    
-
     }
-
-
-
-    function validateEmail(email) {
-        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(email);
-    }
-
-    function checkPassword(form){
-
-        if(form.first.value == "") {
-          alert("Error: Username cannot be blank!");
-          form.username.focus();
-          return false;
-        }
-        var password = $('#form-password');
-        var confirmPassword = $('#form-repeat-password');
-
-        if(password.value != "" && password.value == confirmPassword.value) {
-          if(form.password.value.length < 6) {
-            console.log("Password must contain at least six characters!");
-            password.focus();
-            return false;
-          }
-         if(password.value == password.value) {
-            console.log("Error: Password must be different from Username!");
-            password.focus();
-            return false;
-          }
-          re = /[0-9]/;
-          if(!re.test(password.value)) {
-            console.log("Error: password must contain at least one number (0-9)!");
-            password.focus();
-            return false;
-          }
-          re = /[a-z]/;
-          if(!re.test(password.value)) {
-            console.log("Error: password must contain at least one lowercase letter (a-z)!");
-            password.focus();
-            return false;
-          }
-          re = /[A-Z]/;
-          if(!re.test(form.pwd1.value)) {
-            console.log("Error: password must contain at least one uppercase letter (A-Z)!");
-            password.focus();
-            return false;
-          }
-        } else {
-          console.log("Error: Please check that you've entered and confirmed your password!");
-          password.focus();
-          return false;
-        }
-        console.log("You entered a valid password: " + password.value);
-        return true;
-    }
-    function validateForm(){
-
-    }
-
-
 });
