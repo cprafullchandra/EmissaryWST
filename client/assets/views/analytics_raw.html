@@ -156,10 +156,10 @@
                     document.getElementById('query-output').value = formattedJson;
                     // get the number of login counts
 
-                    var resultStr = ""
+                    var resultStr = "";
                     var resultRow = response.result.totalsForAllResults;
                     resultStr += "<p>Total number of page views = " + resultRow["ga:pageviews"] + "</p>";
-                    resultStr += "<p>Total number of sessions = " + resultRow["ga:sessions"] + "</p>"
+                    resultStr += "<p>Total number of sessions = " + resultRow["ga:sessions"] + "</p>";
                     document.getElementById('sessionCount').innerHTML = resultStr;
 
                 })
@@ -182,7 +182,7 @@
                     var formattedJson = JSON.stringify(response.result, null, 2);
                     document.getElementById('event-output').value = formattedJson;
 
-                    var resultStr = ""
+                    var resultStr = "";
                     var resultRow = response.result.rows;
                     for (var row in resultRow) {
                         if (resultRow[row][0] === "loginButtonClick") {

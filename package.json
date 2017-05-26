@@ -10,8 +10,18 @@
   "scripts": {
     "postinstall": "bower install && gulp build:prod",
     "start": "node server/app.js",
-    "test": "gulp test:server"
+    "pretest": "npm run jshint && npm run htmlhint && npm run csslint && npm run standard",
+    "test": "gulp test:server && gulp test:client",
+    "jshint": "jshint",
+    "htmlhint": "htmlhint client/assets/native client/assets/views",
+    "csslint": "csslint",
+    "standard": "standard"
   },
+  "pre-commit": [
+    "jshint",
+    "htmlhint",
+    "csslint"
+  ],
   "dependencies": {
     "async": "2.4.0",
     "bcrypt-nodejs": "0.0.3",
@@ -25,12 +35,15 @@
     "express-session": "1.15.2",
     "gulp": "3.9.1",
     "gulp-angular-htmlify": "2.3.0",
+    "gulp-csslint": "1.0.0",
     "gulp-concat": "2.6.1",
     "gulp-connect": "5.0.0",
     "gulp-exit": "0.0.2",
     "gulp-flatten": "0.3.1",
     "gulp-htmlhint": "0.3.1",
     "gulp-inject": "4.2.0",
+    "gulp-istanbul": "1.1.1",
+    "gulp-jsdoc3": "latest",
     "gulp-jshint": "2.0.4",
     "gulp-minify-css": "1.2.4",
     "gulp-mocha": "4.3.1",
@@ -38,12 +51,14 @@
     "gulp-nodemon": "2.2.1",
     "gulp-shell": "0.6.3",
     "gulp-uglify": "2.1.2",
+    "handlebars": "latest",
     "iconv-lite": "0.4.17",
     "jshint-stylish": "2.2.1",
     "jwt-simple": "0.5.1",
     "karma": "1.7.0",
     "lodash": "4.17.4",
     "main-bower-files": "2.13.1",
+    "mongodb": "^2.2.26",
     "mongoose": "4.9.9",
     "mongoose-encryption": "1.5.0",
     "morgan": "1.8.1",
@@ -61,6 +76,11 @@
   },
   "devDependencies": {
     "chai": "3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-angular-htmlify": "2.3.0",
+    "gulp-csslint": "^1.0.0",
+    "gulp-istanbul": "^1.1.1",
+    "gulp-jsdoc3": "^1.0.1",
     "gulp-util": "3.0.8",
     "karma-mocha": "1.3.0",
     "karma-phantomjs-launcher": "1.0.4",
@@ -68,14 +88,29 @@
     "karma-spec-reporter": "0.0.31",
     "mocha": "3.3.0",
     "nodemon": "1.11.0",
+    "pre-commit": "^1.2.2",
     "sinon": "2.2.0",
     "sinon-chai": "2.10.0",
     "socket.io-client": "2.0.1",
-    "supertest": "3.0.0",
-    "gulp-angular-htmlify": "2.3.0"
+    "standard": "^10.0.2",
+    "supertest": "3.0.0"
   },
   "engines": {
     "node": ">= 4.0.0",
     "npm": ">= 3.0.0"
+  },
+  "standard": {
+    "ignore": [
+      "client/assets/css/",
+      "client/assets/font-awesome/",
+      "client/assets/images/",
+      "client/assets/js/",
+      "client/assets/less/",
+      "client/data/",
+      "client/fontAwesome/",
+      "client/neon/",
+      "client/vendor/",
+      "docs/"
+    ]
   }
 }

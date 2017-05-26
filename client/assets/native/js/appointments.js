@@ -1,13 +1,20 @@
+/**
+ * @file Manages appointments
+ */
 $(document).ready(function(){
     var companyData = JSON.parse(localStorage.getItem("currentCompany"));
     var myCompanyId = companyData._id;
     var curUser = JSON.parse(localStorage.getItem('currentUser'));
 
-  
+
     $('#user-name').text(curUser.first_name + ' ' +  curUser.last_name);
 
     var appts = getAppts();
-
+    /**
+     * @function initializeAppts
+     * @desc initializes appointments.
+     * @param appts {json} A list of the appointments.
+     */
     function initializeAppts (appts){
       appts.sort(function(a,b){
         return new Date(a.date) - new Date(b.date);
@@ -26,11 +33,11 @@ $(document).ready(function(){
 
     $("#appt-list").html(compiledHtml);
     $('.save-btn').click(submitForm);
-    
-   /***
-     * Makes a get request to display list of appts
-     * @param none
-     * @returns displays the appt list
+
+   /**
+     *@function getApps
+     *@desc Makes a get request to display list of appts
+     * @returns {json} List of appts.
      */
     function getAppts() {
        var json;
@@ -48,10 +55,9 @@ $(document).ready(function(){
        return json;
    }
 
-   /***
-     * When a patient submits their form
-     * @param none
-     * @returns updates the appt list
+   /**
+     * @function submitForm
+     * @desc Is calld when a patient submits their form. It updates the appt list.
      */
     function submitForm(){
         var d = grabFormElements();
@@ -63,9 +69,10 @@ $(document).ready(function(){
         document.getElementById("appt-form").reset();
     }
 
-    /***
-     * Makes a post request to update list of appts when adding a new employee
-     * @param none
+    /**
+     * @function updateApptList
+     * @desc Makes a post request to update list of appts when adding a new employee
+     * @param {POST} obj
      * @returns updates the appt list
      */
    function updateApptList(obj) {
@@ -83,10 +90,10 @@ $(document).ready(function(){
     }
 
 
-    /***
-     * Grabs elements from the check in and puts it into an object
-     * @param none
-     * @returns new appt object
+    /**
+     * @function grabFormElements
+     * @desc Grabs elements from the check in and puts it into an object
+     * @returns {appt} new appt object
      */
     function grabFormElements(){
       var newAppt = {};
@@ -102,7 +109,7 @@ $(document).ready(function(){
 
       newAppt.date = jsDate(userDate,userTime);
       return newAppt;
-    } 
+    }
 
     $(document).on('click','.delete-appt',function(){
       var apptId = $(this).closest('.appt-row').attr('value');
@@ -178,20 +185,20 @@ $(document).ready(function(){
       if(ampm === "PM"){
         formattedHour = time.substr(0,2);
 
-        if(formattedHour == '12')
-          formattedHour = 12;  
+        if(formattedHour === '12')
+          formattedHour = 12;
         else
-          formattedHour = 12 + parseInt(time.substr(0,2));
+          formattedHour = 12 + parseInt(time.substr(0,2), 10);
 
         formattedTime = formattedHour + time.substr(colon,3) + ":00";
       }
       else{
 
-        formattedHour = parseInt(time.substr(0,2));
+        formattedHour = parseInt(time.substr(0,2), 10);
         if(formattedHour < 10){
           formattedHour = '0' + formattedHour;
         }
-        if(formattedHour == 12){
+        if(formattedHour === 12){
           formattedHour = '00';
         }
         formattedTime = formattedHour + time.substr(colon,3) + ':00';

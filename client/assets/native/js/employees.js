@@ -1,3 +1,6 @@
+/**
+ * @file Manages the employees.
+ */
 $(document).ready(function(){
     var companyData = JSON.parse(localStorage.getItem("currentCompany"));
     var myCompanyId = companyData._id;
@@ -8,18 +11,21 @@ $(document).ready(function(){
     $('#user-name').text(curUser.first_name + ' ' +  curUser.last_name);
 
     var employees = getEmployees();
-    
+
     var source = $("#employee-list-template").html();
     var template = Handlebars.compile(source);
     var compiledHtml = template(employees);
 
     $("#employee-list").html(compiledHtml);
-    $('.save-btn').click(submitForm);
+    $('#employee-form').submit(function (event) {
+       submitForm();
+       return false;
+    });
 
-    
-   /***
-     * Makes a get request to display list of employees 
-     * @param none
+
+   /**
+     * @function getEmployees
+     * @desc Makes a get request to display list of employees
      * @returns displays the employee list
      */
     function getEmployees() {
@@ -38,9 +44,10 @@ $(document).ready(function(){
        return json;
    }
 
-   /***
-     * Makes a post request to update list of employees when adding a new employee
-     * @param none
+   /**
+     * @function updateEmployeeList
+     * @desc Makes a post request to update list of employees when adding a new employee
+     * @param {employee} obj employee
      * @returns updates the employee list
      */
    function updateEmployeeList(obj) {
@@ -68,6 +75,7 @@ $(document).ready(function(){
         updateEmployeeList(d);
         $("#employee-list").html(template(employees));
         document.getElementById("employee-form").reset();
+        $("#myModal").modal("toggle");
     }
 
     /***
@@ -78,7 +86,7 @@ $(document).ready(function(){
     function grabFormElements(){
         var newEmployee = {};
         newEmployee.company_id = myCompanyId;
-        newEmployee.role = "c_employee",
+        newEmployee.role = "c_employee";
         newEmployee.first_name= $('#employee-first').val();
         newEmployee.last_name = $('#employee-last').val();
         newEmployee.phone_number = $('#employee-number').val();
@@ -88,10 +96,11 @@ $(document).ready(function(){
         return newEmployee;
     }
 
-     /***
-     * Find Specific Employee Given Employee ID within the Employee Array
-     * @param id
-     * @returns {string}
+     /**
+     * @function findEmployee
+     * @desc Find Specific Employee Given Employee ID within the Employee Array
+     * @param {string} id id of employee.
+     * @returns {string} Employee name
      */
     function findEmployee(id){
 

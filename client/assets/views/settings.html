@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src = "assets/native/js/shared.js"></script>
+    <script src="assets/native/js/shared.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Neon Admin Panel" />
-    <meta name="author" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="Neon Admin Panel"/>
+    <meta name="author" content=""/>
 
     <link rel="icon" href="assets/images/logo-emissary.png">
 
@@ -24,13 +24,14 @@
     <link rel="stylesheet" href="assets/css/custom.css">
     <link rel="stylesheet" href="assets/css/patient-queue.css">
     <link rel="stylesheet" href="assets/native/css/employees.css">
-   <link rel="stylesheet" href="assets/native/css/appointment.css">
+    <link rel="stylesheet" href="assets/native/css/appointment.css">
 
 
     <script src="assets/js/jquery-1.11.3.min.js"></script>
     <script src="assets/js/settings.js"></script>
 
-    <!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!--[if lt IE 9]>
+    <script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -42,7 +43,8 @@
 </head>
 <body class="page-body gray" data-url="http://neon.dev">
 
-<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+<div class="page-container">
+    <!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
 
     <div class="sidebar-menu">
         <div class="sidebar-menu-inner">
@@ -51,13 +53,14 @@
                 <!-- logo -->
                 <div class="logo">
                     <a href="visitors.html">
-                        <img src="assets/images/emissary.png" width="150" alt="" />
+                        <img src="assets/images/emissary.png" width="150" alt=""/>
                     </a>
                 </div>
 
                 <!-- logo collapse icon -->
                 <div class="sidebar-collapse">
-                    <a href="#" class="sidebar-collapse-icon"><!-- add class "with-animation" if you want sidebar to have animation during expanding/collapsing transition -->
+                    <a href="#" class="sidebar-collapse-icon">
+                        <!-- add class "with-animation" if you want sidebar to have animation during expanding/collapsing transition -->
                         <i class="entypo-menu"></i>
                     </a>
                 </div>
@@ -75,6 +78,13 @@
             <ul id="main-menu" class="main-menu">
                 <!-- add class "multiple-expanded" to allow multiple submenus to open -->
                 <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
+                <li>
+                    <a href="/checkin.html">
+                        <i class="entypo-play">
+                            <span class="title">Start Check-in App</span>
+                        </i>
+                    </a>
+                </li>
                 <li>
                     <a href="/visitors.html">
                         <i class="entypo-users"></i>
@@ -121,12 +131,9 @@
                 <ul class="user-info pull-left pull-none-xsm">
 
                     <!-- Profile Info -->
-                    <li class="profile-info dropdown"><!-- add class "pull-right" if you want to place this from right -->
-
-                        <div id="company-name">
-                            <h1>Hello, <span id="user-name"> </span></h1>
-                        </div>
-
+                    <li class="profile-info dropdown">
+                        <!-- add class "pull-right" if you want to place this from right -->
+                        <h1 class="company-name">Hello, <span id="user-name"> </span></h1>
 
                     </li>
 
@@ -142,12 +149,11 @@
                     <div class="dropdown">
                         <i class="fa fa-3x fa-cog dropdown-toggle" data-toggle="dropdown"></i>
                         <ul class="dropdown-menu">
-                            <li><a href="/checkin.html">Check-In</a></li>
                             <li><a id="logoutButton" href="/index.html">
                                 Log Out <i class="entypo-logout right"></i></a>
                             </li>
                         </ul>
-                  </div>
+                    </div>
                 </ul>
 
             </div>
@@ -155,11 +161,11 @@
         </div>
 
 
-        <hr />
+        <hr/>
 
         <div class="employee-container">
             <div id="visitor-queue">
-                <div class = "patient-table-header">
+                <div class="patient-table-header">
                     <!-- <h3>Click on a visitor for check-out</h3>-->
                     <!-- <input class="form-control" placeholder="Search ..." type="text"/>-->
                 </div>
@@ -174,7 +180,7 @@
                     </tr>
                     </thead>
 
-                    <tbody id= "setting-list">
+                    <tbody id="setting-list">
                     <!-- HANDLE BAR TEMPLATES -->
 
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
@@ -199,7 +205,7 @@
                                     <form class="form-horizontal" role="form" id="settings-form">
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label"
-                                                   for="first-name" >First Name</label>
+                                                   for="employee-first">First Name</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control"
                                                        id="employee-first" placeholder="First Name"/>
@@ -207,7 +213,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label"
-                                                   for="last-name" >Last Name</label>
+                                                   for="employee-last">Last Name</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control"
                                                        id="employee-last" placeholder="Last Name"/>
@@ -215,15 +221,15 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label"
-                                                   for="phone-number" >Phone</label>
+                                                   for="employee-number">Phone</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control"
                                                        id="employee-number" placeholder="Phone Number"/>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label  class="col-sm-2 control-label"
-                                                    for="email">Email</label>
+                                            <label class="col-sm-2 control-label"
+                                                   for="employee-email">Email</label>
                                             <div class="col-sm-10">
                                                 <input type="email" class="form-control"
                                                        id="employee-email" placeholder="Email">
@@ -240,7 +246,9 @@
                                             data-dismiss="modal">
                                         Close
                                     </button>
-                                    <button type="button" class="check-in-btn update-btn btn btn-default" data-dismiss="modal" onClick="window.location.reload()">Save</button>
+                                    <button type="button" class="check-in-btn update-btn btn btn-default"
+                                            data-dismiss="modal" onclick="window.location.reload()">Save
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -252,7 +260,7 @@
             </div>
         </div>
 
-        <script type = "text/x-handlebars-template" id = "setting-list-template">
+        <script type="text/x-handlebars-template" id="setting-list-template">
             <tr class="employee-row" data-toggle="modal" data-target="#myModal">
                 <td class="employee-data">{{this.first_name}}</td>
                 <td class="employee-data">{{this.last_name}}</td>
@@ -261,9 +269,8 @@
             </tr>
 
         </script>
-        <div class = "update-button btn btn-default" data-toggle="modal" data-target="#myModal">Update</div>
+        <div class="update-button btn btn-default" data-toggle="modal" data-target="#myModal">Update</div>
         <br><br>
-
 
 
         <h2>Payment</h2>
@@ -274,12 +281,14 @@
                     data-name="Emissary"
                     data-description="Subscription for 1 month of service"
                     data-amount="2000"
-                    data-label="Subscribe" >
+                    data-label="Subscribe">
             </script>
         </form>
 
         <h2>Get Check-In Notifications Via Slack</h2>
-        <a href="https://slack.com/oauth/authorize?scope=incoming-webhook,bot,chat:write:bot&client_id=11293703667.22923580850"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
+        <a href="https://slack.com/oauth/authorize?scope=incoming-webhook,bot,chat:write:bot&client_id=11293703667.22923580850"><img
+                alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png"
+                srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x"/></a>
     </div>
 </div>
 <!-- Imported styles on this page -->
@@ -306,9 +315,10 @@
 <script src="assets/js/toastr.js"></script>
 <script src="assets/js/fullcalendar/fullcalendar.min.js"></script>
 <script src="assets/js/neon-chat.js"></script>
-<script type = "text/javascript" src= "assets/js/handlebars-v4.0.5.js"></script>
-<script type ="text/javascript" src = "assets/native/js/settings.js"> </script>
-<script type ="text/javascript" src="assets/native/js/login.js"></script><script type ="text/javascript" src = "assets/native/js/appointments.js"> </script>
+<script type="text/javascript" src="assets/js/handlebars-v4.0.5.js"></script>
+<script type="text/javascript" src="assets/native/js/settings.js"></script>
+<script type="text/javascript" src="assets/native/js/login.js"></script>
+<script type="text/javascript" src="assets/native/js/appointments.js"></script>
 
 
 <!-- JavaScripts initializations and stuff -->

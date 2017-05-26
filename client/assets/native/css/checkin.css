@@ -2,112 +2,102 @@ body {
     font-family: "Helvetica Neue";
 }
 
-#clock{
-    margin-top: 0;
-    padding-top: 150px;
+.clock {
     color: #f1f1f1;
     font-size: 1250%;
+    margin-top: 0;
+    padding-top: 150px;
     text-align: center;
-
 }
 
-body#check-in-page{
-    /*background-color: #cf4646;*/
-    background-color: #1C7F79;
-    height: 100vh;
-    /*background: url(../../images/backgrounds/1.png) no-repeat center center fixed;*/
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+.check-in-page {
+    /*background-color: #1C7F79;*/
+    background-image: url("http://www.aporhopi.org/assets/blueb-0c434e2c0a3eeaf33755fc9dacbf994fa3436ba7d65e556f1eafc7ec18f919de.png");
     background-size: cover;
+    height: 100vh;
 }
-#tap-to-check{
-    position: absolute;
+
+.tap-to-check {
+    background-color: #f1f1f1;
+    border-radius: 3px;
+    bottom: 15%;
+    display: block;
+    height: 100px;
     left: 50%;
     margin-left: -137.5px;
-   /* background-color: #f1f1f1; */
-   /* background-color: #0cb4a4;*/
+    position: absolute;
+    /*background-color: #0cb4a4;*/
     width: 275px;
-    height: 100px;
-    bottom: 15%;
-    border-radius: 3px;
-    display: block;
-    background-color:#f1f1f1;
     /*background-color: #0abcb3;*/
 
 }
 
-#tap-to-check:hover{
+.tap-to-check:hover {
     cursor: pointer;
 }
 
-#tap-to-check > p{
-    font-family: "Helvetica Neue";
-    text-align: center;
+.tap-to-check > p {
     color: #333;
-    /*color: #fff;*/
+    font-family: "Helvetica Neue";
     font-size: 32px;
+    text-align: center;
+    /*color: #fff;*/
 }
-.check-in{
 
-    position:absolute;
+.check-in {
+
     left: 50%;
     margin-left: -200px;
     opacity: 0;
-    width: 400px;
-    top: 5%;
+    position: absolute;
     text-align: center;
-
+    top: 5%;
+    width: 400px;
 
 }
 
-.check-in h1{
+.check-in-header {
     color: #f1f1f1;
     font-size: 52px;
     margin-bottom: 75px;
 }
 
-
-
-.check-in > input.visitor-fields{
-    margin-top: 30px;
-    margin-bottom: 30px;
-    /*background-color: #303641;*/
+.visitor-fields {
     background-color: transparent;
     border: none;
     border-bottom: 2px solid #f1f1f1;
-    padding-bottom: 5px;
-    width: 100%;
     color: #f1f1f1;
     font-size: 28px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    /*background-color: #303641;*/
+    padding-bottom: 5px;
+    width: 100%;
 }
 
-.check-in > input:focus{
-   outline: none;
+.visitor-fields:focus {
+    outline: none;
 }
 
 .check-in > input::-webkit-input-placeholder {
     color: #f1f1f1;
 }
 
-
-.submit-check-in{
-    position: absolute;
-    left: 50%;
-    margin-top: 25px;
-    margin-left: -75px;
-    /*background-color: #fff;*/
-    width: 150px;
-    height: 50px;
-    border-radius: 3px;
-    display: block;
-    border: none;
-    font-size: 28px;
-    /*background-color: #0abcb3;*/
+.submit-check-in {
     background-color: #f1f1f1;
+    border: none;
+    border-radius: 3px;
     color: #333;
+    display: block;
+    font-size: 28px;
+    height: 50px;
+    left: 50%;
+    margin-left: -75px;
+    margin-top: 25px;
+    position: absolute;
+    width: 150px;
 }
 
-.hide{
-    display: none !important;
+.hide {
+    display: none
 }
