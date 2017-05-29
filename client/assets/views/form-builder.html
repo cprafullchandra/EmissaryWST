@@ -13,7 +13,7 @@
 
     <title>Emissary | Forms</title>
     <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="assets/native/css/shared-dashboard.css">
+    <!--<link rel="stylesheet" href="assets/native/css/shared-dashboard.css">-->
     <link rel="stylesheet" href="assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
     <link rel="stylesheet" href="assets/css/font-icons/entypo/css/entypo.css">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic">
@@ -169,40 +169,9 @@
             <div>Color: <input class="jscolor" value="1C7F79"></div>
 
         </center>
-        <!--<center><h3>Preview</h3></center>-->
-        <form class="form-builder" role="form">
-            <div class="form-group">
-                <label for="f_name">First Name</label>
-                <input type="text" class="form-control" id="f_name" placeholder="Enter your First Name" required>
-            </div>
-            <div class="form-group">
-                <label for="l_name">Last Name</label>
-                <input type="text" class="form-control" id="l_name" placeholder="Enter your Last Name" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" class="form-control" pattern="[\(]\d{3}[\)]\d{3}[\-]\d{4}" id="phone"
-                       placeholder="Enter your Phone Number" required>
-            </div>
-            <div class="form-group">
-                <div class="my-form">
-                    <div class="addField">
-                    </div>
-                </div>
-            </div>
 
-            <h3 class="add-form-text">Add up to two fields</h3>
-            <input type="text" class="form-control" id="optional_label" placeholder="Enter label for field"
-                   maxlength="30">
-
-            <div class="add-fields my-form">
-
-                <button type="button" class="btn btn-success add-box">Add</button>
-                <button type="submit" class="save-form btn btn-primary">Submit</button>
-            </div>
-
-        </form>
-
+        <body>
+        <div id="form-builder"></div>
 
         <!-- Imported styles on this page -->
         <link rel="stylesheet" href="assets/js/jvectormap/jquery-jvectormap-1.2.2.css">
@@ -216,6 +185,13 @@
         <script src="assets/js/resizeable.js"></script>
         <script src="assets/js/neon-api.js"></script>
         <script src="assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+
+        <script src="http://formbuilder.online/assets/js/form-builder.min.js"></script>
+        <script>
+            jQuery(function ($) {
+                $(document.getElementById('form-builder')).formBuilder();
+            });
+        </script>
 
 
         <!-- Imported scripts on this page -->
@@ -242,6 +218,7 @@
         <script type="text/javascript" src="js/handlebars-v4.0.5.js"></script>
         <script type="text/javascript" src="assets/native/js/login.js"></script>
         <script type="text/javascript" src="assets/native/js/appointments.js"></script>
+        </body>
     </div>
 </div>
 </body>
