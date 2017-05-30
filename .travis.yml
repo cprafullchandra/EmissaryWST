@@ -6,13 +6,11 @@ notifications:
   slack: kissmyapp:ODLqzPLHklVTMNDvIF9VUSke
 language: node_js
 node_js:
-  - "node"
+  - "7"
 services:
   - mongodb
 script:
   - npm install
-after_script:
-  - cat " /home/travis/.npm/_logs/2017-05-30T20_54_56_925Z-debug.log"
 after_success:
   - npm install -g codeclimate-test-reporter
   - npm install -g codecov
