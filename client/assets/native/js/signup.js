@@ -32,9 +32,11 @@ $(document).ready(function(){
     });
 
     $('#form-password, #form-repeat-password').on('keyup', function () {
+        var repeatpassword = $('#form-repeat-password')[0];
         if ($('#form-password').val() !== $('#form-repeat-password').val()) {
-            var repeatpassword = $('#form-repeat-password')[0];
             repeatpassword.setCustomValidity('Passwords do not match!');
+        } else {
+            repeatpassword.setCustomValidity('');
         }
     });
 
