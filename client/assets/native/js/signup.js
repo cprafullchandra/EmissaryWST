@@ -31,6 +31,13 @@ $(document).ready(function(){
         return false;
     });
 
+    $('#form-password, #form-repeat-password').on('keyup', function () {
+        if ($('#form-password').val() !== $('#form-repeat-password').val()) {
+            var repeatpassword = $('#form-repeat-password')[0];
+            repeatpassword.setCustomValidity('Passwords do not match!');
+        }
+    });
+
     /**
      * @function grabCompanyData
      * @desc Grab company data from the forms.
@@ -47,7 +54,7 @@ $(document).ready(function(){
     /**
      * @function grabEmployeeData
      * @desc Grab employee data from the forms.
-     * @return {employee} employee 
+     * @return {employee} employee
      */
     function grabEmployeeData(){
         var employee = {};
