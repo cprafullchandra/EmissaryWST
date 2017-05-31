@@ -22,7 +22,7 @@ describe('Appointment Test', function() {
 
     //new appointment info
     var new_first_name = "test1";
-    var new_last_name = "test1";;
+    var new_last_name = "test1";
     var new_phone_number="1231267890";
     var new_date="2016-03-23T18:25:43.511Z";
     var new_provider_name = "test1 test1";
@@ -32,7 +32,6 @@ describe('Appointment Test', function() {
     var credit_card_number="1231231241251";
     var name = "test";
     var expiration_date="6/17";
-    var phone_number="1234567890";
 
     var userID = null;
 

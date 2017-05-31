@@ -17,7 +17,7 @@ var logger = new winston.Logger({
     transports: [
       new winston.transports.File({
         level: 'info',
-	datePattern: ('.yyyy-MM-dd' + '.log'),
+	datePattern: ('.yyyy-MM-dd.log'),
         filename: path.join(logDir, 'logs'),
         handleExceptions: true,
         json: false,

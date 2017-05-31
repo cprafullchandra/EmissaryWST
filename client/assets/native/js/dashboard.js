@@ -46,7 +46,7 @@ $(document).ready(function(){
 
     //SOCKET LISTEN FOR VISITOR QUEUE
     socket.on(VISITOR_LIST_UPDATE, function (data) {
-        visitorList = data.visitors
+        visitorList = data.visitors;
         //Parse Visitor List to format Date
         for(var i = 0, len = visitorList.length; i< len; i++){
             visitorList[i].checkin_time = formatTime(visitorList[i].checkin_time);
@@ -119,7 +119,10 @@ $(document).ready(function(){
     });
 */
     /***
-     * Compare appointment Date to today's Date
+     * @function compareDate
+     * @desc Compare appointment Date to today's Date
+     * @param {obj} appointment object
+     * @returns {boolean} If appointment date is equal to today's date
      */
     function compareDate(appointment){
       var today = new Date();
@@ -128,7 +131,7 @@ $(document).ready(function(){
       var appointmentDate = appointment.getFullYear() + ' ' + appointment.getDate() + ' ' + appointment.getMonth();
       var todayDate = today.getFullYear() + ' ' + today.getDate() + ' ' + today.getMonth();
 
-      return (appointmentDate == todayDate);
+      return (appointmentDate === todayDate);
     }
 
     /**

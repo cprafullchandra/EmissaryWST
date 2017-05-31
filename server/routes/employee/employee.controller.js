@@ -35,7 +35,7 @@ exports.getById = function(req, res) {
       if(err) {
           return res.status(400).json({error: "Can not Find"});
       } else {
-          console.log(employee)
+          console.log(employee);
           return res.status(200).json(employee);
       }
     });
@@ -47,11 +47,11 @@ exports.insert = function(req, res) {
     /* required info */
     employee.first_name = req.body.first_name;
     employee.last_name = req.body.last_name;
-    employee.email = req.body.email,
-    employee.phone_number  = req.body.phone_number,
-    employee.company_id = req.body.company_id,
-    employee.password = employee.generateHash(req.body.password),
-    employee.role =  req.body.role
+    employee.email = req.body.email;
+    employee.phone_number  = req.body.phone_number;
+    employee.company_id = req.body.company_id;
+    employee.password = employee.generateHash(req.body.password);
+    employee.role =  req.body.role;
 
     employee.save(function(err, e) {
         if(err) {
