@@ -8,7 +8,7 @@
   },
   "author": "Eduardo Aguilar",
   "scripts": {
-    "postinstall": ". config.sh && bower install && gulp build:prod",
+    "postinstall": "bower install && gulp build:prod",
     "start": "node server/app.js",
     "pretest": "npm run jshint && npm run htmlhint && npm run csslint && npm run standard",
     "testback": "gulp test:server",
