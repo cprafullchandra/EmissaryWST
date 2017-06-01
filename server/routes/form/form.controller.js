@@ -86,9 +86,9 @@ module.exports.template.create =  function(req, res) {
 /* Accept PUT request at /form/template */
 module.exports.template.update =  function(req, res) {
     var update = {template: req.body.template};
-    var options = {new: true};
+    var options = {new: true, upsert: true, setDefaultsOnInsert: true};
 
-    TemplateForm.findOneAndUpdate({_id: req.body.template_id}, update, options,
+    TemplateForm.findOneAndUpdate({_admin_id: req.body._admin_id}, update, options,
       function(err, template) {
           if(err)
             res.status(400).json({error: "There was an error updating a template."});

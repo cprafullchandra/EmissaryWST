@@ -7,11 +7,23 @@ $(document).ready(function(){
 
     var VALIDATE_COMPANY_ID = "validate_company_id";
     var ADD_VISITOR = "add_visitor";
-    
+
     var companyData = JSON.parse(localStorage.getItem("currentCompany"));
+    const myCompanyId = companyData._id;
     console.log(companyData);
     socket.emit(VALIDATE_COMPANY_ID, companyData);
-    
+
+    var formData = loadSavedForm(myCompanyId);
+    if(formData !== null) {
+        console.log(formData);
+        var formOptions = {
+            formData,
+            dataType: 'json'
+        };
+
+        $('#check-in').formRender(formOptions);
+    }
+
     //Prevent users from scrolling around on iPad
     document.ontouchmove = function(e) {
         e.preventDefault();
@@ -126,3 +138,34 @@ $(document).ready(function(){
 
 
 });
+
+function loadSavedForm(myCompanyId) {
+    var url = '/api/form/template/' + myCompanyId;
+    var formJSON = getFormData(url);
+
+    //console.log(formJSON);
+    if (formJSON === null) {
+        return null;
+    } else {
+        return formJSON.template;
+    }
+}
+
+function getFormData(url) {
+    var json;
+
+    $.ajax({
+        dataType: 'json',
+        type: 'GET',
+        data: $('#response').serialize(),
+        async: false,
+        url: url,
+        success: function (response) {
+            json = response;
+            //console.log(response);
+        }
+    });
+
+
+    return json;
+}

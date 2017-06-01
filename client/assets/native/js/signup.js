@@ -71,7 +71,7 @@ $(document).ready(function(){
     }
 
     /**
-     * @function ajaxPost
+     * @function ajaxPut
      * @param {url} url
      * @param {data} data
      * @desc Ajax function to create a POST request to server.
