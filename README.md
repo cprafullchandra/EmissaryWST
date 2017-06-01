@@ -89,5 +89,7 @@ $ gulp build:dev
 $ nf start web
 ```
 
+Now that you're all set with that see our developer [docs]() for more details regarding Emissary!
+
 ### Credits
 Thanks to `WebStormTroopers` for the base code, and documentation: https://github.com/danielchristiancazares/Emissary
