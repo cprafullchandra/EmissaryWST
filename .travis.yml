@@ -6,7 +6,7 @@ notifications:
   slack: kissmyapp:ODLqzPLHklVTMNDvIF9VUSke
 language: node_js
 node_js:
-  - "node"
+  - "7"
 services:
   - mongodb
 script:
