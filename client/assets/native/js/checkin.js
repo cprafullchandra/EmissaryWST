@@ -60,7 +60,7 @@ $(document).ready(function(){
                 'text': "Name: " + data['first_name'] + " " + data['last_name'] + " Phone Number: " + data['phone_number']
              },
              function(data, status){
-              });
+             });
         }
         socket.emit(ADD_VISITOR, data);
 
@@ -79,7 +79,7 @@ $(document).ready(function(){
         let newVisitor = {};
         newVisitor.company_id = companyData._id;
         newVisitor.checkin_time = new Date();
-        for (const i in data) {
+        for (let i = 0; i < data.length; i++) {
             newVisitor[data[i].name] = data[i].value;
         }
         return newVisitor;
