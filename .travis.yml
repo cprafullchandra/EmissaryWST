@@ -14,7 +14,7 @@ services:
   - mongodb
 script:
   - npm install
-test:
+after_success:
   - npm install -g codeclimate-test-reporter
   - npm install -g codecov
   - npm run testback
