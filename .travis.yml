@@ -1,10 +1,11 @@
 # Travis CI Build Script
+env:
+  - SAUCE_USERNAME: "cprafullchandra"
+  - SAUCE_ACCESS_KEY: "24bdca40-ec64-4241-bba3-b2a78d92f52d"
 addons:
  code_climate:
     repo_token: ca1bce783e700880c07c8145d402e8f5cee54c5033f7bf88f51fc3e78e37e35e
- sauce_connect:
-    username: "cprafullchandra"
-    access_key: "24bdca40-ec64-4241-bba3-b2a78d92f52d"
+ sauce_connect: true
 notifications:
   slack: kissmyapp:ODLqzPLHklVTMNDvIF9VUSke
 language: node_js
