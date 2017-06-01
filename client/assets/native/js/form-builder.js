@@ -2,22 +2,61 @@ const companyData = JSON.parse(localStorage.getItem("currentCompany"));
 const myCompanyId = companyData._id;
 
 var options = {
-        formData: loadSavedForm(),
-        subtypes: {
-            text: ['datetime-local']
+    formData: loadSavedForm(),
+    subtypes: {
+        text: ['datetime-local']
+    },
+    onSave: function (e, formData) {
+        var formJSON = formatFormData(formData);
+        var url = '/api/form/template';
+        ajaxPut(url, formJSON);
+    },
+    stickyControls: {
+        enable: true
+    },
+    sortableControls: true,
+    disableInjectedStyle: false,
+    disableFields: ['autocomplete'],
+    defaultFields: [
+        {
+            "type": "header",
+            "subtype": "h1",
+            "label": "Check In"
         },
-        onSave: function (e, formData) {
-            var formJSON = formatFormData(formData);
-            var url = '/api/form/template';
-            ajaxPut(url, formJSON);
+        {
+            "type": "text",
+            "required": true,
+            "label": "First Name",
+            "className": "form-control",
+            "name": "text-1496299533016",
+            "subtype": "text"
         },
-        stickyControls: {
-            enable: true
+        {
+            "type": "text",
+            "required": true,
+            "label": "Last Name",
+            "className": "form-control",
+            "name": "text-1496299552960",
+            "subtype": "text"
         },
-        sortableControls: true,
-        disableInjectedStyle: false,
-        disableFields: ['autocomplete']
-    };
+        {
+            "type": "text",
+            "subtype": "tel",
+            "required": true,
+            "label": "Phone Number",
+            "className": "form-control",
+            "name": "text-1496299568961"
+        },
+        {
+            "type": "button",
+            "subtype": "submit",
+            "label": "Submit",
+            "className": "btn btn-primary",
+            "name": "button-1496299626278",
+            "style": "primary"
+        }
+    ]
+};
 
 function formatFormData(formData) {
     var form = {};
