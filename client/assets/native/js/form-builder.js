@@ -1,46 +1,65 @@
-const options = {
-    subtypes: {
-        text: ['datetime-local']
-    },
-    onSave: function (e, formData) {
-        var formJSON = getFormData(formData);
-        var url = '/api/form/template';
-        ajaxPost(url, formJSON);
-    },
-    stickyControls: {
-        enable: true
-    },
-    sortableControls: true,
-    disableInjectedStyle: false,
-    disableFields: ['autocomplete']
-};
+const companyData = JSON.parse(localStorage.getItem("currentCompany"));
+const myCompanyId = companyData._id;
 
-function getFormData(formdata) {
-    const companyData = JSON.parse(localStorage.getItem("currentCompany"));
-    const myCompanyId = companyData._id;
+var options = {
+        formData: loadSavedForm(),
+        subtypes: {
+            text: ['datetime-local']
+        },
+        onSave: function (e, formData) {
+            var formJSON = formatFormData(formData);
+            var url = '/api/form/template';
+            ajaxPut(url, formJSON);
+        },
+        stickyControls: {
+            enable: true
+        },
+        sortableControls: true,
+        disableInjectedStyle: false,
+        disableFields: ['autocomplete']
+    };
 
+function formatFormData(formData) {
     var form = {};
 
     form._admin_id = myCompanyId;
-    form.template = formdata;
+    form.template = formData;
 
     return form;
+}
 
+function getFormData(url) {
+    var json;
+
+    $.ajax({
+        dataType: 'json',
+        type: 'GET',
+        data: $('#response').serialize(),
+        async: false,
+        url: url,
+        success: function (response) {
+            json = response;
+            //console.log(response);
+        }
+    });
+
+    return json;
 }
 
 /**
- * @function ajaxPost
+ * @function ajaxPut
  * @param {string} url
  * @param {data} data
  * @desc Ajax function to create a POST request to server.
  */
-function ajaxPost(url, data) {
+function ajaxPut(url, data) {
     $.ajax({
-        type: "POST",
+        type: "PUT",
         url: url,
         data: data,
         dataType: 'json',
         success: function (response) {
+            console.log("SUCCESS!" + response);
         },
         error: function (response) {
             //console.log(response);
@@ -50,7 +69,17 @@ function ajaxPost(url, data) {
     });
 }
 
+function loadSavedForm() {
+    var url = '/api/form/template/' + myCompanyId;
+    var formJSON = getFormData(url);
+
+    if (formJSON === null) {
+        return null;
+    } else {
+        return formJSON.template;
+    }
+}
+
 jQuery(function ($) {
     $('#form-builder').formBuilder(options);
-
 });
