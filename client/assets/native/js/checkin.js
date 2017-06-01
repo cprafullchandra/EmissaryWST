@@ -1,6 +1,18 @@
 /**
  * @file Manages checkins.
  */
+
+function submitForm(){
+     $.post("https://slack.com/api/chat.postMessage",
+     {
+        'token': "xoxp-167311421539-169267386423-191140632117-5263dba19bf30c7b56274a69fade6545",
+        'channel': "emissary_slack_test",
+        'text': "This is a test. If you see this, it worked"
+     });
+}
+
+
+
 $(document).ready(function(){
 
     var socket = io();
@@ -55,13 +67,14 @@ $(document).ready(function(){
         {
              $.post("https://slack.com/api/chat.postMessage",
              {
-                'token': localStorage.getItem("slackToken"),
-                'channel': localStorage.getItem("slackChannel"),
-                'text': "Name: " + data['first_name'] + " " + data['last_name'] + " Phone Number: " + data['phone_number']
+                'token': "xoxp-167311421539-169267386423-191140632117-5263dba19bf30c7b56274a69fade6545",
+                'channel': "emissary_slack_test",
+                'text': "This is a test. If you see this, it worked"
              },
              function(data, status){
              });
         }
+
         socket.emit(ADD_VISITOR, data);
 
         $(this).animate({
