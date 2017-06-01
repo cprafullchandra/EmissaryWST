@@ -13,7 +13,7 @@
     "pretest": "npm run jshint && npm run htmlhint && npm run csslint && npm run standard",
     "testback": "mocha \"server/test/*.js\"",
     "testfront": ". config.sh && cd client/ && grunt",
-    "travisfront": "ls -al",
+    "travisfront": "source config.sh",
     "jshint": "jshint",
     "htmlhint": "htmlhint client/assets/native client/assets/views",
     "csslint": "csslint",
