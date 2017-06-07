@@ -1,6 +1,3 @@
-# Travis CI Build Script
-env:
-  - SH=bash
 addons:
  code_climate:
     repo_token: ca1bce783e700880c07c8145d402e8f5cee54c5033f7bf88f51fc3e78e37e35e
@@ -20,7 +17,7 @@ after_success:
   - npm install -g codeclimate-test-reporter
   - npm install -g codecov
   - npm run testback
-  - npm run travisfront
+#  - npm run travisfront
   - npm run cover
   - codeclimate-test-reporter < coverage/lcov.info
   - codecov
