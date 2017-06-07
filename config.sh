@@ -1,3 +1,4 @@
+#!/bin/sh
 # Config File for setting up environment
 
 ### Sauce Labs Integration ###
