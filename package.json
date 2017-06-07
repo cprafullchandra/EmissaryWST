@@ -15,8 +15,8 @@
     "postinstall": "bower install && gulp build:prod",
     "pretest": "npm run jshint && npm run htmlhint && npm run csslint",
     "start": "node server/app.js",
-    "test": "mocha \"server/test/*.js\" && . config.sh && cd client/ && grunt",
-    "travis": "mocha \"server/test/*.js\" && bash && source config.sh && cd client/ && grunt && cd .. && exit"
+    "test": "mocha \"server/test/*.js\"", 
+    "testfront": ". config.sh && cd client/ && grunt"
   },
   "pre-commit": [
     "csslint",
