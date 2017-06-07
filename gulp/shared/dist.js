@@ -14,6 +14,5 @@ gulp.task('dist', [
   'copy:views',
   'copy:css',
   'copy:js',
-  'copy:images',
-  "doc"
+  'copy:images'
 ]);
