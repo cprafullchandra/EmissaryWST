@@ -48,7 +48,7 @@ function ajaxPostUser(url, data){
 
            window.onerror=handleError();
            event.preventDefault();
-           alert("Not Valid Username and Password, please type valid one.");
+           alert("Username and Password Combination Incorrect. Please Try Again.");
            //location.href = '/login.html';
         }
    });
