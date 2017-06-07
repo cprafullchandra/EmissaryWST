@@ -31,6 +31,15 @@ $(document).ready(function(){
         return false;
     });
 
+    $('#form-password, #form-repeat-password').on('keyup', function () {
+        var repeatpassword = $('#form-repeat-password')[0];
+        if ($('#form-password').val() !== $('#form-repeat-password').val()) {
+            repeatpassword.setCustomValidity('Passwords do not match!');
+        } else {
+            repeatpassword.setCustomValidity('');
+        }
+    });
+
     /**
      * @function grabCompanyData
      * @desc Grab company data from the forms.
@@ -47,7 +56,7 @@ $(document).ready(function(){
     /**
      * @function grabEmployeeData
      * @desc Grab employee data from the forms.
-     * @return {employee} employee 
+     * @return {employee} employee
      */
     function grabEmployeeData(){
         var employee = {};
@@ -62,7 +71,7 @@ $(document).ready(function(){
     }
 
     /**
-     * @function ajaxPost
+     * @function ajaxPut
      * @param {url} url
      * @param {data} data
      * @desc Ajax function to create a POST request to server.

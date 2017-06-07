@@ -13,7 +13,7 @@
 	<title>Emissary | Appointments</title>
 	
 	<link rel="stylesheet" href="assets/font-awesome/css/font-awesome.css">
-	<link rel="stylesheet" href="assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
+	<!--<link rel="stylesheet" href="assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">-->
 	<link rel="stylesheet" href="assets/css/font-icons/entypo/css/entypo.css">
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic">
 	<link rel="stylesheet" href="assets/css/bootstrap.css">
@@ -76,6 +76,13 @@
 				<!-- add class "multiple-expanded" to allow multiple submenus to open -->
 				<!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
 				<li>
+					<a href="/checkin.html">
+						<i class="entypo-play">
+							<span class="title">Start Check-in App</span>
+						</i>
+					</a>
+				</li>
+				<li>
 					<a href="/visitors.html">
 						<i class="entypo-users"></i>
 						<span class="title">Visitors</span>
@@ -132,7 +139,6 @@
 					<div class="dropdown">
                         <i class="fa fa-3x fa-cog dropdown-toggle" data-toggle="dropdown"></i>
                         <ul class="dropdown-menu">
-                            <li><a href="/checkin.html">Check-In</a></li>
                             <li><a id="logoutButton" href="/index.html">
                                 Log Out <i class="entypo-logout right"></i></a>
                             </li>
