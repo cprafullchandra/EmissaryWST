@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="assets/native/css/signup.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/bootstrap-formhelpers.min.css">
+    <!--<link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">-->
+    <!--<link rel="stylesheet" href="assets/css/bootstrap-formhelpers.min.css">-->
 
     <link rel="stylesheet" href="assets/css/style.css">
 
@@ -85,7 +85,10 @@
                                 <div class="form-group">
                                     <label class="sr-only" for="form-email">Email</label>
                                     <input type="email" name="email" placeholder="Email" class="form-email form-control"
-                                           id="form-email" required>
+                                           id="form-email" required
+                                           pattern="^.*@.*\..*$"
+                                           oninvalid="setCustomValidity('Please enter a valid email!')"
+                                           oninput="setCustomValidity('')">
                                 </div>
                                 <div class="form-group">
                                     <label class="sr-only" for="form-phone">Phone Number</label>
