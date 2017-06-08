@@ -37,7 +37,9 @@ $(document).ready(function () {
         "subtype": "tel",
         "required": true,
         "label": "Phone Number",
-        "className": "form-control",
+        "data-format": "+1 (ddd)ddd-dddd",
+        "pattern": "^[\+]1\s[\(]\d{3}[\)]\d{3}[\-]\d{4}",
+        "className": "form-control form-phone bfh-phone",
         "name": "tel"
     }];
 
