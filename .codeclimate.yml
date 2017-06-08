@@ -32,12 +32,7 @@ ratings:
 # have to exclude third-party libs
 exclude_paths:
 - "client/assets/css/"
-- "client/assets/font-awesome/"
 - "client/assets/images/"
 - "client/assets/js/"
 - "client/assets/less/"
-- "client/data/"
-- "client/fontAwesome/"
-- "client/neon/"
-- "client/vendor/"
 - "docs/"
