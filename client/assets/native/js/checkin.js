@@ -38,7 +38,9 @@ $(document).ready(function () {
         "required": true,
         "label": "Phone Number",
         "data-format": "+1 (ddd)ddd-dddd",
-        "pattern": "^[\+]1\s[\(]\d{3}[\)]\d{3}[\-]\d{4}",
+        "pattern": "^[\\+]1\\s[\\(]\\d{3}[\\)]\\d{3}[\\-]\\d{4}",
+        "oninvalid": "setCustomValidity('Please follow the correct format (xxx)xxx-xxxx.')",
+        "oninput": "setCustomValidity('')",
         "className": "form-control form-phone bfh-phone",
         "name": "tel"
     }];
