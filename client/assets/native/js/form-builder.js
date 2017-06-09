@@ -18,7 +18,47 @@ var options = {
     },
     sortableControls: true,
     disableInjectedStyle: false,
-    disableFields: ['autocomplete']
+    disableFields: ['autocomplete'],
+    fields: [{
+        label: 'Email',
+        required: true,
+        attrs: {
+            type: 'text'
+        },
+        icon: '📧',
+        pattern: "^.*@.*\\..*$",
+        oninvalid: "setCustomValidity('Please enter a valid email!')",
+        oninput: "setCustomValidity('')",
+        className: "form-control, form-email"
+    }, {
+        label: 'Telephone',
+        required: true,
+        attrs: {
+            type: 'text'
+        },
+        icon: '☎',
+        pattern: "^[\\+]1\\s[\\(]\\d{3}[\\)]\\d{3}[\\-]\\d{4}",
+        oninvalid: "setCustomValidity('Please follow the correct format (xxx)xxx-xxxx.')",
+        oninput: "setCustomValidity('')",
+        className: "form-phone form-control bfh-phone",
+        'data-format': '+1 (ddd)ddd-dddd'
+    }],
+    typeUserAttrs: {
+        text: {
+            pattern: {
+                type: 'hidden'
+            },
+            oninvalid: {
+                label: 'Ignore this Field'
+            },
+            oninput: {
+                label: 'Ignore this Field'
+            },
+            'data-format': {
+                label: 'Ignore this Field'
+            }
+        }
+    }
 };
 
 function formatFormData(formData) {
