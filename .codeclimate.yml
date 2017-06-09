@@ -2,37 +2,22 @@
 engines:
   csslint:
     enabled: true
-  coffeelint:
-    enabled: true
   duplication:
     enabled: true
     config:
       languages:
-      - ruby
       - javascript
-      - python
-      - php
   eslint:
     enabled: true
   fixme:
     enabled: true
-  phpmd:
-    enabled: true
 ratings:
   paths:
   - "**.css"
-  - "**.coffee"
-  - "**.inc"
   - "**.js"
-  - "**.jsx"
-  - "**.module"
-  - "**.php"
-  - "**.py"
-  - "**.rb"
 # have to exclude third-party libs
 exclude_paths:
 - "client/assets/css/"
 - "client/assets/images/"
 - "client/assets/js/"
-- "client/assets/less/"
 - "docs/"
