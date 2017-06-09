@@ -46,16 +46,21 @@ var options = {
     typeUserAttrs: {
         text: {
             pattern: {
-                type: 'hidden'
+                label: ' ',
+                type: 'hidden',
+                className: 'abc'
             },
             oninvalid: {
-                label: 'Ignore this Field'
+                label: ' ',
+                type: 'hidden'
             },
             oninput: {
-                label: 'Ignore this Field'
+                label: ' ',
+                type: 'hidden'
             },
             'data-format': {
-                label: 'Ignore this Field'
+                label: ' ',
+                type: 'hidden'
             }
         }
     }
