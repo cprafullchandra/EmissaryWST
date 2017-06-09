@@ -47,8 +47,7 @@ var options = {
         text: {
             pattern: {
                 label: ' ',
-                type: 'hidden',
-                className: 'abc'
+                type: 'hidden'
             },
             oninvalid: {
                 label: ' ',
