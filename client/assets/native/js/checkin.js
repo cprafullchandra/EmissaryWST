@@ -99,6 +99,17 @@ $(document).ready(function () {
     function submitForm(event) {
         event.preventDefault();
         let data = grabFormElements();
+
+        // TODO: utilize this data in populating the checkin visitors table
+        let formData = JSON.parse(JSON.stringify($("#check-in").serializeArray()));
+
+        // Finds label for each input field and appends it to the JSON.
+        for (let i = 0; i < formData.length; i++) {
+            let obj = formData[i];
+            let label = $("label[for='" + obj.name + "']");
+            obj.title = label.text();
+            console.log(obj);
+        }
         // TODO: make slack integration configurable
         //if(localStorage.getItem("slackToken")&&localStorage.getItem("slackChannel"))
         //{
