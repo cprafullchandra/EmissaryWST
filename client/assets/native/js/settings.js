@@ -23,7 +23,8 @@ $(document).ready(function(){
 
    // Pulls up form to change employee info
    $('.update-btn').click(updateEmployeeInfo);
-   $("#setting-list").html(compiledHtml);
+   $('#setting-list').html(compiledHtml);
+   $('#save-zapier-url').click(updateEmployeeZapierURL());
 
    /**
     * @func getEmployee
@@ -71,6 +72,22 @@ $(document).ready(function(){
        updateEmployee(data);
        $("#setting-list").html(template(employees));
        document.getElementById("settings-form").reset();
+   }
+
+   /**
+    * @func updateEmployeeInfo
+    * @desc Update the current employee information with Zapier URL
+    * @returns {string} updated employee info
+    */
+   function updateEmployeeZapierURL() {
+        var data = {};
+        data.first_name = curUser.first_name;
+        data.last_name = curUser.last_name;
+        data.phone_number = curUser.phone_number;
+        data.email = curUser.email;
+        data.zapier_url = $('#zapier-url').val();
+        console.log(data);
+        updateEmployee(data);
    }
 
    /**
