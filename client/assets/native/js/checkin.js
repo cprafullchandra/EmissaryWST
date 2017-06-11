@@ -97,15 +97,6 @@ $(document).ready(function () {
     function submitForm() {
         let data = grabFormElements();
 
-        let formData = JSON.parse(JSON.stringify($("#check-in").serializeArray()));
-
-        // Finds label for each input field and appends it to the JSON.
-        for (let i = 0; i < formData.length; i++) {
-            let obj = formData[i];
-            let label = $("label[for='" + obj.name + "']");
-            obj.title = label.text();
-            console.log(obj);
-        }
         // TODO: make slack integration configurable
         //if(localStorage.getItem("slackToken")&&localStorage.getItem("slackChannel"))
         //{
@@ -131,6 +122,16 @@ $(document).ready(function () {
      * @desc Grabs elements from the check in and puts it into an object
      */
     function grabFormElements() {
+
+        let formData = JSON.parse(JSON.stringify($("#check-in").serializeArray()));
+
+        // Finds label for each input field and appends it to the JSON.
+        for (let i = 0; i < formData.length; i++) {
+            let obj = formData[i];
+            let label = $("label[for='" + obj.name + "']");
+            obj.title = label.text();
+        }
+
         let data = $('.check-in').serializeArray();
         let newVisitor = {};
         newVisitor.company_id = companyData._id;
@@ -138,6 +139,8 @@ $(document).ready(function () {
         for (let i = 0; i < data.length; i++) {
             newVisitor[data[i].name] = data[i].value;
         }
+
+        newVisitor.additional_info = formData;
         return newVisitor;
     }
 
