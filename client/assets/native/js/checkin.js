@@ -42,7 +42,7 @@ $(document).ready(function () {
         "oninvalid": "setCustomValidity('Please follow the correct format (xxx)xxx-xxxx.')",
         "oninput": "setCustomValidity('')",
         "className": "form-control form-phone bfh-phone",
-        "name": "tel"
+        "name": "phone_number"
     }];
 
     var submitButton = [{
