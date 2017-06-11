@@ -43,6 +43,7 @@ exports.getCompanyVisitorList = function(company_id, callback){
             list = new VisitorList();
             list.visitors=[];
             list.company_id = company_id;
+            list.additional_info = additional_info;
         }
         list.save(function(err){
             if(err)return callback({error: "Error in saving"}, null);
