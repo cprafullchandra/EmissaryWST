@@ -21,6 +21,10 @@ $(document).ready(function(){
    document.getElementsByTagName("input")[2].setAttribute("value", curUser.phone_number);
    document.getElementsByTagName("input")[3].setAttribute("value", curUser.email);
 
+   if(curUser.zapier_url !== 'undefined') {
+       document.getElementsByTagName("input")[4].setAttribute("value", curUser.zapier_url);
+   }
+
    // Pulls up form to change employee info
    $('.update-btn').click(updateEmployeeInfo);
    $('#setting-list').html(compiledHtml);
