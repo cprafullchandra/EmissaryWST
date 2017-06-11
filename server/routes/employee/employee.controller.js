@@ -75,7 +75,6 @@ exports.update = function(req, res) {
         employee.phone_number = req.body.phone_number || employee.phone_number;
         employee.password = employee.generateHash(req.body.password) || employee.password;
         employee.role = req.body.role || employee.role;
-        employee.zapier_url = req.body.zapier_url || employee.zapier_url;
 
         employee.save(function(err) {
             console.log(err);

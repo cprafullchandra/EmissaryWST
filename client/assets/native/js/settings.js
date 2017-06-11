@@ -1,7 +1,6 @@
 $(document).ready(function(){
    var companyData = JSON.parse(localStorage.getItem("currentCompany"));
    var myCompanyId = companyData._id;
-
    console.log(myCompanyId);
 
 
@@ -21,14 +20,16 @@ $(document).ready(function(){
    document.getElementsByTagName("input")[2].setAttribute("value", curUser.phone_number);
    document.getElementsByTagName("input")[3].setAttribute("value", curUser.email);
 
-   if(curUser.zapier_url !== 'undefined') {
-       document.getElementsByTagName("input")[4].setAttribute("value", curUser.zapier_url);
+   if(companyData.zapier_url !== undefined) {
+       document.getElementsByTagName("input")[4].setAttribute("value", companyData.zapier_url);
    }
 
    // Pulls up form to change employee info
    $('.update-btn').click(updateEmployeeInfo);
    $('#setting-list').html(compiledHtml);
-   $('#save-zapier-url').click(updateEmployeeZapierURL());
+   $('#save-zapier-url').click(function() {
+       updateZapierURL();
+   });
 
    /**
     * @func getEmployee
@@ -79,19 +80,19 @@ $(document).ready(function(){
    }
 
    /**
-    * @func updateEmployeeInfo
-    * @desc Update the current employee information with Zapier URL
-    * @returns {string} updated employee info
+    * @func updateZapierURL
+    * @desc Update the company with the new Zapier URL
+    * @returns {string} updated zapier url
     */
-   function updateEmployeeZapierURL() {
-        var data = {};
-        data.first_name = curUser.first_name;
-        data.last_name = curUser.last_name;
-        data.phone_number = curUser.phone_number;
-        data.email = curUser.email;
-        data.zapier_url = $('#zapier-url').val();
-        console.log(data);
-        updateEmployee(data);
+   function updateZapierURL() {
+       var data = {};
+       data.email = companyData.email;
+       data.name = companyData.name;
+       data.phone_number = companyData.phone_number;
+       data.paid_time = companyData.paid_time;
+       data.zapier_url = $('#zapier-url').val();
+       console.log(data);
+       updateCompany(data);
    }
 
    /**
@@ -109,6 +110,25 @@ $(document).ready(function(){
            success: function(response) {
                console.log(response);
                localStorage.setItem('currentUser', JSON.stringify(response));
+           }
+       });
+   }
+
+   /**
+    * @func updateCompany
+    * @desc Makes a put request to update info of company
+    * @param {company} obj company
+    */
+   function updateCompany(obj) {
+       $.ajax({
+           dataType: 'json',
+           type: 'PUT',
+           data: obj,
+           async: false,
+           url: '/api/companies/' + companyData._id,
+           success: function(response) {
+               console.log(response);
+               localStorage.setItem('currentCompany', JSON.stringify(response));
            }
        });
    }

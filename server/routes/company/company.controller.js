@@ -89,6 +89,9 @@ module.exports.template.update = function(req, res){
         if (req.body.phone_number !== undefined)
             c.phone_number = req.body.phone_number;
 
+        if (req.body.zapier_url !== undefined)
+            c.zapier_url = req.body.zapier_url;
+
         c.save(function(err) {
             if(err) {
                 return res.status(400).json({error: "Could Not Save"});
@@ -118,7 +121,6 @@ module.exports.template.resetCredentials = function(req, res) {
     Company.findOne({email: req.params.user}, function (err, c) {
         if(err || !c)
             return res.status(400).json({error: "Could Not Find"});
-
 
         // if the user is found but the password is wrong
         if(!c.validPassword(req.body.password))
@@ -156,6 +158,7 @@ function showCompanyPublicInfo(c){
         name: c.name,
         email: c.email,
         phone_number: c.phone_number,
-        paid_time: c.paid_time
+        paid_time: c.paid_time,
+        zapier_url: c.zapier_url
     }
 }
