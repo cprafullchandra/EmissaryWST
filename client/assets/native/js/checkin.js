@@ -65,7 +65,9 @@ $(document).ready(function () {
         dataType: 'json'
     };
 
-    $('#check-in').formRender(formOptions);
+    let checkinform = $('#check-in');
+
+    checkinform.formRender(formOptions);
 
     // Prevent users from scrolling around on iPad
     document.ontouchmove = function (e) {
@@ -74,15 +76,18 @@ $(document).ready(function () {
 
     // Bind Listeners
     $('#tap-to-check').on('click', startCheckIn);
-    $('.check-in').on('submit', submitForm);
+    $('.check-in').submit(function(event) {
+        event.preventDefault();
+        submitForm();
+    });
 
     /**
      * @function startCheckIn
      * @desc Starts the check in process
      */
     function startCheckIn() {
-        $('.check-in').addClass('show');
-        $('.check-in').animate({
+        checkinform.addClass('show');
+        checkinform.animate({
             top: '10%',
             opacity: '1'
         }, 700);
@@ -101,20 +106,47 @@ $(document).ready(function () {
         //if(localStorage.getItem("slackToken")&&localStorage.getItem("slackChannel"))
         //{
         let slackMessage = data.first_name + ' ' + data.last_name + ' has just checked in.';
-        $.post("https://slack.com/api/chat.postMessage", {
-            'token': "xoxp-167311421539-169267386423-191140632117-5263dba19bf30c7b56274a69fade6545",
-            'channel': "emissary_slack_test",
-            'text': slackMessage
-        }, function (data, status) {
-        });
-        //}
+        triggerZapier(slackMessage);
+        // $.post("https://slack.com/api/chat.postMessage", {
+        //     'token': "xoxp-167311421539-169267386423-191140632117-5263dba19bf30c7b56274a69fade6545",
+        //     'channel': "emissary_slack_test",
+        //     'text': slackMessage
+        // }, function (data, status) {
+        // });
+        // //}
 
         socket.emit(ADD_VISITOR, data);
 
-        $(this).animate({
-            top: '35%',
-            opacity: '0'
-        }, 0);
+        // $(this).animate({
+        //     top: '35%',
+        //     opacity: '0'
+        // }, 0);
+    }
+
+    function triggerZapier(message) {
+        console.log(message);
+        let url = companyData.zapier_url;
+        let data = {};
+        data.message = message;
+
+        if(url !== undefined) {
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: data,
+                dataType: 'json',
+                success: function (response) {
+                    console.log(response);
+                    checkinform.unbind('submit');
+                    checkinform.submit();
+                },
+                error: function (response) {
+                    console.log(response);
+                    //alert(jQuery.parseJSON(resJSON).responseText);
+                    // event.preventDefault();
+                }
+            });
+        }
     }
 
     /**
