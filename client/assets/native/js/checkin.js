@@ -100,7 +100,6 @@ $(document).ready(function () {
         event.preventDefault();
         let data = grabFormElements();
 
-        // TODO: utilize this data in populating the checkin visitors table
         let formData = JSON.parse(JSON.stringify($("#check-in").serializeArray()));
 
         // Finds label for each input field and appends it to the JSON.
