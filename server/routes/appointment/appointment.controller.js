@@ -68,31 +68,35 @@ module.exports.template.get = function (req, res) {
     });
 };
 
+function updateFields(req, a) {
+    if (req.body.first_name !== undefined) {
+        a.first_name = req.body.first_name;
+    }
+
+    if (req.body.last_name !== undefined) {
+        a.last_name = req.body.last_name;
+    }
+
+    if (req.body.phone_number !== undefined) {
+        a.phone_number = req.body.phone_number;
+    }
+
+    if (req.body.date !== undefined) {
+        a.date = req.body.date;
+    }
+
+    if (req.body.provider_name !== undefined) {
+        a.provider_name = req.body.provider_name;
+    }
+}
+
 module.exports.template.update = function (req, res) {
     Appointment.findOne({_id: req.params.id}, function (err, a) {
         if (err || !a) {
             return res.status(401).json({error: "Could Not Find"});
         }
 
-        if (req.body.first_name !== undefined) {
-            a.first_name = req.body.first_name;
-        }
-
-        if (req.body.last_name !== undefined) {
-            a.last_name = req.body.last_name;
-        }
-
-        if (req.body.phone_number !== undefined) {
-            a.phone_number = req.body.phone_number;
-        }
-
-        if (req.body.date !== undefined) {
-            a.date = req.body.date;
-        }
-
-        if (req.body.provider_name !== undefined) {
-            a.provider_name = req.body.provider_name;
-        }
+        updateFields(req, a);
 
         //TODO check if the date is taken already
         a.save(function (err) {
