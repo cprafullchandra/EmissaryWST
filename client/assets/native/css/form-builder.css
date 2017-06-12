@@ -1,21 +1,5 @@
-#optional_label.form-control{
-	max-width: 70%;
-}
-
 .form-control{
 	display: inline;
-}
-
-#box1, #box2{
-	/*width: 80%;*/
-	border: none;
-	padding: 6px;
-	color: black;
-	display: inline-block;
-}
-
-.remove-box{
-	margin-left: 20px;
 }
 
 hr{
@@ -27,6 +11,7 @@ hr{
 	max-width: 980px;
 	margin: 25px auto;
 }
+
 .form-group{
 	width: 50%;
 	max-width: 400px;
