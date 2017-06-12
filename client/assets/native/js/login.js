@@ -2,7 +2,6 @@
 $(function() {
    $('#loginButton').click(function () {
        var userData = grabUserData();
-       //alert(userData);
        event.preventDefault();
        ajaxPostUser('/api/employees/login', userData);
        
@@ -49,7 +48,6 @@ function ajaxPostUser(url, data){
            window.onerror=handleError();
            event.preventDefault();
            alert("Username and Password Combination Incorrect. Please Try Again.");
-           //location.href = '/login.html';
         }
    });
 }
