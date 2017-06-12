@@ -18,7 +18,7 @@ function setSauceEnv(){
     buildTag = process.env.BUILD_TAG || process.env.SAUCE_BUILD_NAME;
     tunnelId = process.env.TUNNEL_IDENTIFIER;
     //making sure we have some username and access key
-    if (username == undefined || accessKey == undefined){
+    if (username === undefined || accessKey === undefined){
         console.error("Sauce username and password is not defined!");
         process.exit(1);
     }
@@ -45,11 +45,11 @@ function beforeEachExample() {
         'name': this.currentTest.title
         };
     //check if buildTag is set if so add to desired caps.
-    if (buildTag != undefined){
+    if (buildTag !== undefined){
         desiredCaps['build'] = buildTag;
     }
     //check if there's a tunnel identifier set by CI (Plugin)
-    if (tunnelId != undefined){
+    if (tunnelId !== undefined){
         desiredCaps['tunnel-identifier'] = tunnelId;
     }
     driver = new webdriver.Builder().
@@ -60,17 +60,17 @@ function beforeEachExample() {
     driver.getSession().then(function(sessionid) {
         driver.sessionID = sessionid.id_;
     });
-};
+}
 
 function afterEachExample(done) {
-	var passed = (this.currentTest.state === 'passed') ? true : false;
+	var passed = (this.currentTest.state === 'passed');
 
     saucelabs.updateJob(driver.sessionID, {
       passed: passed
     }, done);
     console.log("SauceOnDemandSessionID=" + driver.sessionID +" job-name=" + this.currentTest.title);
     driver.quit();
-};
+}
 
 function makeSuite(desc, cb) {
     test.describe(desc, function() {
@@ -80,6 +80,6 @@ function makeSuite(desc, cb) {
         cb();
         test.afterEach(afterEachExample);
     });
-};
+}
 
 exports.makeSuite = makeSuite;
