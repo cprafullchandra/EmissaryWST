@@ -125,21 +125,20 @@ module.exports.template.resetCredentials = function(req, res) {
         // if the user is found but the password is wrong
         if(!c.validPassword(req.body.password))
             return res.status(400).send('loginMessage', 'Oops! Wrong password');
-        //update password
 
-        //upadate password
+        // update password
         if (req.body.newpassword !== undefined)
             c.password = c.generateHash(req.body.newpassword);
 
-        //update email
+        // update email
         if (req.body.newemail !== undefined)
             c.email = req.body.newemail;
 
-        //update company name
+        // update company name
         if (req.body.new_company_name !== undefined)
             c.company_name = req.body.new_company_name;
 
-        //update company's phone number
+        // update company's phone number
         if (req.body.new_company_phone_number !== undefined)
             c.company_phone_number = req.body.new_company_phone_number;
 
