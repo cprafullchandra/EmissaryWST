@@ -164,8 +164,7 @@ describe("Forms", function() {
     before(function(done) {
       ConfigureAuth.setupAdmin(function(cred) {
         credentials = cred;
-        if (err) done(err);
-        else done();
+        done();
       });
     });
 
@@ -186,8 +185,8 @@ describe("Forms", function() {
               templateFormId = res.body._id;
               res.body.should.have.property('_admin_id').and.be.equal(''+credentials.admin._id);
               res.body.should.have.property('template').and.be.instanceof(Object);
-              if (err) done(err);
-              else done();
+              if (err) throw (err);
+              done();
             });
         });
       });
@@ -203,8 +202,8 @@ describe("Forms", function() {
               res.body.should.have.property('template').and.be.instanceof(Object);
               res.body.template.should.deep.equal(templateForm);
               res.body._id.should.equal(templateFormId);
-              if (err) done(err);
-              else done();
+              if (err) throw(err);
+              done();
             });
         });
       });
@@ -220,8 +219,8 @@ describe("Forms", function() {
               res.body.should.have.property('template').and.be.instanceof(Object);
               res.body.template.should.deep.equal(templateForm);
               res.body._id.should.equal(templateFormId);
-              if (err) done(err);
-              else done();
+              if (err) throw (err);
+              done();
             });
         });
       });
@@ -248,8 +247,8 @@ describe("Forms", function() {
               submittedFormFirstName = res.body.firstName;
               submittedFormLastName = res.body.lastName;
               submittedFormEmail = res.body.patientEmail;
-              if (err) done(err);
-              else done();
+              if (err) throw (err);
+              done();
             });
         });
       });
@@ -270,8 +269,8 @@ describe("Forms", function() {
 
               res.body.form.should.deep.equal(submittedForm);
               res.body._id.should.equal(submittedFormId);
-              if (err) done(err);
-              else done();
+              if (err) throw (err);
+              done();
             });
         });
       });
@@ -292,8 +291,8 @@ describe("Forms", function() {
               res.body.patientEmail.should.equal(submittedFormEmail);
               res.body.firstName.should.equal(submittedFormFirstName);
               res.body.lastName.should.equal(submittedFormLastName);
-              if (err) done(err);
-              else done();
+              if (err) throw (err);
+              done();
             });
         });
       });
