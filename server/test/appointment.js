@@ -100,9 +100,6 @@ describe('Appointment Test', function () {
             .expect(200)
             .end(function (err, res) {
                 res.body.should.have.property('_id');
-                if (err) {
-                    done(err)
-                }
                 done();
             });
     });
@@ -114,10 +111,6 @@ describe('Appointment Test', function () {
             .end(function (err, res) {
                 console.log(res.body);
                 res.body.should.have.property('error');
-                if (err) {
-                    done(err)
-                }
-                done();
             });
     });
 
