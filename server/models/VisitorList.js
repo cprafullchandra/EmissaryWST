@@ -6,7 +6,6 @@
 'use strict';
 
 var mongoose = require('mongoose');
-//TODO figure out why I need this
 mongoose.models = {};
 mongoose.modelSchemas = {};
 
