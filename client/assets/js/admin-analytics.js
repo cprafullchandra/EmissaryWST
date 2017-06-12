@@ -141,17 +141,10 @@
                     'metrics': 'ga:sessions,ga:pageviews,ga:totalEvents'
                 })
                 .then(function(response) {
-                    var formattedJson = JSON.stringify(response.result, null, 2);
                     // get the number of login counts
-
-                    var resultStr = ""
-                    var resultRow = response.result.totalsForAllResults;
-                    resultStr = resultRow["ga:pageviews"];
-                    resultStr2 = resultRow["ga:sessions"];
-                    console.log(resultStr);
-                    console.log(document.getElementById('pageViews').innerHTML);
-                    document.getElementById('sessionCount').innerHTML = resultStr2;
-                    document.getElementById('pageViews').innerHTML = resultStr;
+                    let resultRow = response.result.totalsForAllResults;
+                    document.getElementById('sessionCount').innerHTML = resultRow["ga:sessions"];
+                    document.getElementById('pageViews').innerHTML = resultRow["ga:pageviews"];
 
                 })
                 .then(null, function(err) {
@@ -239,20 +232,15 @@
                     'metrics': 'ga:totalEvents'
                 })
                 .then(function(response) {
-                    var formattedJson = JSON.stringify(response.result, null, 2);
-                    //document.getElementById('event-output').value = formattedJson;
-
-                    var resultStr = ""
-                    var resultRow = response.result.rows;
-                    for (var row in resultRow) {
+                    let resultRow = response.result.rows;
+                    let resultStr = "";
+                    for (let row in resultRow) {
                         if (resultRow[row][0] === "loginButtonClick") {
                             resultStr += resultRow[row][1];
                             break;
                         }
                     }
                     document.getElementById('eventCount').innerHTML = resultStr;
-                    // get the number of login counts
-
                 })
                 .then(null, function(err) {
                     // Log any errors.
