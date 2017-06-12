@@ -90,10 +90,7 @@ describe('Appointment Test', function () {
             .expect(400)
             .end(function (err, res) {
                 res.should.have.property('error');
-                if (err) {
-                    done(err)
-                }
-                done();
+                done(err);
             });
     });
 
