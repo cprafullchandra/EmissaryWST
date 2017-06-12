@@ -1,6 +1,7 @@
-#company-name > h1 {
+.company-name  {
     font-size: 18px;
 }
+
 .modal-title{
    font-size: 24px;
    text-align: center;
@@ -12,17 +13,16 @@
 }
 
 .table > thead > tr > th {
-   border-bottom: none !important;
+   border-bottom: none
 }
 
-
 .add-button{
-   float: left;
-   border-radius: 2px;
-   padding: 7px;
-   margin-top: 15px;
    background-color: #01b2bd;
+   border-radius: 2px;
    color: white;
+   float: left;
+   margin-top: 15px;
+   padding: 7px;
 }
 
 .add-button:hover{
@@ -34,9 +34,9 @@
    /*border-radius: 2px;
    padding: 7px;
    margin-top: 15px; */
-   float: left;
    background-color: #ec971f;
    color: white;
+   float: left;
 }
 
 .update-button:hover{
@@ -46,14 +46,9 @@
 }
 
 .patient-table-header > .form-control{
-   width: 150px;
    margin-bottom: 15px;
+   width: 150px;
 
-}
-
-.patient-table-header > h3{
-   display: inline-block;
-   font-size: 1.8em;
 }
 
 .employee-container{
@@ -62,7 +57,7 @@
 
 
 table{
-   border-radius: 4px !important;
+   border-radius: 4px
 }
 
 .table th{
@@ -70,31 +65,29 @@ table{
 }
 /*
 .table > thead:first-child > tr:first-child > th{
-   border-top: 1px solid rgb(215,215,215) !important;
+   border-top: 1px solid rgb(215,215,215)
    border-top-width: 1px;
 }
 */
 .table thead > tr th{
-
-   border-color:rgb(215,215,215) !important;
+   border-color:rgb(215,215,215);
 }
 .table tr td{
-   border-color:rgb(215,215,215) !important;
+   border-color:rgb(215,215,215);
 
 }
 
 tr:nth-last-child(1){
-   border-bottom: 1px solid rgb(215,215,215) !important;
+   border-bottom: 1px solid rgb(215,215,215);
 }
 
 hr{
-   border-top: 3px solid #01b2bd !important;
+   border-top: 3px solid #01b2bd;
 }
 
 .modal-body .form-horizontal .col-sm-2,
 .modal-body .form-horizontal .col-sm-10 {
    width: 100%;
-
 }
 
 .modal-body{
@@ -109,9 +102,9 @@ hr{
 }
 
 .form-control{
-   margin-bottom: 4px !important;
-   margin-top: 4px !important;
+   margin-bottom: 4px;
+   margin-top: 4px;
 }
 .control-label{
-   margin-top: 8px !important;
+   margin-top: 8px;
 }

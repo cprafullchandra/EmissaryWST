@@ -54,6 +54,15 @@ module.exports.template.get = function(req, res) {
     });
 };
 
+function updateFields(req, theme) {
+    if (req.body.form_color) theme.form_color = req.body.form_color;
+    if (req.body.background_img) theme.background_img = req.body.background_img;
+    if (req.body.displayPhone) theme.displayPhone = req.body.displayPhone;
+    if (req.body.displayClock) theme.displayClock = req.body.displayClock;
+    if (req.body.displaySignature) theme.displaySignature = req.body.displaySignature;
+    if (req.body.additionalComments) theme.additionalComments = req.body.additionalComments;
+}
+
 module.exports.template.update = function(req, res) {
 
     Theme.findOne({
@@ -64,18 +73,7 @@ module.exports.template.update = function(req, res) {
             res.status(400).send(err);
 
         theme.user_id = req.params.user_id; //company or user id
-        if (req.body.form_color)
-            theme.form_color = req.body.form_color;
-        if (req.body.background_img)
-            theme.background_img = req.body.background_img;
-        if (req.body.displayPhone)
-            theme.displayPhone = req.body.displayPhone;
-        if (req.body.displayClock)
-            theme.displayClock = req.body.displayClock;
-        if (req.body.displaySignature)
-            theme.displaySignature = req.body.displaySignature;
-        if (req.body.additionalComments)
-            theme.additionalComments = req.body.additionalComments;
+        updateFields(req, theme);
 
         theme.save(function(err) {
             if (err)
