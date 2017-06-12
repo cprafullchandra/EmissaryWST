@@ -7,7 +7,7 @@ var config = require('../config/config');
 var Appointment = require('../models/Appointment');
 var Company = require('../models/Company');
 
-describe('Appointment Test', function() {
+describe('Appointment Test', function () {
     var url = "localhost:" + config.port;
     var token;
     var currAppointment;
@@ -16,27 +16,27 @@ describe('Appointment Test', function() {
     // old appointment info
     var first_name = "test";
     var last_name = "test";
-    var phone_number="1234567890";
-    var date="2016-04-23T18:25:43.511Z";
+    var phone_number = "1234567890";
+    var date = "2016-04-23T18:25:43.511Z";
     var provider_name = "test test";
 
     //new appointment info
     var new_first_name = "test1";
     var new_last_name = "test1";
-    var new_phone_number="1231267890";
-    var new_date="2016-03-23T18:25:43.511Z";
+    var new_phone_number = "1231267890";
+    var new_date = "2016-03-23T18:25:43.511Z";
     var new_provider_name = "test1 test1";
 
     //company info
     var email = "new@test.edu";
-    var credit_card_number="1231231241251";
+    var credit_card_number = "1231231241251";
     var name = "test";
-    var expiration_date="6/17";
+    var expiration_date = "6/17";
 
     var userID = null;
 
 
-    before(function(done) {
+    before(function (done) {
 
         //setup company
         var company = new Company();
@@ -45,99 +45,112 @@ describe('Appointment Test', function() {
         company.name = name;
         company.expiration_date = expiration_date;
         company.phone_number = phone_number;
-        company.paid_time=new Date();
+        company.paid_time = new Date();
 
-        company.save(function(err, c){
-            currCompany=c;
+        company.save(function (err, c) {
+            currCompany = c;
             request(url)
                 .post('/api/appointments')
-                .send(
-                    {
-                        first_name: first_name,
-                        last_name: last_name,
-                        phone_number: phone_number,
-                        date: date,
-                        company_id: currCompany._id,
-                        provider_name: provider_name
-                    }
-                )
+                .send({
+                    first_name: first_name,
+                    last_name: last_name,
+                    phone_number: phone_number,
+                    date: date,
+                    company_id: currCompany._id,
+                    provider_name: provider_name
+                })
                 .expect(200)
-                .end(function(err,res){
+                .end(function (err, res) {
                     res.body.should.have.property('_id');
-                    currAppointment=res.body;
+                    currAppointment = res.body;
+                    if (err) {
+                        done(err)
+                    }
                     done();
                 });
+
+            if (err) {
+                done(err)
+            }
         });
     });
 
 
-    it("should not create the appointment", function(done) {
+    it("should not create the appointment", function (done) {
         request(url)
             .post('/api/appointments')
-            .send(
-                {
-                    first_name: new_first_name,
-                    last_name: new_last_name,
-                    phone_number: new_phone_number,
-                    date: new_date,
-                    company_id: currCompany._id,
-                    provider_name: new_provider_name
-                }
-            )
+            .send({
+                first_name: new_first_name,
+                last_name: new_last_name,
+                phone_number: new_phone_number,
+                date: new_date,
+                company_id: currCompany._id,
+                provider_name: new_provider_name
+            })
             .expect(400)
-            .end(function(err,res){
+            .end(function (err, res) {
                 res.should.have.property('error');
+                if (err) {
+                    done(err)
+                }
                 done();
             });
     });
 
-    it("should get appointment", function(done) {
+    it("should get appointment", function (done) {
         request(url)
-            .get('/api/appointments/'+currAppointment._id)
+            .get('/api/appointments/' + currAppointment._id)
             .expect(200)
-            .end(function(err,res){
+            .end(function (err, res) {
                 res.body.should.have.property('_id');
+                if (err) {
+                    done(err)
+                }
                 done();
             });
     });
 
-    it("should not get appointment", function(done) {
+    it("should not get appointment", function (done) {
         request(url)
-            .get('/api/appointments/'+0)
+            .get('/api/appointments/' + 0)
             .expect(400)
-            .end(function(err,res){
+            .end(function (err, res) {
                 console.log(res.body);
                 res.body.should.have.property('error');
-                done();
-            });
-    });
-
-
-    it("should get all appointments", function(done) {
-        request(url)
-            .get('/api/appointments/company/'+currCompany._id)
-            .expect(200)
-            .end(function(err,res){
-                res.body.should.be.an.instanceof(Array);
-                done();
-            });
-    });
-
-    it('should update appointment', function(done) {
-        request(url)
-            .put('/api/appointments/'+currAppointment._id)
-            .send(
-                {
-                    first_name: new_first_name,
-                    last_name: new_last_name,
-                    phone_number: new_phone_number,
-                    date: new_date,
-                    provider_name: new_provider_name
+                if (err) {
+                    done(err)
                 }
-            )
+                done();
+            });
+    });
+
+
+    it("should get all appointments", function (done) {
+        request(url)
+            .get('/api/appointments/company/' + currCompany._id)
             .expect(200)
-            .end(function(err,res){
-                if(err)
+            .end(function (err, res) {
+                res.body.should.be.an.instanceof(Array);
+                if (err) {
+                    done(err)
+                }
+                done();
+            });
+    });
+
+    it('should update appointment', function (done) {
+        request(url)
+            .put('/api/appointments/' + currAppointment._id)
+            .send({
+                first_name: new_first_name,
+                last_name: new_last_name,
+                phone_number: new_phone_number,
+                date: new_date,
+                provider_name: new_provider_name
+            })
+            .expect(200)
+            .end(function (err, res) {
+                if (err)
                     throw(err);
                 res.body.should.have.property('first_name');
                 res.body.first_name.should.equal(new_first_name);
@@ -153,23 +166,27 @@ describe('Appointment Test', function() {
             });
     });
 
-    it("should delete appointment", function(done) {
+    it("should delete appointment", function (done) {
         request(url)
-            .delete('/api/appointments/'+currAppointment._id)
+            .delete('/api/appointments/' + currAppointment._id)
             .expect(200)
-            .end(function(err,res){
+            .end(function (err, res) {
                 res.body.should.have.property('_id');
-                Appointment.find({_id:currAppointment._id}, function(n_err, _){
+                Appointment.find({_id: currAppointment._id}, function (n_err, _) {
                     // TODO - Fix, should exist
                     should.not.exist(n_err);
                     done();
                 });
+
+                if (err) {
+                    done(err)
+                }
             });
     });
 
-    after(function(done) {
-        Company.remove({email:email}, function(err, c){
-            done();
+    after(function (done) {
+        Company.remove({email: email}, function (err, c) {
+            done(err);
         });
     });
 });

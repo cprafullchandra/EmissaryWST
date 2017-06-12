@@ -43,11 +43,6 @@ describe('Theme Settings Model', function() {
             user_id: "test"
         }, function(err, theme) {
 
-            if(err) {
-                console.log("Error Updating Theme");
-                return done(err);
-            }
-
             theme.user_id = "test"; //company or user id
             theme.form_color = "default";
             theme.background_img = "default";
@@ -56,16 +51,20 @@ describe('Theme Settings Model', function() {
             theme.displaySignature = false;
             theme.additionalComments = true;
             theme.save(function(err) {
-                if (err) return done(err);
                 theme.background_img.should.equal('default');
                 theme.form_color.should.equal('default');
                 theme.displayClock.should.equal(true);
                 theme.displayPhone.should.equal(false);
                 theme.displaySignature.should.equal(false);
                 theme.additionalComments.should.equal(true);
+                if (err) return done(err);
                 done();
             });
 
+            if(err) {
+                console.log("Error Updating Theme");
+                return done(err);
+            }
         });
     });
 
@@ -121,10 +120,6 @@ describe("Themes Route Test", function() {
                         additionalComments: _additionalComments
                     })
                     .end(function(err, res) {
-                        if(err) {
-                            console.log("Error Saving Theme");
-                            done(err);
-                        }
                         console.log(res.body);
                         res.body.should.have.property('user_id');
                         res.body.should.have.property('form_color');
@@ -142,6 +137,11 @@ describe("Themes Route Test", function() {
                         res.body.displaySignature.should.equal(_displaySignature);
                         res.body.additionalComments.should.equal(_additionalComments);
 
+                        if(err) {
+                            console.log("Error Saving Theme");
+                            done(err);
+                        }
+
                         done();
                     });
             });
@@ -155,10 +155,6 @@ describe("Themes Route Test", function() {
                     .get('/api/' + user_id + '/theme')
                     .query({email: credentials.email, token: credentials.token})
                     .end(function(err, res) {
-                        if(err) {
-                            console.log("Error retrieving theme");
-                            done(err)
-                        }
                         res.body.should.have.property('_id');
                         res.body.should.have.property('additionalComments');
                         res.body.should.have.property('user_id');
@@ -168,6 +164,10 @@ describe("Themes Route Test", function() {
                         res.body.should.have.property('displayClock');
                         res.body.should.have.property('displaySignature');
 
+                        if(err) {
+                            console.log("Error retrieving theme");
+                            done(err)
+                        }
                         done();
                     });
             });
@@ -197,10 +197,6 @@ describe("Themes Route Test", function() {
                         additionalComments: _additionalComments
                     })
                     .end(function(err, res) {
-                        if(err) {
-                            console.log("Error updating theme");
-                            done(err)
-                        }
                         res.body.should.have.property('user_id');
                         res.body.should.have.property('form_color');
                         res.body.should.have.property('background_img');
@@ -217,6 +213,10 @@ describe("Themes Route Test", function() {
                         res.body.displaySignature.should.equal(_displaySignature);
                         res.body.additionalComments.should.equal(_additionalComments);
 
+                        if(err) {
+                            console.log("Error updating theme");
+                            done(err)
+                        }
                         done();
                     });
             });
@@ -231,11 +231,11 @@ describe("Themes Route Test", function() {
                     .query({email: credentials.email, token: credentials.token})
                     .expect(200)
                     .end(function(err, res) {
+                        res.body.should.have.property("msg");
                         if(err) {
                             console.log("Error deleting theme settings");
                             done(err);
                         }
-                        res.body.should.have.property("msg");
                         done();
                     });
             });
