@@ -95,8 +95,6 @@ $(document).ready(function(){
                 }
             },
             error: function(response){
-                //console.log(response);
-                //alert(jQuery.parseJSON(resJSON).responseText);
                 event.preventDefault();
                 
                 if(url === '/api/employees') {
