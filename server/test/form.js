@@ -1,10 +1,7 @@
 var request = require('supertest');
-
 var config = require('../config/config');
-
 // Wrapper that creates admin user to allow api calls
 var ConfigureAuth = require('./ConfigureAuth');
-
 
 // Test data
 var templateForm = {
@@ -37,6 +34,7 @@ var templateForm = {
     }
   ]
 };
+
 var submittedForm = {
   "form_id": "1",
   "form_name": "My Test Form",
@@ -159,22 +157,19 @@ var submittedForm = {
   "submitted": true
 };
 
-
 describe("Forms", function() {
     var url = "localhost:" + config.port;
-
     var credentials;
 
     before(function(done) {
       ConfigureAuth.setupAdmin(function(cred) {
         credentials = cred;
-        done();
+        if (err) done(err);
+        else done();
       });
     });
 
-
     /********** TEMPLATE TESTING **********/
-
     var templateFormId = null;
     describe("Form Templates", function() {
       describe('POST /api/form/template', function(){
@@ -185,13 +180,14 @@ describe("Forms", function() {
             .expect(200)
             .send({
               _admin_id: credentials.admin._id,
-              template: templateForm,
+              template: templateForm
             })
             .end(function(err, res){
               templateFormId = res.body._id;
               res.body.should.have.property('_admin_id').and.be.equal(''+credentials.admin._id);
               res.body.should.have.property('template').and.be.instanceof(Object);
-              done();
+              if (err) done(err);
+              else done();
             });
         });
       });
@@ -205,10 +201,10 @@ describe("Forms", function() {
               res.body.should.have.property('_id');
               res.body.should.have.property('_admin_id');
               res.body.should.have.property('template').and.be.instanceof(Object);
-
               res.body.template.should.deep.equal(templateForm);
               res.body._id.should.equal(templateFormId);
-              done();
+              if (err) done(err);
+              else done();
             });
         });
       });
@@ -222,20 +218,16 @@ describe("Forms", function() {
               res.body.should.have.property('_id');
               res.body.should.have.property('_admin_id');
               res.body.should.have.property('template').and.be.instanceof(Object);
-
               res.body.template.should.deep.equal(templateForm);
               res.body._id.should.equal(templateFormId);
-              done();
+              if (err) done(err);
+              else done();
             });
         });
       });
     });
 
-
-
     /********** PATIENT FORM TESTING **********/
-
-
     describe("Submitted Forms", function() {
       describe('POST /api/form/visitorList', function(){
         it('should save submitted form', function(done){
@@ -247,18 +239,17 @@ describe("Forms", function() {
               form: submittedForm,
               firstName: "Jimbo",
               lastName: "Cruise",
-              patientEmail: "jcruise@tomcruise.com",
+              patientEmail: "jcruise@tomcruise.com"
             })
             .end(function(err, res){
-              //console.log(err);
-              //console.log(res);
               res.body.should.have.property('form').and.be.instanceof(Object);
               res.body.should.have.property('_admin_id').and.be.equal(''+credentials.admin._id);
               submittedFormId = res.body._id;
               submittedFormFirstName = res.body.firstName;
               submittedFormLastName = res.body.lastName;
               submittedFormEmail = res.body.patientEmail;
-              done();
+              if (err) done(err);
+              else done();
             });
         });
       });
@@ -279,7 +270,8 @@ describe("Forms", function() {
 
               res.body.form.should.deep.equal(submittedForm);
               res.body._id.should.equal(submittedFormId);
-              done();
+              if (err) done(err);
+              else done();
             });
         });
       });
@@ -290,31 +282,25 @@ describe("Forms", function() {
             .get('/api/form/visitorList/')
             .query({firstName: submittedFormFirstName, lastName: submittedFormLastName, patientEmail: submittedFormEmail})
             .end(function(err,res){
-              
               res.body.should.have.property('firstName');
               res.body.should.have.property('lastName');
               res.body.should.have.property('patientEmail');
               res.body.should.have.property('_admin_id');
               res.body.should.have.property('date');
               res.body.should.have.property('form').and.be.instanceof(Object);
-
               res.body.form.should.deep.equal(submittedForm);
               res.body.patientEmail.should.equal(submittedFormEmail);
               res.body.firstName.should.equal(submittedFormFirstName);
               res.body.lastName.should.equal(submittedFormLastName);
-              done();
+              if (err) done(err);
+              else done();
             });
         });
       });
-
     });
-
-      
-    
 
     after(function(done) {
       ConfigureAuth.cleanupAuth(credentials.email, done);
     });
-
   }
 );
