@@ -97,9 +97,6 @@ exports.delete = function(list_id, callback){
         });
     });
 };
-exports.ok = function(){
-    console.log('ayy');
-}
 exports.validateReq = function(req, res) {
     console.log(req.body)
     exports.validate(req.body, function(err_msg, result){
