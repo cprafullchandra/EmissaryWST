@@ -1,15 +1,12 @@
 // SauceLabs + Selenium + Mocha front end testing helpers
-var test = require('selenium-webdriver/testing'),
+let seTest = require('selenium-webdriver/testing'),
     webdriver = require('selenium-webdriver'),
     SauceLabs = require("saucelabs");
 
-var username,
+let username,
     accessKey,
     saucelabs,
-    seRelayHost,
-    seRelayPort,
     buildTag,
-    sauceSeUri,
     tunnelId;
 
 function setSauceEnv(){
@@ -30,23 +27,23 @@ function setSauceEnv(){
 }
 
 function beforeEachExample() {
-    var browser = process.env.BROWSER,
+    let browser = process.env.BROWSER,
         version = process.env.VERSION,
         platform = process.env.PLATFORM,
         server = "http://" + username + ":" + accessKey +
-        "@ondemand.saucelabs.com:80/wd/hub";
+            "@ondemand.saucelabs.com:80/wd/hub";
 
-    var desiredCaps = {
+    let desiredCaps = {
         'browserName': browser,
         'platform': platform,
         'version': version,
         'username': username,
         'accessKey': accessKey,
         'name': this.currentTest.title
-        };
+    };
     //check if buildTag is set if so add to desired caps.
     if (buildTag !== undefined){
-        desiredCaps['build'] = buildTag;
+        desiredCaps.build = buildTag;
     }
     //check if there's a tunnel identifier set by CI (Plugin)
     if (tunnelId !== undefined){
@@ -63,22 +60,22 @@ function beforeEachExample() {
 }
 
 function afterEachExample(done) {
-	var passed = (this.currentTest.state === 'passed');
+    let passed = (this.currentTest.state === 'passed');
 
     saucelabs.updateJob(driver.sessionID, {
-      passed: passed
+        passed: passed
     }, done);
     console.log("SauceOnDemandSessionID=" + driver.sessionID +" job-name=" + this.currentTest.title);
     driver.quit();
 }
 
 function makeSuite(desc, cb) {
-    test.describe(desc, function() {
-    	this.timeout(60000);
+    seTest.describe(desc, function() {
+        this.timeout(60000);
         setSauceEnv();
-        test.beforeEach(beforeEachExample);
+        seTest.beforeEach(beforeEachExample);
         cb();
-        test.afterEach(afterEachExample);
+        seTest.afterEach(afterEachExample);
     });
 }
 

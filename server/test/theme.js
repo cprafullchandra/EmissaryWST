@@ -1,14 +1,14 @@
-var chai = require('chai');
-var should = chai.should();
-var Theme = require('../models/Theme');
-var config = require('../config/config');
-var ConfigureAuth = require('./ConfigureAuth.js');
-var request = require('supertest');
+let chai = require('chai');
+let should = chai.should();
+let Theme = require('../models/Theme');
+let config = require('../config/config');
+let ConfigureAuth = require('./ConfigureAuth.js');
+let request = require('supertest');
 
 //Schema Test
 describe('Theme Settings Model', function() {
     it('should create(POST) a new setting', function(done) {
-        var theme = new Theme({
+        let theme = new Theme({
             user_id: "test", //company or user id
             form_color: "default",
             background_img: "default",
@@ -22,21 +22,6 @@ describe('Theme Settings Model', function() {
             done();
         });
     });
-
-    /*it('should GET theme setting', function(done) {
-        Theme.findOne({
-            user_id: "test"
-        }, function(err, theme) {
-            if (err) return done(err);
-            theme.background_img.should.equal('default');
-            theme.form_color.should.equal('default');
-            theme.displayClock.should.equal(false);
-            theme.displayPhone.should.equal(false);
-            theme.displaySignature.should.equal(false);
-            theme.additionalComments.should.equal(false);
-            done();
-        });
-    });*/
 
     it('should update(PUT) theme setting', function(done) {
         Theme.findOne({
@@ -68,22 +53,12 @@ describe('Theme Settings Model', function() {
         });
     });
 
-    /*it('should remove(DELETE) theme setting', function(done) {
-        Theme.remove({
-            user_id: "test"
-        }, function(err, theme) {
-            if (err) return done(err);
-            theme.should.equal(1);
-            done();
-        });
-    });*/
-
 });
 
 //Route Tests need to be changed to work with auth
 
 describe("Themes Route Test", function() {
-        var credentials;  // variable to hold all the need authentication variables.
+        let credentials;  // variable to hold all the need authentication variables.
 
         // before function is called at the very beginning of the 'Forms' test suite,
         // no tests are run until the done() callback is called.
@@ -100,14 +75,14 @@ describe("Themes Route Test", function() {
 
         describe('POST /api/:user_id/theme', function() {
             it('should respond with theme info for respective user_id settings that were created for first time user', function(done) {
-                var url = "localhost:" + config.port;
-                var _user_id = '1';
-                var _form_color = 'default';
-                var _background_img = 'default';
-                var _displayPhone = false;
-                var _displayClock = false;
-                var _displaySignature = false;
-                var _additionalComments = false;
+                let url = "localhost:" + config.port;
+                let _user_id = '1';
+                let _form_color = 'default';
+                let _background_img = 'default';
+                let _displayPhone = false;
+                let _displayClock = false;
+                let _displaySignature = false;
+                let _additionalComments = false;
                 request(url)
                     .post('/api/' + _user_id + '/theme')
                     .query({email: credentials.email, token: credentials.token})
@@ -149,8 +124,8 @@ describe("Themes Route Test", function() {
 
         describe('GET /api/:user_id/theme', function() {
             it('should respond with theme info for respective user_id', function(done) {
-                var url = "localhost:" + config.port;
-                var user_id = '1';
+                let url = "localhost:" + config.port;
+                let user_id = '1';
                 request(url)
                     .get('/api/' + user_id + '/theme')
                     .query({email: credentials.email, token: credentials.token})
@@ -166,7 +141,7 @@ describe("Themes Route Test", function() {
 
                         if(err) {
                             console.log("Error retrieving theme");
-                            done(err)
+                            done(err);
                         }
                         done();
                     });
@@ -177,14 +152,14 @@ describe("Themes Route Test", function() {
 
         describe('PUT /api/:user_id/theme', function() {
             it('should respond with theme info for respective user_id settings that were updated', function(done) {
-                var url = "localhost:" + config.port;
-                var _user_id = '1';
-                var _form_color = "1";
-                var _background_img = "1";
-                var _displayPhone = false;
-                var _displayClock = false;
-                var _displaySignature = false;
-                var _additionalComments = false;
+                let url = "localhost:" + config.port;
+                let _user_id = '1';
+                let _form_color = "1";
+                let _background_img = "1";
+                let _displayPhone = false;
+                let _displayClock = false;
+                let _displaySignature = false;
+                let _additionalComments = false;
                 request(url)
                     .put('/api/' + _user_id + '/theme')
                     .query({email: credentials.email, token: credentials.token})
@@ -215,7 +190,7 @@ describe("Themes Route Test", function() {
 
                         if(err) {
                             console.log("Error updating theme");
-                            done(err)
+                            done(err);
                         }
                         done();
                     });
@@ -224,8 +199,8 @@ describe("Themes Route Test", function() {
 
         describe('DELETE /api/:user_id/theme', function() {
             it('should respond with successful delete', function(done) {
-                var url = "localhost:" + config.port;
-                var user_id = '1';
+                let url = "localhost:" + config.port;
+                let user_id = '1';
                 request(url)
                     .delete('/api/' + user_id + '/theme')
                     .query({email: credentials.email, token: credentials.token})

@@ -1,5 +1,3 @@
-'use strict';
-
 /*This module is meant to house the functions
  * used by the authorization (auth) API. The
  * actual API is set up in index.js
@@ -10,33 +8,27 @@
  authResetCredentials()
  */
 
-
-var config = require('../../config/config');
+let config = require('../../config/config');
 
 /* need this to enable cross origin resource sharing.If disabled, we might
  * not need this later. This is just to get the example to work
  * when front end is served from a something other than our app server.
  */
-var Company = require('../../models/Company');
-var jwt = require('jwt-simple');
+let Company = require('../../models/Company');
+let jwt = require('jwt-simple');
 
 /****** Company TEMPLATE ROUTES ******/
 module.exports.template = {};
 
 /**signup- Used to sign up a user.*/
 module.exports.template.create = function(req, res) {
-    var company = new Company();
+    let company = new Company();
 
     //require provided info
     company.email = req.body.email;
     company.name = req.body.name;
     company.phone_number = req.body.phone_number;
-    company.paid_time=new Date();
-
-    //optinal info
-    /*company.expiration_date=req.body.expiration_date;
-    company.credit_card_number=req.body.credit_card_number;
-    */
+    company.paid_time = new Date();
 
 
     company.save(function(err, c) {
@@ -53,13 +45,13 @@ module.exports.template.getAll = function(req, res) {
         {
             credit_card_number:false,
             expiration_date:false
-        }
-        , function(err, result){
-        if(err){
-            return res.status(400).json(err);
-        }
-        return res.status(200).json(result);
-    });
+        },
+        function(err, result){
+            if(err){
+                return res.status(400).json(err);
+            }
+            return res.status(200).json(result);
+        });
 };
 
 /**authLogin- logs in a user*/
@@ -125,21 +117,20 @@ module.exports.template.resetCredentials = function(req, res) {
         // if the user is found but the password is wrong
         if(!c.validPassword(req.body.password))
             return res.status(400).send('loginMessage', 'Oops! Wrong password');
-        //update password
 
-        //upadate password
+        // update password
         if (req.body.newpassword !== undefined)
             c.password = c.generateHash(req.body.newpassword);
 
-        //update email
+        // update email
         if (req.body.newemail !== undefined)
             c.email = req.body.newemail;
 
-        //update company name
+        // update company name
         if (req.body.new_company_name !== undefined)
             c.company_name = req.body.new_company_name;
 
-        //update company's phone number
+        // update company's phone number
         if (req.body.new_company_phone_number !== undefined)
             c.company_phone_number = req.body.new_company_phone_number;
 
@@ -160,5 +151,5 @@ function showCompanyPublicInfo(c){
         phone_number: c.phone_number,
         paid_time: c.paid_time,
         zapier_url: c.zapier_url
-    }
+    };
 }
