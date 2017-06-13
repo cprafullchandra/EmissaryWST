@@ -11,7 +11,7 @@
     "cover": "istanbul cover _mocha \"server/test/*.js\"",
     "csslint": "csslint client/assets/css/checkin.css client/assets/css/loader.css client/assets/css/style.css client/assets/native/css || true",
     "htmlhint": "htmlhint client/assets/native client/assets/views || true",
-    "jshint": "jshint --verbose --show-non-errors --extract=auto * || true",
+    "jshint": "jshint --config .jshintrc --verbose --show-non-errors --extract=auto * || true",
     "postinstall": "bower install && gulp build:prod",
     "pretest": "npm run jshint && npm run htmlhint && npm run csslint",
     "start": "node server/app.js",
