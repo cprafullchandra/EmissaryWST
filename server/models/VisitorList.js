@@ -2,18 +2,15 @@
  * Created by kevingu on 2/23/16.
  */
 
-
-'use strict';
-
-var mongoose = require('mongoose');
+let mongoose = require('mongoose');
 mongoose.models = {};
 mongoose.modelSchemas = {};
 
-var Schema = mongoose.Schema;
+let Schema = mongoose.Schema;
 /*
  * Appointment schema
  */
-var appointmentSchema = mongoose.Schema({
+let appointmentSchema = mongoose.Schema({
     first_name: {type: String, required: true},
     last_name: {type: String, required: true},
     phone_number: {type: String, required: true},
@@ -22,7 +19,7 @@ var appointmentSchema = mongoose.Schema({
     company_id: { type: Schema.Types.ObjectId, ref: 'Company', required: true }
 });
 
-var visitorSchema  = new Schema({
+let visitorSchema  = new Schema({
     company_id: { type: Schema.Types.ObjectId, ref: 'Company', required: true },
     first_name: { type: String, required:true},
     last_name: { type: String, required:true},
@@ -33,7 +30,7 @@ var visitorSchema  = new Schema({
 });
 
 
-var visitorListSchema   = new Schema({
+let visitorListSchema   = new Schema({
     company_id: { type: Schema.Types.ObjectId, ref: 'Company', required: true },
     visitors: {type: [visitorSchema], default: []}
 });

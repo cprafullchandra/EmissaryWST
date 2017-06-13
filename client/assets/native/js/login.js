@@ -34,7 +34,7 @@ function ajaxPostUser(url, data){
            console.log(response);
            if(response.role === 'a_admin'){
              localStorage.setItem('userState' , 2);
-             location.href = '/admin-dashboard.html'
+             location.href = '/admin-dashboard.html';
            }
            else{
              localStorage.setItem('userState' , 1);

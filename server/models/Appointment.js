@@ -1,16 +1,15 @@
 /**
  * Created by kevingu on 2/21/16.
  */
-'use strict';
 
 /* Require mongoose to interact with mongoDB */
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+let mongoose = require('mongoose');
+let Schema = mongoose.Schema;
 /*
  * Appointment schema
  */
 
-var appointmentSchema = mongoose.Schema({
+let appointmentSchema = mongoose.Schema({
     first_name: {type: String, required: true},
     last_name: {type: String, required: true},
     phone_number: {type: String, required: true},

@@ -1,5 +1,3 @@
-'use strict';
-
 /*This module is meant to house the functions
  * used by the authorization (auth) API. The
  * actual API is set up in index.js
@@ -15,14 +13,14 @@
  * not need this later. This is just to get the example to work
  * when front end is served from a something other than our app server.
  */
-var Appointment = require('../../models/Appointment');
+let Appointment = require('../../models/Appointment');
 
 /****** Company TEMPLATE ROUTES ******/
 module.exports.template = {};
 
 module.exports.template.create = function (req, res) {
-    var appointment = new Appointment();
-    var param = req.body;
+    let appointment = new Appointment();
+    let param = req.body;
 
     //require provided info
     appointment.first_name = param.first_name;
