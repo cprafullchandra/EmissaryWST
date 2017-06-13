@@ -8,6 +8,7 @@ var TextModel = require('../../notification/text');
 var VisitorList = require('../../models/VisitorList');
 var Employee = require('../../models/Employee');
 var Appointment = require('../../models/Appointment');
+var Company = require('../../models/Company')
 
 /* handles route for getting the Company's visitor list */
 exports.getCompanyVisitorListReq = function(req, res){
@@ -96,8 +97,46 @@ exports.delete = function(list_id, callback){
         });
     });
 };
+exports.ok = function(){
+    console.log('ayy');
+}
+exports.validateReq = function(req, res) {
+    console.log(req.body)
+    exports.validate(req.body, function(err_msg, result){
+        if(err_msg)  return res.status(400).json(err_msg);
+        return res.status(200).json(result);
+    });
+};
+exports.validate = function(data, callback){
+            
+            var company_id = data.company_id;
+            console.log(company_id);
+            Company.findOne({_id: company_id}, function(err, c){
+                if(err || !c) {
+                    console.log(err);
+                    console.log(c);
+                    return callback({error: "An error was encountered. Could not find company."}, null);
+                }
+
+                else {
+                    //socket.join(company_id);
+                    exports.getCompanyVisitorList(company_id, function(err_msg, result){
+                        console.log(result)
+                        if(err_msg){
+                            console.log('Error Getting Visitor List');
+                            return callback({error: err_msg}, company_id);
+                            //exports.notifyError(company_id, {error: err_msg});
+                        } else {
+                            return callback(null, result);
+                        }
+
+                    });
+                }
+            });
+};
 // This route will be called when a visitor checks in
 exports.createReq = function(req, res) {
+    console.log(req.body)
     exports.create(req.body, function(err_msg, result){
         if(err_msg)  return res.status(400).json(err_msg);
         return res.status(200).json(result);
@@ -106,10 +145,11 @@ exports.createReq = function(req, res) {
 
 exports.create = function(param, callback){
     //required fields
+    console.log(param)
     var company_id = param.company_id;
     var first_name = param.first_name;
     var last_name = param.last_name;
-    var phone_number = param.phone_number;
+    var phone_number = param.tel;
     var checkin_time = param.checkin_time;
 
     //optional dic var
@@ -132,11 +172,9 @@ exports.create = function(param, callback){
     };
 
     Appointment.find(query, function(err, appointments) {
-
         if(err) {
             return callback({error: "An error was encountered. Could not find appointment."}, null);
         }
-
         var visitor =
         {
             company_id: company_id,
@@ -163,6 +201,7 @@ exports.create = function(param, callback){
                 list.visitors.push(visitor);
                 list.save(function(err){
                     if(err) {
+                        console.log(err)
                         return callback({error: "an error in saving"}, null)
                     } else {
                         return callback(null, list);

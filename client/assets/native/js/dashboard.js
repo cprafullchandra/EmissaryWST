@@ -31,8 +31,17 @@ $(document).ready(function(){
 
     //Connect to private socket
     //var companyId = getCookie('company_id');
-    socket.emit(VALIDATE_COMPANY_ID, companyData);
-
+    //socket.emit(VALIDATE_COMPANY_ID, companyData);
+    $.ajax({
+          dataType:'json',
+          type: 'POST',
+          data: companyData,
+          url:'/api/visitorLists/validate',
+          success:function(response){
+            console.log(response);
+            updateList(response);
+          }
+      });
    /***
     * Compile all the Handle Bar Templates
     */
@@ -106,7 +115,7 @@ $(document).ready(function(){
         });
         
 
-        socket.emit(REMOVE_VISITOR, removeVisitor);
+        
     });
 /*
     $(document).on('click','.checkout-btn',function(){
@@ -118,6 +127,40 @@ $(document).ready(function(){
 
     });
 */
+    /***
+     * @function updateList
+     * @desc Add visitors to list
+     * @param data returned from call
+     */
+    function updateList(data){
+      visitorList = data.visitors;
+        //Parse Visitor List to format Date
+        for(var i = 0, len = visitorList.length; i< len; i++){
+            visitorList[i].checkin_time = formatTime(visitorList[i].checkin_time);
+        }
+
+        //Parse Visitors appoitments
+        for(i = 0; i < len; i++){
+          var appList = visitorList[i].appointments;
+          if(appList[0]){
+            for(var j = 0, appLen = appList.length; j < appLen; j++){
+              if(compareDate(appList[j].date)){
+                visitorList[i].appointmentTime = formatTime(appList[j].date);
+                visitorList[i]._apptId = appList[j]._id;
+                break;
+              }
+            }
+          }
+          else{
+      
+            visitorList[i].appointmentTime = "None";
+          }
+        }
+
+       //visitorList.checkin_time = visitorList;
+        var compiledHtml = template(visitorList);
+        $('#visitor-list').html(compiledHtml);
+    }
     /***
      * @function compareDate
      * @desc Compare appointment Date to today's Date

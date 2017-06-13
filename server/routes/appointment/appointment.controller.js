@@ -37,6 +37,7 @@ module.exports.template.create = function (req, res) {
             company_id: param.company_id,
             date: param.date
         }, function (err, appointments) {
+            console.log(err)
             if (err) return res.status(400).json({error: "Could Not Find"});
             if (appointments.length === 0) {
                 appointment.save(function (err, a) {

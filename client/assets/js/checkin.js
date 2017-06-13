@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    var socket = io();
+    //var socket = io();
     if(localStorage.getItem("slackToken")&&localStorage.getItem("slackChannel"))
         {
             alert("WTF");

@@ -11,8 +11,16 @@ $(document).ready(function () {
 
     var companyData = JSON.parse(localStorage.getItem("currentCompany"));
     const myCompanyId = companyData._id;
-    socket.emit(VALIDATE_COMPANY_ID, companyData);
-
+    companyData.company_id = myCompanyId
+    
+    $.ajax({
+          dataType:'json',
+          type: 'POST',
+          data: companyData,
+          url:'/api/visitorLists/validate',
+          success:function(response){
+          }
+    });
     var formData = loadSavedForm(myCompanyId);
     var requiredFields = [{
         "type": "header",
@@ -90,7 +98,8 @@ $(document).ready(function () {
      * @function submitForm
      * @desc When a client submits their form
      */
-    function submitForm() {
+    function submitForm(event) {
+        event.preventDefault();
         let data = grabFormElements();
         // TODO: make slack integration configurable
         //if(localStorage.getItem("slackToken")&&localStorage.getItem("slackChannel"))
@@ -104,12 +113,22 @@ $(document).ready(function () {
         });
         //}
 
-        socket.emit(ADD_VISITOR, data);
+        //socket.emit(ADD_VISITOR, data);
+        $.ajax({
+          dataType:'json',
+          type: 'POST',
+          data: data,
+          url:'/api/visitorLists/',
+          success:function(response){
+            //console.log(response);
+          }
+        });
 
         $(this).animate({
             top: '35%',
             opacity: '0'
         }, 0);
+        window.location.href = "/checkin";
     }
 
     /**
