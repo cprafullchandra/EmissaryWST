@@ -1,3 +1,6 @@
+// Declare JQuery global
+/* global $ */
+
 //var valid = false;
 
 // $('#inForm').validate({ // initialize the plugin
@@ -51,9 +54,8 @@
 //     return false;
 // };
 
-
 $("#table-2").on('click', '.btnSuspend', function () {
-    if($(this).closest('td').children('p').length == 0) {
+    if($(this).closest('td').children('p').length === 0) {
         $(this).closest('td').append("<p><b>Suspended.</b></p>");
         $(this).closest('td').children('a').text("Unsuspend");
     }

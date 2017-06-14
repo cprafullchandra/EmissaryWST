@@ -1,11 +1,10 @@
 # EmmisaryWST
 
-[![Build Status](https://travis-ci.org/cse112-kissmyapp/EmissaryWST.svg?branch=master)](https://travis-ci.org/cse112-kissmyapp/EmissaryWST)
+[![Build Status](https://travis-ci.org/cse112-kissmyapp/EmissaryWST.svg?branch=develop)](https://travis-ci.org/cse112-kissmyapp/EmissaryWST)
 [![Code Climate](https://codeclimate.com/github/cse112-kissmyapp/EmissaryWST/badges/gpa.svg)](https://codeclimate.com/github/cse112-kissmyapp/EmissaryWST)
 [![Issue Count](https://codeclimate.com/github/cse112-kissmyapp/EmissaryWST/badges/issue_count.svg)](https://codeclimate.com/github/cse112-kissmyapp/EmissaryWST)
 [![Test Coverage](https://codeclimate.com/github/cse112-kissmyapp/EmissaryWST/badges/coverage.svg)](https://codeclimate.com/github/cse112-kissmyapp/EmissaryWST/coverage)
-[![codecov](https://codecov.io/gh/cse112-kissmyapp/kissmyapp-cse112/branch/master/graph/badge.svg)](https://codecov.io/gh/cse112-kissmyapp/kissmyapp-cse112)
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![codecov](https://codecov.io/gh/cse112-kissmyapp/EmissaryWST/branch/develop/graph/badge.svg)](https://codecov.io/gh/cse112-kissmyapp/EmissaryWST)
 
 ### Past Deployment:
 http://webstormtroopers.herokuapp.com
@@ -88,6 +87,8 @@ $ npm install
 $ gulp build:dev
 $ nf start web
 ```
+
+Now that you're all set with that see our developer [docs](https://github.com/cse112-kissmyapp/EmissaryWST/blob/develop/developer_docs/README.md) for more details regarding Emissary!
 
 ### Credits
 Thanks to `WebStormTroopers` for the base code, and documentation: https://github.com/danielchristiancazares/Emissary

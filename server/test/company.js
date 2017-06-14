@@ -1,26 +1,20 @@
-var request = require('supertest');
-var should = require('chai').should();
-var config = require('../config/config');
-var Company = require('../models/Company');
+let request = require('supertest');
+let should = require('chai').should();
+let config = require('../config/config');
+let Company = require('../models/Company');
 
 describe('Company Test', function() {
-    var url = "localhost:" + config.port;
-    var token;
-    var currCompany;
+    let url = "localhost:" + config.port;
+    let currCompany;
 
-    var email = "test@test.edu";
-    var name = "test";
-    var expiration_date="6/17";
-    var phone_number="1234567890";
+    let email = "test1@test.test";
+    let name = "test1";
+    let expiration_date="6/17";
+    let phone_number="1234567890";
 
-    var new_email = "test1@test.edu";
-    var new_name = "test1";
-    var new_expiration_date="3/19";
-    var new_phone_number="1231267890";
-
-
-      var userID = null;
-
+    let new_email = "test2@test.test";
+    let new_name = "test2";
+    let new_phone_number="1231267890";
 
     before(function(done) {
         request(url)
@@ -32,10 +26,11 @@ describe('Company Test', function() {
             })
             .expect(200)
             .end(function(err,res){
-                if(err)
+                if(err) {
                     throw(err);
+                }
                 res.body.should.have.property('_id');
-                currCompany=res.body;
+                currCompany = res.body;
                 done();
             });
     });
@@ -53,6 +48,7 @@ describe('Company Test', function() {
                 })
             .expect(400)
             .end(function(err,res){
+                if (err) console.log(err);
                 res.should.have.property('error');
                 done();
             });
@@ -63,6 +59,7 @@ describe('Company Test', function() {
             .get('/api/companies/'+currCompany._id)
             .expect(200)
             .end(function(err,res){
+                if (err) console.log(err);
                 res.body.should.have.property('_id');
                 done();
             });
@@ -73,6 +70,7 @@ describe('Company Test', function() {
             .get('/api/companies/'+0)
             .expect(400)
             .end(function(err,res){
+                if (err) console.log(err);
                 console.log(res.body);
                 res.body.should.have.property('error');
                 done();
@@ -85,6 +83,7 @@ describe('Company Test', function() {
             .get('/api/companies')
             .expect(200)
             .end(function(err,res){
+                if (err) console.log(err);
                 res.body.should.be.an.instanceof(Array);
                 res.body.should.have.length.of.at.least(1);
                 done();
@@ -120,8 +119,9 @@ describe('Company Test', function() {
             .delete('/api/companies/'+currCompany._id)
             .expect(200)
             .end(function(err,res){
+                if (err) console.log(err);
                 res.body.should.have.property('_id');
-                Company.find({_id:currCompany._id}, function(err, _){
+                Company.find({_id:currCompany._id}, function(err){
                     // TODO - Fix, should exist
                     should.not.exist(err);
                     done();
