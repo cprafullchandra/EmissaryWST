@@ -10,6 +10,7 @@ gulp.task('dist', [
   'concat:cssAppointment',
   'copy:assets',
   'copy:bower-components',
+  'copy:Indexhtml',
   //'copy:views',
   'copy:images'
 ]);
