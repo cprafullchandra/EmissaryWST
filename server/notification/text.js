@@ -35,7 +35,7 @@ module.exports.sendText = function(patientName, employees, done) {
         // create text message object that will be sent
         client.messages.create({
             to: employees[index].phone_number,
-            from: "+16266711727",
+            from: "+14087695646",
             body:'Your visitorList ' + patientName + ' is ready.'
         }, callback(index));
     }
