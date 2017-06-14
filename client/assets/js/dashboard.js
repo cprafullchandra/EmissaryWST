@@ -25,7 +25,9 @@ $(document).ready(function(){
 
     //Update Patient List
     io.on(VALIDATE_COMPANY_ID, function(socket) {
+      console.log('VALIDATE_COMPANY_ID VISITOR_LIST_UPDATE');
        socket.on(VISITOR_LIST_UPDATE, function (data) {
+          
           var compiledHtml = template(data);
           $('#visitor-list').html(compiledHtml);
        });
@@ -40,24 +42,13 @@ $(document).ready(function(){
 
       io.on(VALIDATE_COMPANY_ID, function(socket) {
          socket.emit('send Id', uniqueId);
+         console.log('.patient-check-out send visitorData');
          socket.on('send visitorData', function (data) {
+          
             var compiledTemplate = modalTemplate(data);
             $('.modal-dialog').html(compiledTemplate);
          });
       });
 
     });
-
-    $(document).on('click','.check-in-btn',function(){
-       var id = $(this).closest('.modal-content').find('.phone-number').attr('value');
-
-       io.on(VALIDATE_COMPANY_ID, function(socket) {
-          socket.emit('check-in-patient', id);
-       });
-
-    });
-
-
-
-
 });

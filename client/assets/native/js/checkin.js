@@ -3,12 +3,6 @@
  */
 
 $(document).ready(function () {
-
-    var socket = io();
-
-    var VALIDATE_COMPANY_ID = "validate_company_id";
-    var ADD_VISITOR = "add_visitor";
-
     var companyData = JSON.parse(localStorage.getItem("currentCompany"));
     const myCompanyId = companyData._id;
     companyData.company_id = myCompanyId
