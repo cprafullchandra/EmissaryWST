@@ -15,7 +15,7 @@
     "postinstall": "bower install && gulp build:prod",
     "pretest": "npm run jshint && npm run htmlhint && npm run csslint",
     "start": "node server/app.js",
-    "test": "mocha \"server/test/*.js\"", 
+    "test": "mocha \"server/test/*.js\"",
     "testfront": ". config.sh && cd client/ && grunt"
   },
   "pre-commit": [
@@ -77,6 +77,7 @@
     "grunt-parallel": "^0.4.1",
     "gulp": "^3.9.1",
     "gulp-angular-htmlify": "2.3.0",
+    "gulp-clean-css": "^3.4.2",
     "gulp-csslint": "^1.0.0",
     "gulp-htmlhint": "0.3.1",
     "gulp-istanbul": "^1.1.1",

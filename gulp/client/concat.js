@@ -49,7 +49,6 @@ gulp.task('concat:cssAppointment', function() {
     './client/assets/css/bootstrap.css', 
     './client/assets/css/neon-core.css',
     './client/assets/css/neon-theme.css',
-    //'./client/assets/css/neon-forms.css',
     './client/assets/native/css/shared-dashboard.css'
     ])
     .pipe(concat('bundleAppointments.css'))

@@ -1,6 +1,7 @@
 let uglify = require('gulp-uglify'),
     minifyCSS = require('gulp-minify-css'),
     htmlify = require('gulp-angular-htmlify'),
+    cleanCSS = require('gulp-clean-css'),
     ngAnnotate = require('gulp-ng-annotate');
 
 let gulp = require('gulp');
@@ -17,12 +18,9 @@ gulp.task('ng-annotate', ['concat:js'], function () {
     .pipe(gulp.dest('./dist/'));
 });
 
-/* Minify bundle.css. If it doesn't exist, create
- * it first using concat:css
- */
-gulp.task('minify:css', ['concat:css'], function() {
+gulp.task('minify-css', ['concat:cssAppointment'], function() {
   return gulp.src('./dist/assets/css/bundleAppointments.css')
-    .pipe(minifyCSS())
+    .pipe(cleanCSS({level: 0, compatibility: '*'}))
     .pipe(gulp.dest('./dist/assets/css'));
 });
 
@@ -34,7 +32,7 @@ gulp.task('minify:js', ['ng-annotate'], function() {
 });
 
 /* Build the app without minification */
-gulp.task('build:dev', ['dist', 'doc', 'minify:js']);
+gulp.task('build:dev', ['dist', 'doc', 'minify:js', 'minify-css']);
 
 /* Build the app and minfy */
 gulp.task('build:prod', ['dist', 'minify:js', /*'minify:css',*/ 'htmlify']);
