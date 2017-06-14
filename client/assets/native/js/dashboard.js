@@ -1,21 +1,23 @@
 /**
  * @file Manages the dashboard
  */
-var userState = JSON.parse(localStorage.getItem("userState"));
-  if(!userState){
-    location.href= "login.html";
-}
+
+// Declare JQuery, Handlebars, and Socket globals
+/* global $ */
+/* global Handlebars */
+/* global io */
 
 $(document).ready(function(){
-    var DEBUG = 1;
-    var companyData = JSON.parse(localStorage.getItem("currentCompany"));
-    var visitorList;
+    let DEBUG = 1;
+    let companyData = JSON.parse(localStorage.getItem("currentCompany"));
+    let visitorList;
+
     companyData.company_id = companyData._id;
 
 
-    //var curCompany = JSON.parse(localStorage.getItem('currentCompany'));
-    var curUser = JSON.parse(localStorage.getItem('currentUser'));
-    var companyName = companyData.name;
+    //let curCompany = JSON.parse(localStorage.getItem('currentCompany'));
+    let curUser = JSON.parse(localStorage.getItem('currentUser'));
+    //let companyName = companyData.name;
 
 
     $('#user-name').text(curUser.first_name + ' ' +  curUser.last_name);
@@ -33,20 +35,20 @@ $(document).ready(function(){
     * Compile all the Handle Bar Templates
     */
     //DashBoard Template
-    var source = $("#visitor-list-template").html();
-    var template = Handlebars.compile(source);
+    let source = $("#visitor-list-template").html();
+    let template = Handlebars.compile(source);
 
-    //Modal Template
-    var modal = $('#visitor-info-template').html();
-    var modalTemplate = Handlebars.compile(modal);
+    // Modal Template
+    let modal = $('#visitor-info-template').html();
+    let modalTemplate = Handlebars.compile(modal);
 
     /***
-    * Listener for Opening a Modal
-    */
+     * Listener for Opening a Modal
+     */
     $(document).on('click','.patient-check-out',function(){
-        var uniqueId = $(this).attr('value');
-        var visitor = findVisitor(uniqueId);
-        var compiledTemplate = modalTemplate(visitor);
+        let uniqueId = $(this).attr('value');
+        let visitor = findVisitor(uniqueId);
+        let compiledTemplate = modalTemplate(visitor);
         $('.modal-dialog').html(compiledTemplate);
     });
 
@@ -54,12 +56,13 @@ $(document).ready(function(){
      * Listener for Checking out a Visitor
      */
     $(document).on('click','.check-in-btn',function(){
-        var id = $(this).closest('.modal-content').find('.modal-body').attr('value');
-        var apptId = $(this).closest('.modal-content').find('.modal-left').attr('value');
+        let id = $(this).closest('.modal-content').find('.modal-body').attr('value');
+        let apptId = $(this).closest('.modal-content').find('.modal-left').attr('value');
 
-        var removeVisitor = findVisitor(id);
-   
-        removeVisitor.visitor_id = removeVisitor._id;
+        let visitor_id = findVisitor(id);
+
+        let removeVisitor = {};
+        removeVisitor.visitor_id = visitor_id;
 
         $.ajax({
           dataType:'json',
@@ -110,13 +113,13 @@ $(document).ready(function(){
      * @returns {boolean} If appointment date is equal to today's date
      */
     function compareDate(appointment){
-      var today = new Date();
-      appointment = new Date(Date.parse(appointment));
+        let today = new Date();
+        appointment = new Date(Date.parse(appointment));
 
-      var appointmentDate = appointment.getFullYear() + ' ' + appointment.getDate() + ' ' + appointment.getMonth();
-      var todayDate = today.getFullYear() + ' ' + today.getDate() + ' ' + today.getMonth();
+        let appointmentDate = appointment.getFullYear() + ' ' + appointment.getDate() + ' ' + appointment.getMonth();
+        let todayDate = today.getFullYear() + ' ' + today.getDate() + ' ' + today.getMonth();
 
-      return (appointmentDate === todayDate);
+        return (appointmentDate === todayDate);
     }
 
     /**
@@ -127,13 +130,13 @@ $(document).ready(function(){
      */
     function findVisitor(id){
 
-        for(var visitor in visitorList) {
-           if(visitorList.hasOwnProperty(visitor)){
-              if(visitorList[visitor]._id === id){
-                  if(DEBUG) console.log(visitorList[visitor]);
-                  return visitorList[visitor];
-              }
-           }
+        for(let visitor in visitorList) {
+            if(visitorList.hasOwnProperty(visitor)){
+                if(visitorList[visitor]._id === id){
+                    if(DEBUG) console.log(visitorList[visitor]);
+                    return visitorList[visitor];
+                }
+            }
         }
     }
 
@@ -142,9 +145,9 @@ $(document).ready(function(){
      * @param time
      */
     function formatTime(time){
-        var currentTime = new Date(Date.parse(time));
-        var hour = currentTime.getHours();
-        var minute = currentTime.getMinutes();
+        let currentTime = new Date(Date.parse(time));
+        let hour = currentTime.getHours();
+        let minute = currentTime.getMinutes();
 
         if(minute < 10) {
             minute = '0' + minute;
@@ -170,7 +173,7 @@ $(document).ready(function(){
     }
 
     $('#logoutButton').on('click',function(){
-      localStorage.setItem('userState',0);
+        localStorage.setItem('userState',0);
     });
 
 
@@ -178,16 +181,20 @@ $(document).ready(function(){
      * TODO order the list by increasing order
      * @param key
      */
+    /*
     function increasingOrder(key){
 
     }
+    */
 
     /***
      * TODO order the list by decreasing order
      * @param key
      */
+    /*
     function decreasingOrder(key){
 
     }
+    */
 
 });

@@ -1,28 +1,17 @@
-//Import Resources and Libs
-<<<<<<< HEAD
-
-var Email = require('../../notification/email');
-var TextModel = require('../../notification/text');
-
-var VisitorList = require('../../models/VisitorList');
-var Employee = require('../../models/Employee');
-var Appointment = require('../../models/Appointment');
-var Company = require('../../models/Company')
-=======
 let VisitorList = require('../../models/VisitorList');
 let Employee = require('../../models/Employee');
 let Appointment = require('../../models/Appointment');
->>>>>>> c2904a7... Fix all JSHint errors and server unit tests
+let Company = require('../../models/Company')
 
 /* handles route for getting the Company's visitor list */
 module.exports.getCompanyVisitorListReq = function(req, res){
     let company_id = req.params.id;
-    exports.getCompanyVisitorList(company_id, function(err_msg, result){
-        if(err_msg) return res.status(400).json(err_msg);
+    module.exports.getCompanyVisitorList(company_id, function(err_msg, result){
+        if(err_msg) return res.status(404).json(err_msg);
         if(result  ===  null){
             result = new VisitorList();
             result.visitors = [];
-            result.company_id=companyId;
+            result.company_id = company_id;
             result.save(function(err){
                 if(err) {
                     return res.status(400).json(err_msg);
@@ -59,7 +48,7 @@ module.exports.getCompanyVisitorList = function(company_id, callback){
 module.exports.deleteVisitorReq = function(req, res){
     let visitor_id = req.params.visitor_id;
     let company_id = req.params.company_id;
-    exports.deleteVisitor(company_id, visitor_id, function(err_msg, result){
+    module.exports.deleteVisitor(company_id, visitor_id, function(err_msg, result){
         if(err_msg)  return res.status(400).json(err_msg);
         return res.status(200).json(result);
     });
@@ -83,7 +72,7 @@ module.exports.deleteVisitor = function(company_id, visitor_id, callback){
 /* clear the list */
 module.exports.deleteReq = function(req, res){
     let list_id = req.params.id;
-    exports.delete(list_id, function(err_msg, result){
+    module.exports.delete(list_id, function(err_msg, result){
         if(err_msg)  return res.status(400).json(err_msg);
         return res.status(200).json(result);
     });
@@ -101,14 +90,14 @@ module.exports.delete = function(list_id, callback){
         });
     });
 };
-exports.validateReq = function(req, res) {
+module.exports.validateReq = function(req, res) {
     console.log(req.body)
-    exports.validate(req.body, function(err_msg, result){
+    module.exports.validate(req.body, function(err_msg, result){
         if(err_msg)  return res.status(400).json(err_msg);
         return res.status(200).json(result);
     });
 };
-exports.validate = function(data, callback){
+module.exports.validate = function(data, callback){
             
             var company_id = data.company_id;
             console.log(company_id);
@@ -136,13 +125,8 @@ exports.validate = function(data, callback){
             });
 };
 // This route will be called when a visitor checks in
-<<<<<<< HEAD
-exports.createReq = function(req, res) {
-    console.log(req.body)
-=======
 module.exports.createReq = function(req, res) {
->>>>>>> c2904a7... Fix all JSHint errors and server unit tests
-    exports.create(req.body, function(err_msg, result){
+    module.exports.create(req.body, function(err_msg, result){
         if(err_msg)  return res.status(400).json(err_msg);
         return res.status(200).json(result);
     });
@@ -150,20 +134,11 @@ module.exports.createReq = function(req, res) {
 
 module.exports.create = function(param, callback){
     //required fields
-<<<<<<< HEAD
-    console.log(param)
-    var company_id = param.company_id;
-    var first_name = param.first_name;
-    var last_name = param.last_name;
-    var phone_number = param.tel;
-    var checkin_time = param.checkin_time;
-=======
     let company_id = param.company_id;
     let first_name = param.first_name;
     let last_name = param.last_name;
-    let phone_number = param.phone_number;
+    let phone_number = param.tel;
     let checkin_time = param.checkin_time;
->>>>>>> c2904a7... Fix all JSHint errors and server unit tests
 
     //optional dic var
     let additional_info = param.additional_info;
@@ -188,12 +163,8 @@ module.exports.create = function(param, callback){
         if(err) {
             return callback({error: "An error was encountered. Could not find appointment."}, null);
         }
-<<<<<<< HEAD
-        var visitor =
-=======
 
         let visitor =
->>>>>>> c2904a7... Fix all JSHint errors and server unit tests
         {
             company_id: company_id,
             last_name: last_name,
