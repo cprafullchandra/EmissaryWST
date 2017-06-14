@@ -6,11 +6,13 @@ let uglify = require('gulp-uglify'),
 
 let gulp = require('gulp');
 
-gulp.task('htmlify', ['copy:views'],function(){
-  return gulp.src('./dist/**/*.html')
+
+gulp.task('htmlify' ,function(){
+  return gulp.src('./dist/**/ /* *.html')
     .pipe(htmlify())
     .pipe(gulp.dest('./dist/'));
 });
+
 
 gulp.task('ng-annotate', ['concat:js'], function () {
   return gulp.src('dist/bundle.js')
