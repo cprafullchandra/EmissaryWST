@@ -4,8 +4,8 @@ let express = require('express');
 let twilio = require('twilio');
 
 // Twilio Credentials 
-let accountSid = 'ACb70bc33c96bfc11985cbd1cf76a239ef';
-let authToken = '452f1f1d86c183097a96db390ca55590';
+let accountSid = 'ACe877c92fb6dc6f0ef3aa84c0b0b14999';
+let authToken  = '689e230b27fb493e24600c89f843697f';
 
 //require the Twilio module and create a REST client 
 let client = require('twilio')(accountSid, authToken);
