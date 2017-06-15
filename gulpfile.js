@@ -21,6 +21,7 @@ let paths = {
     images: 'dist/images',
     js: 'dist/js'
   },
+  docs: 'docs',
   fonts: 'client/css/lib/font-icons/**/*.{eot,svg,ttf,woff,woff2,otf}',
   html: 'client/html/*.html',
   images: 'client/images/*.{JPG,jpg,png,gif,ico}',
@@ -37,7 +38,7 @@ let paths = {
 
 /* Remove the generated dist */
 gulp.task('clean', function () {
-  return del(paths.dist.base);
+  return del([paths.dist.base, paths.docs]);
 });
 
 /* Generate documentation based off code comments */
