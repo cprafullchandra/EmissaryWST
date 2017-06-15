@@ -141,16 +141,10 @@ app.use(errorHandler());
 
 var server = require('http').createServer(app);
 
-//var io = require('socket.io')(server);
 server.listen(app.get('port'), function() {
   console.log('Express server listening on port %d in %s mode',
     app.get('port'),
     app.get('env'));
 });
-
-/*
- * Create Socket.io server.
- */
-//var server = socketIO.createServer(io);
 
 module.exports = app;

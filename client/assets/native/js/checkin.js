@@ -6,7 +6,7 @@ $(document).ready(function () {
     var companyData = JSON.parse(localStorage.getItem("currentCompany"));
     const myCompanyId = companyData._id;
     companyData.company_id = myCompanyId
-    
+    //validateData(companyData);
     $.ajax({
           dataType:'json',
           type: 'POST',
