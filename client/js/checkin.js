@@ -122,6 +122,13 @@ $(document).ready(function () {
         //event.preventDefault();
         let data = grabFormElements();
         let slackMessage = data.first_name + ' ' + data.last_name + ' has just checked in.';
+        $.post("https://slack.com/api/chat.postMessage", {
+            'token': "xoxp-167311421539-169267386423-191140632117-5263dba19bf30c7b56274a69fade6545",
+            'channel': "notifications",
+            'text': slackMessage
+        }, function (data, status) {
+        });
+
         triggerZapier(slackMessage);
 
         //socket.emit(ADD_VISITOR, data);
