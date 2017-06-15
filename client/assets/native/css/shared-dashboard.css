@@ -1,9 +1,5 @@
-#company-name > h1 {
+.company-name {
   font-size : 18px;
-}
-
-.pull-right {
-  margin-right : 25px;
 }
 
 .fa-cog:hover {
