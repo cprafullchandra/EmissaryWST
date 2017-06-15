@@ -70,63 +70,63 @@ if(app.get('env') !== 'development') {
 
 app.get('/settings', function(req,res){
     if(req === null) throw 'ERROR: No request!';
-    res.sendFile(path.join(__dirname,'../dist/assets/views/settings.html'));
+    res.sendFile(path.join(__dirname,'../dist/settings.html'));
 });
 app.get('/admin-companies', function(req,res){
     if(req === null) throw 'ERROR: No request!';
-    res.sendFile(path.join(__dirname,'../dist/assets/views/admin-companies.html'));
+    res.sendFile(path.join(__dirname,'../dist/admin-companies.html'));
 });
 app.get('/admin-dashboard', function(req,res){
     if(req === null) throw 'ERROR: No request!';
-    res.sendFile(path.join(__dirname,'../dist/assets/views/admin-dashboard.html'));
+    res.sendFile(path.join(__dirname,'../dist/admin-dashboard.html'));
 });
 app.get('/analytics_raw', function(req,res){
     if(req === null) throw 'ERROR: No request!';
-    res.sendFile(path.join(__dirname,'../dist/assets/views/analytics_raw.html'));
+    res.sendFile(path.join(__dirname,'../dist/analytics_raw.html'));
 });
 app.get('/appointments', function(req,res){
     if(req === null) throw 'ERROR: No request!';
-    res.sendFile(path.join(__dirname,'../dist/assets/views/appointments.html'));
+    res.sendFile(path.join(__dirname,'../dist/appointments.html'));
 });
 app.get('/checkin', function(req,res){
     if(req === null) throw 'ERROR: No request!';
-    res.sendFile(path.join(__dirname,'../dist/assets/views/checkin.html'));
+    res.sendFile(path.join(__dirname,'../dist/checkin.html'));
 });
 app.get('/employees', function(req,res){
     if(req === null) throw 'ERROR: No request!';
-    res.sendFile(path.join(__dirname,'../dist/assets/views/employees.html'));
+    res.sendFile(path.join(__dirname,'../dist/employees.html'));
 });
 app.get('/forgot-password', function(req,res){
     if(req === null) throw 'ERROR: No request!';
-    res.sendFile(path.join(__dirname,'../dist/assets/views/forgot-password.html'));
+    res.sendFile(path.join(__dirname,'../dist/forgot-password.html'));
 });
 app.get('/form-builder', function(req,res){
     if(req === null) throw 'ERROR: No request!';
-    res.sendFile(path.join(__dirname,'../dist/assets/views/form-builder.html'));
+    res.sendFile(path.join(__dirname,'../dist/form-builder.html'));
 });
 app.get('/login', function(req,res){
     if(req === null) throw 'ERROR: No request!';
-    res.sendFile(path.join(__dirname,'../dist/assets/views/login.html'));
+    res.sendFile(path.join(__dirname,'../dist/login.html'));
 });
 app.get('/signup', function(req,res){
     if(req === null) throw 'ERROR: No request!';
-    res.sendFile(path.join(__dirname,'../dist/assets/views/signup.html'));
+    res.sendFile(path.join(__dirname,'../dist/signup.html'));
 });
 app.get('/visitors', function(req,res){
     if(req === null) throw 'ERROR: No request!';
-    res.sendFile(path.join(__dirname,'../dist/assets/views/visitors.html'));
+    res.sendFile(path.join(__dirname,'../dist/visitors.html'));
 });
 app.get('/404', function(req,res){
     if(req === null) throw 'ERROR: No request!';
-    res.sendFile(path.join(__dirname,'../dist/assets/views/404.html'));
+    res.sendFile(path.join(__dirname,'../dist/404.html'));
 });
 app.get('/admin-settings', function(req,res){
     if(req === null) throw 'ERROR: No request!';
-    res.sendFile(path.join(__dirname,'../dist/assets/views/admin-settings.html'));
+    res.sendFile(path.join(__dirname,'../dist/admin-settings.html'));
 });
 app.get('/index', function(req,res){
     if(req === null) throw 'ERROR: No request!';
-    res.sendFile(path.join(__dirname,'../dist/assets/views/index.html'));
+    res.sendFile(path.join(__dirname,'../dist/index.html'));
 });
 
 /**

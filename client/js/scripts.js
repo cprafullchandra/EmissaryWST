@@ -5,7 +5,7 @@ $(document).ready(function() {
     /**
      * Fullscreen background
      */
-    $.backstretch("assets/images/backgrounds/1.jpg");
+    $.backstretch("/images/1.jpg");
 
     let topNavbar1 = $('#top-navbar-1');
     topNavbar1.on('shown.bs.collapse', function(){
