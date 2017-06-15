@@ -197,15 +197,7 @@ describe("VisitorList", function() {
                 });
         });
         it('should validate companies', function(done){
-         /*   $.ajax({
-          dataType:'json',
-          type: 'POST',
-          data: companyData,
-          url:'/api/visitorLists/validate',
-          success:function(response){
-          }
-
-        });*/
+            this.timeout(8000);
             request(url)
             .post('/api/visitorLists/validate')
                 .send({
@@ -219,7 +211,7 @@ describe("VisitorList", function() {
                 .expect(200)
                 .end(function(err, res){
                     if(err)
-                        if(err) throw(err);
+                        throw(err);
                     done();
                 });
 
