@@ -196,7 +196,38 @@ describe("VisitorList", function() {
                     done();
                 });
         });
+        it('should validate companies', function(done){
+            this.timeout(8000);
+            request(url)
+            .post('/api/visitorLists/validate')
+                .send({
+                    company_id: currCompany._id,
+                    first_name: first_visitor_info.first_name,
+                    last_name: first_visitor_info.last_name,
+                    phone_number: first_visitor_info.phone_number,
+                    checkin_time: first_visitor_info.checkin_time,
+                    additional_info: first_visitor_info.additional_info
+                })
+                .expect(200)
+                .end(function(err, res){
+                    if(err)
+                        throw(err);
+                    this.timeout(8000);
+                    done();
+                });
 
+            request(url)
+            .post('/api/visitorLists/validate')
+                .send({
+                    company_id: 0
+                })
+                .expect(400)
+                .end(function(err, res){
+                    if(err)
+                        console.log(err);
+                    //done();
+                });
+        });
         it('should delete specified Visitor', function(done){
             request(url)
                 .get('/api/visitorLists/company/' + currCompany._id)
