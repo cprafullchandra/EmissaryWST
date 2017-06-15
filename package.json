@@ -9,8 +9,8 @@
   "author": "cse112-kissmyapp",
   "scripts": {
     "cover": "istanbul cover _mocha \"server/test/*.js\"",
-    "csslint": "csslint client/assets/css/checkin.css client/assets/css/loader.css client/assets/css/style.css client/assets/native/css || true",
-    "htmlhint": "htmlhint client/assets/native client/assets/views || true",
+    "csslint": "csslint client/css/*.css client/css/lib/checkin.css || true",
+    "htmlhint": "htmlhint client/html || true",
     "jshint": "jshint --config .jshintrc --verbose --show-non-errors --extract=auto * || true",
     "postinstall": "gulp prod",
     "pretest": "npm run jshint && npm run htmlhint && npm run csslint",

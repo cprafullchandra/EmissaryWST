@@ -17,8 +17,8 @@ ratings:
   - "**.js"
 # have to exclude third-party libs
 exclude_paths:
-- "client/assets/css/"
-- "client/assets/images/"
-- "client/assets/js/"
+- "client/css/lib/"
+- "client/images/"
+- "client/js/lib/"
+- "developer_docs/"
 - "docs/"
-- "developer_docs"
