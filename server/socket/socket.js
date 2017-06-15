@@ -2,9 +2,6 @@ let express = require('express');
 let server;
 let io = require('socket.io')();
 
-// Not sure where this comes from
-/* global callback */
-
 //Constants for listening to Sockets
 let CONNECTION = "connection";
 let VALIDATE_COMPANY_ID = "validate_company_id";

@@ -108,7 +108,7 @@ $(document).ready(function () {
         checkinform.animate({
             top: '10%',
             opacity: '1'
-        }, 500)
+        }, 500);
     }
 
     /**
