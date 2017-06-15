@@ -9,7 +9,6 @@ let morgan = require('morgan');
 let errorHandler = require('errorhandler');
 let path = require('path');
 let mongoose = require('mongoose');
-let socketIO = require('./socket/socket');
 let MY_STRIPE_TEST_KEY = 'sk_test_dqzYJJ6xWGgg6U1hgQr3hNye';
 let stripe = require ('stripe')(MY_STRIPE_TEST_KEY);
 let MY_SLACK_WEBHOOK_URL = 'https://hooks.slack.com/services/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';
@@ -136,16 +135,10 @@ app.use(errorHandler());
 
 let server = require('http').createServer(app);
 
-let io = require('socket.io')(server);
 server.listen(app.get('port'), function() {
     console.log('Express server listening on port %d in %s mode',
         app.get('port'),
         app.get('env'));
 });
-
-/**
- * Create Socket.io server.
- */
-server = socketIO.createServer(io);
 
 module.exports = app;
