@@ -3,7 +3,6 @@ $(document).ready(function(){
     //var socket = io();
     if(localStorage.getItem("slackToken")&&localStorage.getItem("slackChannel"))
         {
-            alert("WTF");
              $.post("https://slack.com/api/chat.postMessage",
              {
                 'token': localStorage.getItem("slackToken"),
