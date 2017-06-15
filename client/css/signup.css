@@ -21,6 +21,14 @@
 }
 
 button.btn {
+  -moz-border-radius    : 4px;
+  -moz-box-shadow       : none;
+  -moz-transition       : all .3s;
+  -ms-transition        : all .3s;
+  -o-transition         : all .3s;
+  -webkit-border-radius : 4px;
+  -webkit-box-shadow    : none;
+  -webkit-transition    : all .3s;
   background            : #19b9e7;
   border                : 0;
   border-radius         : 4px;
@@ -37,14 +45,6 @@ button.btn {
   text-shadow           : none;
   transition            : all .3s;
   vertical-align        : middle;
-  -moz-border-radius    : 4px;
-  -moz-box-shadow       : none;
-  -moz-transition       : all .3s;
-  -ms-transition        : all .3s;
-  -o-transition         : all .3s;
-  -webkit-border-radius : 4px;
-  -webkit-box-shadow    : none;
-  -webkit-transition    : all .3s;
 }
 
 button.btn:hover {
