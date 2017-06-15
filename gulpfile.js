@@ -118,13 +118,13 @@ gulp.task('concat:js', function() {
     paths.dist.js+'/lib/bootstrap.js',
     paths.dist.js+'/lib/joinable.js',
     paths.dist.js+'/lib/neon-custom.js',
-    paths.dist.js+'/lib/gsap/TweenMax.min.js',
+    paths.dist.js+'/lib/TweenMax.min.js',
     paths.dist.js+'/lib/js.cookie.js',
     paths.dist.js+'/lib/socket.io.js',
     paths.dist.js+'/lib/neon-api.js',
     paths.dist.js+'/lib/handlebars-v4.0.5.js',
     paths.dist.js+'/lib/neon-slider.js',
-    paths.dist.js+'/lib/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js'
+    paths.dist.js+'/lib/jquery-ui-1.10.3.minimal.min.js'
   ])
   .pipe(concat('bundle.js'))
   .pipe(gulp.dest(paths.dist.js));
