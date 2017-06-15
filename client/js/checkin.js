@@ -8,14 +8,17 @@
 
 $(document).ready(function () {
 
-    let socket = io();
-
-    let VALIDATE_COMPANY_ID = "validate_company_id";
-    let ADD_VISITOR = "add_visitor";
-
     let companyData = JSON.parse(localStorage.getItem("currentCompany"));
+    companyData.company_id = companyData._id;
     const myCompanyId = companyData._id;
-    socket.emit(VALIDATE_COMPANY_ID, companyData);
+    $.ajax({
+          dataType:'json',
+          type: 'POST',
+          data: companyData,
+          url:'/api/visitorLists/validate',
+          success:function(response){
+          }
+    });
 
     let formData = loadSavedForm(myCompanyId);
     let requiredFields = [{
@@ -116,8 +119,8 @@ $(document).ready(function () {
      * @desc When a client submits their form
      */
     function submitForm() {
+        //event.preventDefault();
         let data = grabFormElements();
-
         let slackMessage = data.first_name + ' ' + data.last_name + ' has just checked in.';
         $.post("https://slack.com/api/chat.postMessage", {
             'token': "xoxp-167311421539-169267386423-191140632117-5263dba19bf30c7b56274a69fade6545",
@@ -128,8 +131,18 @@ $(document).ready(function () {
 
         triggerZapier(slackMessage);
 
-        socket.emit(ADD_VISITOR, data);
-
+        //socket.emit(ADD_VISITOR, data);
+        console.log(data);
+        $.ajax({
+          dataType:'json',
+          type: 'POST',
+          data: data,
+          url:'/api/visitorLists/',
+          success:function(response){
+            console.log(response);
+            location.href = 'checkin.html'
+          }
+        });
         // Hide form
         checkinform.animate({
             top: '0%',

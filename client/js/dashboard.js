@@ -8,24 +8,10 @@
 /* global io */
 
 $(document).ready(function(){
-
-    /*
-    let userState = JSON.parse(localStorage.getItem("userState"));
-    if(!userState){
-        location.href= "login.html";
-    }
-    */
-
-    let socket = io(); // Initialize Socket
-
-    //Socket variables
     let DEBUG = 1;
-    let VALIDATE_COMPANY_ID = "validate_company_id";
-    let VISITOR_LIST_UPDATE = "visitor_list_update";
-    let REMOVE_VISITOR = "remove_visitor";
-
     let companyData = JSON.parse(localStorage.getItem("currentCompany"));
     let visitorList;
+
     companyData.company_id = companyData._id;
 
 
@@ -36,9 +22,15 @@ $(document).ready(function(){
 
     $('#user-name').text(curUser.first_name + ' ' +  curUser.last_name);
 
-    // Connect to private socket
-    //let companyId = getCookie('company_id');
-    socket.emit(VALIDATE_COMPANY_ID, companyData);
+    $.ajax({
+          dataType:'json',
+          type: 'POST',
+          data: companyData,
+          url:'/api/visitorLists/validate',
+          success:function(response){
+            updateList(response);
+          }
+      });
 
     /**
      * Compile all the Handle Bar Templates
@@ -51,35 +43,6 @@ $(document).ready(function(){
     // Modal Template
     let modal = $('#visitor-info-template').html();
     let modalTemplate = Handlebars.compile(modal);
-
-    // SOCKET LISTEN FOR VISITOR QUEUE
-    socket.on(VISITOR_LIST_UPDATE, function (data) {
-        visitorList = data.visitors;
-        // Parse Visitor List to format Date
-        for(let i = 0; i < visitorList.length; i++){
-            visitorList[i].checkin_time = formatTime(visitorList[i].checkin_time);
-        }
-
-        // Parse Visitor appointments
-        for(let i = 0; i < visitorList.length; i++){
-            let appList = visitorList[i].appointments;
-            if(appList[0]){
-                for(let j = 0, appLen = appList.length; j < appLen; j++){
-                    if(compareDate(appList[j].date)){
-                        visitorList[i].appointmentTime = formatTime(appList[j].date);
-                        visitorList[i]._apptId = appList[j]._id;
-                        break;
-                    }
-                }
-            }
-            else{
-                visitorList[i].appointmentTime = "None";
-            }
-        }
-
-        let compiledHtml = template(visitorList);
-        $('#visitor-list').html(compiledHtml);
-    });
 
 
     /***
@@ -105,22 +68,48 @@ $(document).ready(function(){
         removeVisitor.company_id = visitor.company_id;
 
         $.ajax({
-            dataType:'json',
-            type: 'DELETE',
-            url:'/api/appointments/' + apptId
-        });
-
-        socket.emit(REMOVE_VISITOR, removeVisitor);
+          dataType:'json',
+          type: 'DELETE',
+          url:'/api/appointments/' + apptId,
+          success:function(response){
+          }
+        });     
     });
-    /*
-     $(document).on('click','.checkout-btn',function(){
-     var id = $(this).closest('.patient-check-out').attr('value');
-     var removeVisitor = findVisitor(id);
-     console.log(removeVisitor);
-     //removeVisitor.visitor_id = removeVisitor._id;
-     //socket.emit(REMOVE_VISITOR, removeVisitor);
-     });
+    /***
+     * @function updateList
+     * @desc Add visitors to list
+     * @param data returned from call
      */
+    function updateList(data){
+      visitorList = data.visitors;
+        //Parse Visitor List to format Date
+        for(var i = 0, len = visitorList.length; i< len; i++){
+            visitorList[i].checkin_time = formatTime(visitorList[i].checkin_time);
+        }
+
+        //Parse Visitors appoitments
+        for(i = 0; i < len; i++){
+          var appList = visitorList[i].appointments;
+          if(appList[0]){
+            for(var j = 0, appLen = appList.length; j < appLen; j++){
+              if(compareDate(appList[j].date)){
+                visitorList[i].appointmentTime = formatTime(appList[j].date);
+                visitorList[i]._apptId = appList[j]._id;
+                break;
+              }
+            }
+          }
+          else{
+      
+            visitorList[i].appointmentTime = "None";
+          }
+        }
+
+       //visitorList.checkin_time = visitorList;
+        var compiledHtml = template(visitorList);
+        $('#visitor-list').html(compiledHtml);
+    }
+
     /***
      * @function compareDate
      * @desc Compare appointment Date to today's Date
