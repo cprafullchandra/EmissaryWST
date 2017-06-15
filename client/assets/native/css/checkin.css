@@ -35,6 +35,7 @@ body {
   position         : absolute;
   text-align       : center;
   width            : 275px;
+  height           : 100px;
 }
 
 .tap-to-check:hover {
@@ -94,6 +95,12 @@ body {
   margin-top       : 25px;
   position         : absolute;
   width            : 150px;
+}
+
+.confirmation {
+  opacity: 0;
+  width: 500px;
+  margin: auto;
 }
 
 .hide {

@@ -11,7 +11,7 @@ let router = express.Router();
  * Render out angular app.
  */
 router.get('/', function(req, res) {
-    //console.log(req);
+    if (req === null) throw 'ERROR: No request data!';
     res.sendFile(path.join(__dirname, '../dist/visitors.html'));
 });
 

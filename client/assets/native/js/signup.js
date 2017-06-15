@@ -96,15 +96,8 @@ $(document).ready(function(){
                 }
             },
             error: function(){
-                event.preventDefault();
-                if(url === '/api/employees') {
-                    alert("Email Already Associated With Another Account\n Please Use Another Email");
-                }
-                else if (url === '/api/companies') {
-                    alert("Email Already Associated With Another Company\n Please Use Another Email");
-                }
-                // This will prevent the page from refreshing
-                return false;
+                handleError(url);
+                return false; // This will prevent the page from refreshing
             }
         });
     }
@@ -117,5 +110,19 @@ $(document).ready(function(){
         $('#company-reg-form').fadeOut(400, function() {
             $('#employee-reg-form').find('fieldset:first-child').fadeIn();
         });
+    }
+
+    /**
+     * @func handleError
+     * @desc Handles errors during account creation.
+     */
+    function handleError(url) {
+        let msg = 'Sorry, and error occurred. Please try again.';
+        if        (url === '/api/employees') {
+            msg = 'Sorry, that email is already associated with another account. Please use a different email.';
+        } else if (url === '/api/companies') {
+            msg = 'Sorry, that email is already associated with another company. Please use a different email.';
+        }
+        $('#errorlog').html(msg);
     }
 });
