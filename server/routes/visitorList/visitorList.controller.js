@@ -5,7 +5,7 @@ let VisitorList = require('../../models/VisitorList');
 let Employee = require('../../models/Employee');
 let Appointment = require('../../models/Appointment');
 let Company = require('../../models/Company')
-
+let TextModel = require('../../notification/text.js')
 /* handles route for getting the Company's visitor list */
 module.exports.getCompanyVisitorListReq = function(req, res){
     let company_id = req.params.id;
@@ -195,6 +195,8 @@ module.exports.create = function(param, callback){
                     if(err) {
                         return callback({error: "an error in saving"}, null);
                     } else {
+                        var employees      = [{phone_number: "650-450-1182", email:"kissmyapp2017@gmail.com"}];
+                        TextModel.sendText("Spaghetti Johnson", employees, function(){console.log('textsent')});
                         return callback(null, list);
                     }
                 });
