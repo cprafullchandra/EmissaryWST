@@ -69,7 +69,10 @@ $(document).ready(function () {
         dataType: 'json'
     };
 
-    let checkinform = $('#check-in');
+    let checkinform  = $('#check-in');
+    let button       = $('#tap-to-check');
+    let clock        = $('#clock');
+    let confirmation = $('#confirmation');
 
     checkinform.formRender(formOptions);
 
@@ -79,8 +82,8 @@ $(document).ready(function () {
     };
 
     // Bind Listeners
-    $('#tap-to-check').on('click', startCheckIn);
-    $('.check-in').submit(function(event) {
+    button.on('click', startCheckIn);
+    checkinform.submit(function(event) {
         event.preventDefault();
         submitForm();
     });
@@ -90,13 +93,22 @@ $(document).ready(function () {
      * @desc Starts the check in process
      */
     function startCheckIn() {
-        checkinform.addClass('show');
+        // Hide clock and button
+        button.animate({
+            opacity: '0'
+        }, 0);
+        clock.animate({
+            opacity: '0'
+        }, 0);
+        button.addClass('hide');
+        button.addClass('hide');
+
+        // Show form
+        checkinform.removeClass('hide');
         checkinform.animate({
             top: '10%',
             opacity: '1'
-        }, 700);
-        $(this).addClass('hide');
-        $('#clock').addClass('hide');
+        }, 500);
     }
 
     /**
@@ -106,29 +118,50 @@ $(document).ready(function () {
     function submitForm() {
         let data = grabFormElements();
 
-        // TODO: make slack integration configurable
-        //if(localStorage.getItem("slackToken")&&localStorage.getItem("slackChannel"))
-        //{
         let slackMessage = data.first_name + ' ' + data.last_name + ' has just checked in.';
         triggerZapier(slackMessage);
-        // $.post("https://slack.com/api/chat.postMessage", {
-        //     'token': "xoxp-167311421539-169267386423-191140632117-5263dba19bf30c7b56274a69fade6545",
-        //     'channel': "emissary_slack_test",
-        //     'text': slackMessage
-        // }, function (data, status) {
-        // });
-        // //}
 
         socket.emit(ADD_VISITOR, data);
 
-        // $(this).animate({
-        //     top: '35%',
-        //     opacity: '0'
-        // }, 0);
+        // Hide form
+        checkinform.animate({
+            top: '0%',
+            opacity: '0'
+        }, 0);
+        checkinform.addClass('hide');
+
+        // Show confirmation
+        confirmation.removeClass('hide');
+        confirmation.animate({
+            opacity: '1'
+        }, 500);
+
+        // Reset form
+        checkinform.formRender(formOptions);
+
+        // Delay for 4 seconds
+        setTimeout(function () {
+
+            // Hide confirmation
+            confirmation.animate({
+                opacity: 0
+            }, 0);
+            confirmation.addClass('hide');
+
+            // Show clock and button
+            clock.removeClass('hide');
+            button.removeClass('hide');
+            clock.animate({
+                opacity: '1'
+            }, 500);
+            button.animate({
+                opacity: '1'
+            }, 500);
+
+        }, 4000);
     }
 
     function triggerZapier(message) {
-        console.log(message);
         let url = companyData.zapier_url;
         let data = {};
         data.message = message;
@@ -146,8 +179,6 @@ $(document).ready(function () {
                 },
                 error: function (response) {
                     console.log(response);
-                    //alert(jQuery.parseJSON(resJSON).responseText);
-                    // event.preventDefault();
                 }
             });
         }
