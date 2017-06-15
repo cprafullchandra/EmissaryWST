@@ -98,11 +98,11 @@ $(document).ready(function(){
     $(document).on('click','.check-in-btn',function(){
         let id = $(this).closest('.modal-content').find('.modal-body').attr('value');
         let apptId = $(this).closest('.modal-content').find('.modal-left').attr('value');
-
-        let visitor_id = findVisitor(id);
+        let visitor = findVisitor(id);
 
         let removeVisitor = {};
-        removeVisitor.visitor_id = visitor_id;
+        removeVisitor.visitor_id = visitor._id;
+        removeVisitor.company_id = visitor.company_id;
 
         $.ajax({
             dataType:'json',
