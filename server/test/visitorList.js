@@ -212,6 +212,7 @@ describe("VisitorList", function() {
                 .end(function(err, res){
                     if(err)
                         throw(err);
+                    this.timeout(8000);
                     done();
                 });
 
@@ -224,7 +225,7 @@ describe("VisitorList", function() {
                 .end(function(err, res){
                     if(err)
                         console.log(err);
-                    done();
+                    //done();
                 });
         });
         it('should delete specified Visitor', function(done){
