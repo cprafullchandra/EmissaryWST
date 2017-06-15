@@ -226,10 +226,12 @@ describe("VisitorList", function() {
             request(url)
             .post('/api/visitorLists/validate')
                 .send({
-                    company_id: 0,
+                    company_id: 0
                 })
                 .expect(400)
                 .end(function(err, res){
+                    if(err)
+                        console.log(err);
                     done();
                 });
         });
