@@ -36,7 +36,7 @@ module.exports.createServer = function(io_in) {
             let company_id = data.company_id;
             Company.findOne({_id: company_id}, function(err, c){
                 if(err || !c) {
-                    return callback({error: "An error was encountered. Could not find company."}, null);
+                    console.log("An error was encountered. Could not find company.");
                 }
                 else {
                     socket.join(company_id);
