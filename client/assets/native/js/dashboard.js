@@ -12,18 +12,6 @@ $(document).ready(function(){
     let companyData = JSON.parse(localStorage.getItem("currentCompany"));
     let visitorList;
 
-    /*
-    let userState = JSON.parse(localStorage.getItem("userState"));
-    if(!userState){
-        location.href= "login.html";
-    }
-    */
-
-    //Socket variables
-    let DEBUG = 1;
-
-    let companyData = JSON.parse(localStorage.getItem("currentCompany"));
-    let visitorList;
     companyData.company_id = companyData._id;
 
 
