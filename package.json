@@ -24,7 +24,7 @@
     "jshint"
   ],
   "dependencies": {
-    "async": "2.4.0",
+    "async": "^2.4.1",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "1.17.1",
     "cookie-parser": "1.4.3",
@@ -40,12 +40,12 @@
     "gulp-concat": "2.6.1",
     "gulp-imagemin": "3.3.0",
     "gulp-jsdoc3": "latest",
-    "gulp-uglify": "2.1.2",
+    "gulp-uglify": "^3.0.0",
     "handlebars": "latest",
     "iconv-lite": "0.4.17",
     "jwt-simple": "0.5.1",
     "lodash": "4.17.4",
-    "mocha": "^3.3.0",
+    "mocha": "^3.4.2",
     "mongodb": "^2.2.26",
     "mongoose": "4.9.9",
     "mongoose-encryption": "1.5.0",
