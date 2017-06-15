@@ -9,7 +9,6 @@ let morgan = require('morgan');
 let errorHandler = require('errorhandler');
 let path = require('path');
 let mongoose = require('mongoose');
-let socketIO = require('./socket/socket');
 let MY_STRIPE_TEST_KEY = 'sk_test_dqzYJJ6xWGgg6U1hgQr3hNye';
 let stripe = require ('stripe')(MY_STRIPE_TEST_KEY);
 let MY_SLACK_WEBHOOK_URL = 'https://hooks.slack.com/services/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';
