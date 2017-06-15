@@ -8,12 +8,8 @@
 
 $(document).ready(function () {
 
-    let socket = io();
-
-    let VALIDATE_COMPANY_ID = "validate_company_id";
-    let ADD_VISITOR = "add_visitor";
-
     let companyData = JSON.parse(localStorage.getItem("currentCompany"));
+    companyData.company_id = companyData._id;
     const myCompanyId = companyData._id;
     $.ajax({
           dataType:'json',
@@ -110,10 +106,10 @@ $(document).ready(function () {
      * @function submitForm
      * @desc When a client submits their form
      */
-    function submitForm(event) {
-        event.preventDefault();
+    function submitForm() {
+        //event.preventDefault();
         let data = grabFormElements();
-
+        //data.company_id = data._id;
         // TODO: make slack integration configurable
         //if(localStorage.getItem("slackToken")&&localStorage.getItem("slackChannel"))
         //{
@@ -128,19 +124,21 @@ $(document).ready(function () {
         // //}
 
         //socket.emit(ADD_VISITOR, data);
+        console.log(data);
         $.ajax({
           dataType:'json',
           type: 'POST',
           data: data,
           url:'/api/visitorLists/',
           success:function(response){
-            //console.log(response);
+            console.log(response);
+            location.href = 'checkin.html'
           }
         });
-        // $(this).animate({
-        //     top: '35%',
-        //     opacity: '0'
-        // }, 0);
+         $(this).animate({
+             top: '35%',
+             opacity: '0'
+         }, 0);
     }
 
     function triggerZapier(message) {

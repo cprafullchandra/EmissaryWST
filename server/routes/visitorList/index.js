@@ -1,6 +1,5 @@
 let express = require('express');
 let controller = require('./visitorList.controller');
-
 let router = express.Router();
 
 router.post("/",                           controller.createReq);

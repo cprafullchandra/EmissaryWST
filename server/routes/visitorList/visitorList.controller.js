@@ -1,3 +1,6 @@
+
+'use strict';
+// Import Resources and Libs
 let VisitorList = require('../../models/VisitorList');
 let Employee = require('../../models/Employee');
 let Appointment = require('../../models/Appointment');
@@ -91,27 +94,27 @@ module.exports.delete = function(list_id, callback){
     });
 };
 module.exports.validateReq = function(req, res) {
-    console.log(req.body)
+    //console.log(req.body)
     module.exports.validate(req.body, function(err_msg, result){
-        if(err_msg)  return res.status(400).json(err_msg);
+        if(err_msg){  
+            //console.log(err_msg);
+            return res.status(400).json(err_msg);
+        }
         return res.status(200).json(result);
     });
 };
 module.exports.validate = function(data, callback){
             
             var company_id = data.company_id;
-            console.log(company_id);
+            //console.log(company_id);
             Company.findOne({_id: company_id}, function(err, c){
                 if(err || !c) {
-                    console.log(err);
-                    console.log(c);
                     return callback({error: "An error was encountered. Could not find company."}, null);
                 }
 
                 else {
                     //socket.join(company_id);
                     exports.getCompanyVisitorList(company_id, function(err_msg, result){
-                        console.log(result)
                         if(err_msg){
                             console.log('Error Getting Visitor List');
                             return callback({error: err_msg}, company_id);
@@ -137,7 +140,7 @@ module.exports.create = function(param, callback){
     let company_id = param.company_id;
     let first_name = param.first_name;
     let last_name = param.last_name;
-    let phone_number = param.tel;
+    let phone_number = param.phone_number;
     let checkin_time = param.checkin_time;
 
     //optional dic var

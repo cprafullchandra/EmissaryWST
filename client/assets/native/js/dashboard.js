@@ -12,6 +12,18 @@ $(document).ready(function(){
     let companyData = JSON.parse(localStorage.getItem("currentCompany"));
     let visitorList;
 
+    /*
+    let userState = JSON.parse(localStorage.getItem("userState"));
+    if(!userState){
+        location.href= "login.html";
+    }
+    */
+
+    //Socket variables
+    let DEBUG = 1;
+
+    let companyData = JSON.parse(localStorage.getItem("currentCompany"));
+    let visitorList;
     companyData.company_id = companyData._id;
 
 
@@ -31,16 +43,19 @@ $(document).ready(function(){
             updateList(response);
           }
       });
-   /***
-    * Compile all the Handle Bar Templates
-    */
-    //DashBoard Template
+
+    /**
+     * Compile all the Handle Bar Templates
+     */
+
+    // DashBoard Template
     let source = $("#visitor-list-template").html();
     let template = Handlebars.compile(source);
 
     // Modal Template
     let modal = $('#visitor-info-template').html();
     let modalTemplate = Handlebars.compile(modal);
+
 
     /***
      * Listener for Opening a Modal
@@ -106,6 +121,7 @@ $(document).ready(function(){
         var compiledHtml = template(visitorList);
         $('#visitor-list').html(compiledHtml);
     }
+
     /***
      * @function compareDate
      * @desc Compare appointment Date to today's Date

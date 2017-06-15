@@ -11,7 +11,7 @@ let router = express.Router();
  * Render out angular app.
  */
 router.get('/', function(req, res) {
-    console.log(req);
+    //console.log(req);
     res.sendFile(path.join(__dirname, '../dist/visitors.html'));
 });
 

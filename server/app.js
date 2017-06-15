@@ -1,7 +1,6 @@
 /**
  * Module dependencies.
  */
-
 let express = require('express');
 let cors = require('cors');
 let session = require('express-session');
@@ -70,63 +69,63 @@ if(app.get('env') !== 'development') {
 }
 
 app.get('/settings', function(req,res){
-    console.log(req);
+    //console.log(req);
     res.sendFile(path.join(__dirname,'../dist/assets/views/settings.html'));
 });
 app.get('/admin-companies', function(req,res){
-    console.log(req);
+    //console.log(req);
     res.sendFile(path.join(__dirname,'../dist/assets/views/admin-companies.html'));
 });
 app.get('/admin-dashboard', function(req,res){
-    console.log(req);
+    //console.log(req);
     res.sendFile(path.join(__dirname,'../dist/assets/views/admin-dashboard.html'));
 });
 app.get('/analytics_raw', function(req,res){
-    console.log(req);
+    //console.log(req);
     res.sendFile(path.join(__dirname,'../dist/assets/views/analytics_raw.html'));
 });
 app.get('/appointments', function(req,res){
-    console.log(req);
+    //console.log(req);
     res.sendFile(path.join(__dirname,'../dist/assets/views/appointments.html'));
 });
 app.get('/checkin', function(req,res){
-    console.log(req);
+    //console.log(req);
     res.sendFile(path.join(__dirname,'../dist/assets/views/checkin.html'));
 });
 app.get('/employees', function(req,res){
-    console.log(req);
+    //console.log(req);
     res.sendFile(path.join(__dirname,'../dist/assets/views/employees.html'));
 });
 app.get('/forgot-password', function(req,res){
-    console.log(req);
+    //console.log(req);
     res.sendFile(path.join(__dirname,'../dist/assets/views/forgot-password.html'));
 });
 app.get('/form-builder', function(req,res){
-    console.log(req);
+    //console.log(req);
     res.sendFile(path.join(__dirname,'../dist/assets/views/form-builder.html'));
 });
 app.get('/login', function(req,res){
-    console.log(req);
+    //console.log(req);
     res.sendFile(path.join(__dirname,'../dist/assets/views/login.html'));
 });
 app.get('/signup', function(req,res){
-    console.log(req);
+    //console.log(req);
     res.sendFile(path.join(__dirname,'../dist/assets/views/signup.html'));
 });
 app.get('/visitors', function(req,res){
-    console.log(req);
+    //console.log(req);
     res.sendFile(path.join(__dirname,'../dist/assets/views/visitors.html'));
 });
 app.get('/404', function(req,res){
-    console.log(req);
+    //console.log(req);
     res.sendFile(path.join(__dirname,'../dist/assets/views/404.html'));
 });
 app.get('/admin-settings', function(req,res){
-    console.log(req);
+    //console.log(req);
     res.sendFile(path.join(__dirname,'../dist/assets/views/admin-settings.html'));
 });
 app.get('/index', function(req,res){
-    console.log(req);
+    //console.log(req);
     res.sendFile(path.join(__dirname,'../dist/assets/views/index.html'));
 });
 
