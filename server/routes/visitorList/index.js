@@ -1,9 +1,15 @@
-'use strict';
+let express = require('express');
+let controller = require('./visitorList.controller');
 
+<<<<<<< HEAD
 var express = require('express');
 var controller = require('./visitorList.controller');
 
 var router = express.Router();
+=======
+let router = express.Router();
+
+>>>>>>> upstream/develop
 router.post("/",                           controller.createReq);
 router.get("/company/:id",                 controller.getCompanyVisitorListReq);
 router.delete("/company/:company_id/visitor/:visitor_id", controller.deleteVisitorReq);

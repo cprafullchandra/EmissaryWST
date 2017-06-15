@@ -1,11 +1,10 @@
 # EmmisaryWST
 
-[![Build Status](https://travis-ci.org/cse112-kissmyapp/EmissaryWST.svg?branch=master)](https://travis-ci.org/cse112-kissmyapp/EmissaryWST)
+[![Build Status](https://travis-ci.org/cse112-kissmyapp/EmissaryWST.svg?branch=develop)](https://travis-ci.org/cse112-kissmyapp/EmissaryWST)
 [![Code Climate](https://codeclimate.com/github/cse112-kissmyapp/EmissaryWST/badges/gpa.svg)](https://codeclimate.com/github/cse112-kissmyapp/EmissaryWST)
 [![Issue Count](https://codeclimate.com/github/cse112-kissmyapp/EmissaryWST/badges/issue_count.svg)](https://codeclimate.com/github/cse112-kissmyapp/EmissaryWST)
 [![Test Coverage](https://codeclimate.com/github/cse112-kissmyapp/EmissaryWST/badges/coverage.svg)](https://codeclimate.com/github/cse112-kissmyapp/EmissaryWST/coverage)
 [![codecov](https://codecov.io/gh/cse112-kissmyapp/EmissaryWST/branch/develop/graph/badge.svg)](https://codecov.io/gh/cse112-kissmyapp/EmissaryWST)
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ### Past Deployment:
 http://webstormtroopers.herokuapp.com

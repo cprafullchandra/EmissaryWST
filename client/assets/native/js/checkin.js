@@ -2,7 +2,12 @@
  * @file Manages checkins.
  */
 
+// Declare JQuery and Socket globals
+/* global $ */
+/* global io */
+
 $(document).ready(function () {
+<<<<<<< HEAD
     var companyData = JSON.parse(localStorage.getItem("currentCompany"));
     const myCompanyId = companyData._id;
     companyData.company_id = myCompanyId
@@ -17,6 +22,20 @@ $(document).ready(function () {
     });
     var formData = loadSavedForm(myCompanyId);
     var requiredFields = [{
+=======
+
+    let socket = io();
+
+    let VALIDATE_COMPANY_ID = "validate_company_id";
+    let ADD_VISITOR = "add_visitor";
+
+    let companyData = JSON.parse(localStorage.getItem("currentCompany"));
+    const myCompanyId = companyData._id;
+    socket.emit(VALIDATE_COMPANY_ID, companyData);
+
+    let formData = loadSavedForm(myCompanyId);
+    let requiredFields = [{
+>>>>>>> upstream/develop
         "type": "header",
         "subtype": "h1",
         "label": "Check In"
@@ -39,11 +58,15 @@ $(document).ready(function () {
         "subtype": "tel",
         "required": true,
         "label": "Phone Number",
-        "className": "form-control",
-        "name": "tel"
+        "data-format": "+1 (ddd)ddd-dddd",
+        "pattern": "^[\\+]1\\s[\\(]\\d{3}[\\)]\\d{3}[\\-]\\d{4}",
+        "oninvalid": "setCustomValidity('Please follow the correct format (xxx)xxx-xxxx.')",
+        "oninput": "setCustomValidity('')",
+        "className": "form-control form-phone bfh-phone",
+        "name": "phone_number"
     }];
 
-    var submitButton = [{
+    let submitButton = [{
         "type": "button",
         "subtype": "submit",
         "label": "Submit",
@@ -63,7 +86,9 @@ $(document).ready(function () {
         dataType: 'json'
     };
 
-    $('#check-in').formRender(formOptions);
+    let checkinform = $('#check-in');
+
+    checkinform.formRender(formOptions);
 
     // Prevent users from scrolling around on iPad
     document.ontouchmove = function (e) {
@@ -72,15 +97,18 @@ $(document).ready(function () {
 
     // Bind Listeners
     $('#tap-to-check').on('click', startCheckIn);
-    $('.check-in').on('submit', submitForm);
+    $('.check-in').submit(function(event) {
+        event.preventDefault();
+        submitForm();
+    });
 
     /**
      * @function startCheckIn
      * @desc Starts the check in process
      */
     function startCheckIn() {
-        $('.check-in').addClass('show');
-        $('.check-in').animate({
+        checkinform.addClass('show');
+        checkinform.animate({
             top: '10%',
             opacity: '1'
         }, 700);
@@ -95,17 +123,19 @@ $(document).ready(function () {
     function submitForm(event) {
         event.preventDefault();
         let data = grabFormElements();
+
         // TODO: make slack integration configurable
         //if(localStorage.getItem("slackToken")&&localStorage.getItem("slackChannel"))
         //{
         let slackMessage = data.first_name + ' ' + data.last_name + ' has just checked in.';
-        $.post("https://slack.com/api/chat.postMessage", {
-            'token': "xoxp-167311421539-169267386423-191140632117-5263dba19bf30c7b56274a69fade6545",
-            'channel': "emissary_slack_test",
-            'text': slackMessage
-        }, function (data, status) {
-        });
-        //}
+        triggerZapier(slackMessage);
+        // $.post("https://slack.com/api/chat.postMessage", {
+        //     'token': "xoxp-167311421539-169267386423-191140632117-5263dba19bf30c7b56274a69fade6545",
+        //     'channel': "emissary_slack_test",
+        //     'text': slackMessage
+        // }, function (data, status) {
+        // });
+        // //}
 
         //socket.emit(ADD_VISITOR, data);
         $.ajax({
@@ -118,11 +148,44 @@ $(document).ready(function () {
           }
         });
 
+<<<<<<< HEAD
         $(this).animate({
             top: '35%',
             opacity: '0'
         }, 0);
         window.location.href = "/checkin";
+=======
+        // $(this).animate({
+        //     top: '35%',
+        //     opacity: '0'
+        // }, 0);
+    }
+
+    function triggerZapier(message) {
+        console.log(message);
+        let url = companyData.zapier_url;
+        let data = {};
+        data.message = message;
+
+        if(url !== undefined) {
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: data,
+                dataType: 'json',
+                success: function (response) {
+                    console.log(response);
+                    checkinform.unbind('submit');
+                    checkinform.submit();
+                },
+                error: function (response) {
+                    console.log(response);
+                    //alert(jQuery.parseJSON(resJSON).responseText);
+                    // event.preventDefault();
+                }
+            });
+        }
+>>>>>>> upstream/develop
     }
 
     /**
@@ -130,6 +193,16 @@ $(document).ready(function () {
      * @desc Grabs elements from the check in and puts it into an object
      */
     function grabFormElements() {
+
+        let formData = JSON.parse(JSON.stringify($("#check-in").serializeArray()));
+
+        // Finds label for each input field and appends it to the JSON.
+        for (let i = 0; i < formData.length; i++) {
+            let obj = formData[i];
+            let label = $("label[for='" + obj.name + "']");
+            obj.title = label.text();
+        }
+
         let data = $('.check-in').serializeArray();
         let newVisitor = {};
         newVisitor.company_id = companyData._id;
@@ -137,6 +210,8 @@ $(document).ready(function () {
         for (let i = 0; i < data.length; i++) {
             newVisitor[data[i].name] = data[i].value;
         }
+
+        newVisitor.additional_info = formData;
         return newVisitor;
     }
 
@@ -145,9 +220,9 @@ $(document).ready(function () {
      * @desc gives the current time
      */
     function updateClock() {
-        var currentTime = new Date();
-        var currentHours = currentTime.getHours();
-        var currentMinutes = currentTime.getMinutes();
+        let currentTime = new Date();
+        let currentHours = currentTime.getHours();
+        let currentMinutes = currentTime.getMinutes();
 
         // Pad the minutes and seconds with leading zeros, if required
         currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
@@ -159,7 +234,7 @@ $(document).ready(function () {
         currentHours = ( currentHours === 0 ) ? 12 : currentHours;
 
         // Compose the string for display
-        var currentTimeString = currentHours + ":" + currentMinutes;
+        let currentTimeString = currentHours + ":" + currentMinutes;
 
         $("#clock").html(currentTimeString);
     }
@@ -170,8 +245,8 @@ $(document).ready(function () {
 });
 
 function loadSavedForm(myCompanyId) {
-    var url = '/api/form/template/' + myCompanyId;
-    var formJSON = getFormData(url);
+    let url = '/api/form/template/' + myCompanyId;
+    let formJSON = getFormData(url);
 
     if (formJSON === null) {
         return null;
@@ -181,8 +256,7 @@ function loadSavedForm(myCompanyId) {
 }
 
 function getFormData(url) {
-    var json;
-
+    let json = {};
     $.ajax({
         dataType: 'json',
         type: 'GET',
@@ -193,6 +267,5 @@ function getFormData(url) {
             json = response;
         }
     });
-
     return json;
 }

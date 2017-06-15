@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'use strict';
 
 //Import Resources and Libs
@@ -9,16 +10,22 @@ var VisitorList = require('../../models/VisitorList');
 var Employee = require('../../models/Employee');
 var Appointment = require('../../models/Appointment');
 var Company = require('../../models/Company')
+=======
+// Import Resources and Libs
+let VisitorList = require('../../models/VisitorList');
+let Employee = require('../../models/Employee');
+let Appointment = require('../../models/Appointment');
+>>>>>>> upstream/develop
 
 /* handles route for getting the Company's visitor list */
-exports.getCompanyVisitorListReq = function(req, res){
-    var company_id=req.params.id;
-    exports.getCompanyVisitorList(company_id, function(err_msg, result){
-        if(err_msg) return res.status(400).json(err_msg);
+module.exports.getCompanyVisitorListReq = function(req, res){
+    let company_id = req.params.id;
+    module.exports.getCompanyVisitorList(company_id, function(err_msg, result){
+        if(err_msg) return res.status(404).json(err_msg);
         if(result  ===  null){
             result = new VisitorList();
             result.visitors = [];
-            result.company_id=companyId;
+            result.company_id = company_id;
             result.save(function(err){
                 if(err) {
                     return res.status(400).json(err_msg);
@@ -34,7 +41,7 @@ exports.getCompanyVisitorListReq = function(req, res){
 
 
 /* logic for getting the Company's visitor list */
-exports.getCompanyVisitorList = function(company_id, callback){
+module.exports.getCompanyVisitorList = function(company_id, callback){
     if(!company_id)
         return callback({error: "Please send company id."}, null);
     VisitorList.findOne({company_id: company_id}, function(err, list){
@@ -52,17 +59,17 @@ exports.getCompanyVisitorList = function(company_id, callback){
 };
 
 /* handles route to delete visitor in the list*/
-exports.deleteVisitorReq = function(req, res){
-    var visitor_id=req.params.visitor_id;
-    var company_id=req.params.company_id;
-    exports.deleteVisitor(company_id, visitor_id, function(err_msg, result){
+module.exports.deleteVisitorReq = function(req, res){
+    let visitor_id = req.params.visitor_id;
+    let company_id = req.params.company_id;
+    module.exports.deleteVisitor(company_id, visitor_id, function(err_msg, result){
         if(err_msg)  return res.status(400).json(err_msg);
         return res.status(200).json(result);
     });
 };
 
 /* logic for deleting the visitor in the list */
-exports.deleteVisitor = function(company_id, visitor_id, callback){
+module.exports.deleteVisitor = function(company_id, visitor_id, callback){
     if(!company_id)
         return callback({error: "Please send company id."}, null);
     if(!visitor_id)
@@ -77,15 +84,15 @@ exports.deleteVisitor = function(company_id, visitor_id, callback){
 };
 
 /* clear the list */
-exports.deleteReq = function(req, res){
-    var list_id=req.params.id;
-    exports.delete(list_id, function(err_msg, result){
+module.exports.deleteReq = function(req, res){
+    let list_id = req.params.id;
+    module.exports.delete(list_id, function(err_msg, result){
         if(err_msg)  return res.status(400).json(err_msg);
         return res.status(200).json(result);
     });
 };
 
-exports.delete = function(list_id, callback){
+module.exports.delete = function(list_id, callback){
     if(!list_id)
         return callback({error: "Please send list id."}, null);
     VisitorList.findOne({_id: list_id}, function(err, list){
@@ -132,34 +139,47 @@ exports.validate = function(data, callback){
             });
 };
 // This route will be called when a visitor checks in
+<<<<<<< HEAD
 exports.createReq = function(req, res) {
     console.log(req.body)
     exports.create(req.body, function(err_msg, result){
+=======
+module.exports.createReq = function(req, res) {
+    module.exports.create(req.body, function(err_msg, result){
+>>>>>>> upstream/develop
         if(err_msg)  return res.status(400).json(err_msg);
         return res.status(200).json(result);
     });
 };
 
-exports.create = function(param, callback){
+module.exports.create = function(param, callback){
     //required fields
+<<<<<<< HEAD
     console.log(param)
     var company_id = param.company_id;
     var first_name = param.first_name;
     var last_name = param.last_name;
     var phone_number = param.tel;
     var checkin_time = param.checkin_time;
+=======
+    let company_id = param.company_id;
+    let first_name = param.first_name;
+    let last_name = param.last_name;
+    let phone_number = param.phone_number;
+    let checkin_time = param.checkin_time;
+>>>>>>> upstream/develop
 
     //optional dic var
-    var additional_info = param.additional_info;
+    let additional_info = param.additional_info;
 
     // find all the appointments for this visitor
-    var today = new Date();
+    let today = new Date();
     today.setHours(0, 0, 0, 0);
-    var tomorrow= new Date();
+    let tomorrow = new Date();
     tomorrow.setDate(today.getDate()+1);
     tomorrow.setHours(0, 0, 0, 0);
 
-    var query=
+    let query =
     {
         company_id: company_id,
         first_name: first_name,
@@ -172,7 +192,12 @@ exports.create = function(param, callback){
         if(err) {
             return callback({error: "An error was encountered. Could not find appointment."}, null);
         }
+<<<<<<< HEAD
         var visitor =
+=======
+
+        let visitor =
+>>>>>>> upstream/develop
         {
             company_id: company_id,
             last_name: last_name,
@@ -198,25 +223,15 @@ exports.create = function(param, callback){
                 list.visitors.push(visitor);
                 list.save(function(err){
                     if(err) {
+<<<<<<< HEAD
                         console.log(err)
                         return callback({error: "an error in saving"}, null)
+=======
+                        return callback({error: "an error in saving"}, null);
+>>>>>>> upstream/develop
                     } else {
                         return callback(null, list);
                     }
-                    /*Employee.find({company : req.body.company_id},
-                     function(err, employees) {
-                     var i = 0;
-                     var respond = function() {
-                     i++;
-                     if(i  ===  employees.length) {
-                     res.status(200).json(list);
-                     }
-                     };
-
-                     Email.sendEmail(req.body.name, employees, function(){respond();});
-                     TextModel.sendText(req.body.name, employees, function(){respond();});
-                     }
-                     );*/
                 });
             }
         );
