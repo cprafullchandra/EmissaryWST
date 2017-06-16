@@ -4,6 +4,40 @@ Welcome Devs! We're excited to have you contribute to Emissary. We understand
 that there is a lot to take in and we hope to provide some clarity to speed up
 your journey and get you productive quickly.
 
+## The Project Structure
+
+Here you'll find all the information you need to know about our project structure.
+
+EmmisaryWST:
+  - client
+    - css
+      - lib
+      - native css files
+    - html
+    - images
+    - js
+      - lib
+      - native js files
+  - developer_docs: all of our docs to help new developers get up to speed
+  - server
+    - config
+    - models
+      - form
+      - native js files
+    - notification
+    - routes
+      - appointment
+      - company
+      - employee
+      - form
+      - payment
+      - theme
+      - visitorList
+      - home.js
+    - test: server-side test cases, run with `Mocha` and coverage with `Istanbul`
+  - test: client-side test cases, run with `Grunt` (see our `Gruntfile.js`)
+  - util: helper js files that aren't official libs
+
 ## A Note about our Pipeline
 
 Pipelines are important to ensuring your development process is functioning
