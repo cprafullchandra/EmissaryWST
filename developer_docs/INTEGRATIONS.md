@@ -30,6 +30,9 @@ Pass: `ucsdkissmyap2017`
 
 Mouseflow is a tool that monitors where users click and create heatmaps that correspond to user interactions with the application. This can be very useful for monitoring how users interact with the site and if there are any user interface or user experience issues that need to be addressed. This is done by a script embed in all html views.
 
+Email: `kissmyapp2017@gmail.com`
+Pass: `ucsdkissmyapp2017`
+
 ## CodeClimate
 
 CodeClimate was a great tool for linting our code and having constant reminders that the code can be improved on, and that there are outstanding issues being addressed that are public facing. It is important to note that these types of tools can still be "managed" to reduce the number of errors, for example by turning off duplication. This is something that we've done, after realizing that we will not have the time to address/refactor the code responsible for creating so many duplication issues. To view our configuration check out our [config](https://github.com/cse112-kissmyapp/EmissaryWST/blob/develop/.codeclimate.yml). Inheritors should be able to keep our `.codeclimate.yml` for their project, but will still have to set up their own account. CodeClimate is free for `open-source` repositories.
