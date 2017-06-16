@@ -10,7 +10,7 @@ Right now Twilio is hard-coded to use the one number from our trial account. Thi
 
 Right now we have an email account hosted by gmail: `kissmyapp2017@gmail.com`. Credentials will be provided below. Emails are sent from to the email account on checkin from itself to note that a user has checked in. Moving forward it would be good to have it also send users emails if they want email confirmation or reminders on checkin. That should involve scraping the users email, which right now the default checkin form doesn't require.
 
-Email: `kissmyapp2017@gmail.com`
+Email: `kissmyapp2017@gmail.com`  
 Pass: `ucsdkissmyapp2017`
 
 ## Slack
@@ -21,16 +21,16 @@ We support Slack natively with checkin. Upon user checkin, the designated Slack 
 
 Zapier was probably the smartest move we were able to make. Zapier is an api for apis and thus if you can support/talk to Zapier, you can talk to anything else that can talk to Zapier. Currently Zapier supports over 750+ apps ranging from Typeform to Chatfuel (an AI bot for FB Messenger).
 
-Currently, through Zapier, we have integrations set up with FB Messenger, Typeform, Trello, and Slack. To connect to our Zapier account, use the credentials below. For help on setting up Zapier integrations, check out our [guide](https://github.com/cse112-kissmyapp/EmissaryWST/blob/develop/developer_docs/Zapier%20Integration.md).
+Currently, through Zapier, we have integrations set up with FB Messenger, Typeform, Trello, and Slack. To connect to our Zapier account, use the credentials below. For help on setting up Zapier integrations, check out our [guide](https://github.com/cse112-kissmyapp/EmissaryWST/blob/develop/developer_docs/Zapier%20Integration.pdf).
 
-Email: `kissmyapp2017@gmail.com`
+Email: `kissmyapp2017@gmail.com`  
 Pass: `ucsdkissmyap2017`
 
 ## Mouseflow
 
 Mouseflow is a tool that monitors where users click and create heatmaps that correspond to user interactions with the application. This can be very useful for monitoring how users interact with the site and if there are any user interface or user experience issues that need to be addressed. This is done by a script embed in all html views.
 
-Email: `kissmyapp2017@gmail.com`
+Email: `kissmyapp2017@gmail.com`  
 Pass: `ucsdkissmyapp2017`
 
 ## CodeClimate
