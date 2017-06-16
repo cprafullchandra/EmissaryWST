@@ -1,4 +1,4 @@
-# EmmisaryWST
+# Secretariat
 
 [![Build Status](https://travis-ci.org/cse112-kissmyapp/EmissaryWST.svg?branch=develop)](https://travis-ci.org/cse112-kissmyapp/EmissaryWST)
 [![Code Climate](https://codeclimate.com/github/cse112-kissmyapp/EmissaryWST/badges/gpa.svg)](https://codeclimate.com/github/cse112-kissmyapp/EmissaryWST)
@@ -10,10 +10,10 @@
 http://webstormtroopers.herokuapp.com
 
 ### Our Deployment:
-http://kiss-my-app.appspot.com/
+https://kiss-my-app.appspot.com/
 
 ### Description:
-**Emissary is a visitor check-in SaaS application targetted for small businesses.**
+**Secretariat is a visitor check-in SaaS application targetted for small businesses.**
 - Sign up your company and your own personal account for your company.
 - Thereafter, add employees to your company through the "Employees" section of the application to provide them access to the application.
 - Create appointments through the "Appointments" page. Open up the Check-in mode by clicking on the gear in the upper right-hand corner.
@@ -53,9 +53,10 @@ mongod.exe --dbpath C:\MongoDB\Server\'version'\data\db
 After you have MongoDB running on the background, you can start running the front-end. Make sure to navigate to the repo root.
 
 ```
-$ npm install -g gulp bower foreman
+$ npm install -g gulp
 $ npm install
-$ gulp build:dev
+# `gulp` should run automatically after but if it doesn't
+$ gulp
 $ nf start web
 ```
 
@@ -82,11 +83,14 @@ _Note: mongod and mongo must be run in separate terminal windows. Be sure to run
 After you have MongoDB running on the background, you can start running the front-end. Make sure to navigate to the repo root.
 
 ```
-$ npm install -g gulp bower foreman
+$ npm install -g gulp
 $ npm install
-$ gulp build:dev
+# `gulp` should run automatically after but if it doesn't
+$ gulp
 $ nf start web
 ```
+
+_Note*_ - `gulp` is set to default to `gulp prod` which will build the standard production environment. To save on time and for development purposes you can instead run `gulp dev` for future builds. See our [documentation](https://github.com/cse112-kissmyapp/EmissaryWST/blob/develop/developer_docs/GULP.md) for a more thorough explanation on our build process and `gulp` layout.
 
 Now that you're all set with that see our developer [docs](https://github.com/cse112-kissmyapp/EmissaryWST/blob/develop/developer_docs/README.md) for more details regarding Emissary!
 
