@@ -15,8 +15,9 @@
     "postinstall": "gulp prod",
     "pretest": "npm run jshint && npm run htmlhint && npm run csslint",
     "start": "node server/app.js",
-    "test": "mocha \"server/test/*.js\"",
-    "testfront": ". config.sh && cd client/ && grunt"
+    "test": "mocha \"server/test/*.js\" && export SAUCE_USERNAME=\"cprafullchandra\" && export SAUCE_ACCESS_KEY=\"24bdca40-ec64-4241-bba3-b2a78d92f52d\" && grunt",
+    "test-server": "mocha \"server/test/*.js\"",
+    "test-client": "export SAUCE_USERNAME=\"cprafullchandra\" && export SAUCE_ACCESS_KEY=\"24bdca40-ec64-4241-bba3-b2a78d92f52d\" && grunt"
   },
   "pre-commit": [
     "csslint",

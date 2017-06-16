@@ -12,13 +12,12 @@ let username,
     buildTag,
     tunnelId;
 
-var driver;
-
 function setSauceEnv(){
     username = process.env.SAUCE_USERNAME;
     accessKey = process.env.SAUCE_ACCESS_KEY;
     buildTag = process.env.BUILD_TAG || process.env.SAUCE_BUILD_NAME;
     tunnelId = process.env.TUNNEL_IDENTIFIER;
+    var driver;
     //making sure we have some username and access key
     if (username === undefined || accessKey === undefined){
         console.error("Sauce username and password is not defined!");

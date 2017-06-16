@@ -30,12 +30,12 @@ body {
   font-family      : "Helvetica Neue",
                      serif;
   font-size        : 32px;
+  height           : 100px;
   left             : 50%;
   margin-left      : -137.5px;
   position         : absolute;
   text-align       : center;
   width            : 275px;
-  height           : 100px;
 }
 
 .tap-to-check:hover {
@@ -98,9 +98,10 @@ body {
 }
 
 .confirmation {
+  margin: auto;
   opacity: 0;
   width: 500px;
-  margin: auto;
+
 }
 
 .hide {

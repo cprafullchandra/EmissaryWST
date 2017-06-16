@@ -2,7 +2,7 @@
 /* global driver */
 
 let assert = require('assert'),
-    //webdriver = require('selenium-webdriver'),
+    webdriver = require('selenium-webdriver'),
     makeSuite = require('../util/helpers').makeSuite;
 
 makeSuite('Test Emmisary Landing', function() {
