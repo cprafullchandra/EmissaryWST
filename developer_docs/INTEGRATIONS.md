@@ -1,6 +1,6 @@
 # Integrations
 
-In line with supporting Peter's omnichannel, we've setup certain integrations with our App to support various forms of communication. They are currently: Twilio, Email, Slack and through Zapier: FB Messenger, Typeform, and Trello (and again Slack). Also it should be noted that these integrations only work for checkin and not for Appointment creation, editing, or deletion. Beyond regular workflow integrations, we also monitor user interaction with Secretariat via Mouseflow.
+In line with supporting Peter's omnichannel, we've setup certain integrations with our App to support various forms of communication. They are currently: Twilio, Email, Slack and through Zapier: FB Messenger, Typeform, and Trello (and again Slack). Also it should be noted that these integrations only work for checkin and not for Appointment creation, editing, or deletion. Beyond regular workflow integrations, we also monitor user interaction with Secretariat via Mouseflow. For our pipeline, we have integrations with CodeClimate, TravisCI, and SauceLabs.
 
 ## Twilio
 
@@ -29,3 +29,15 @@ Pass: `ucsdkissmyap2017`
 ## Mouseflow
 
 Mouseflow is a tool that monitors where users click and create heatmaps that correspond to user interactions with the application. This can be very useful for monitoring how users interact with the site and if there are any user interface or user experience issues that need to be addressed. This is done by a script embed in all html views.
+
+## CodeClimate
+
+CodeClimate was a great tool for linting our code and having constant reminders that the code can be improved on, and that there are outstanding issues being addressed that are public facing. It is important to note that these types of tools can still be "managed" to reduce the number of errors, for example by turning off duplication. This is something that we've done, after realizing that we will not have the time to address/refactor the code responsible for creating so many duplication issues. To view our configuration check out our [config](https://github.com/cse112-kissmyapp/EmissaryWST/blob/develop/.codeclimate.yml). Inheritors should be able to keep our `.codeclimate.yml` for their project, but will still have to set up their own account. CodeClimate is free for `open-source` repositories.
+
+## TravisCI
+
+TravisCI is continuous integration and continuous deployment tool. It provides the service of allowing us consistently test our code on a specific environment, and to ensure that code passes before pushed to product. Currently, we have our repository setup to require TravisCI to pass before we allow pushes to the repository. To check our CI/CD config, look [here](https://github.com/cse112-kissmyapp/EmissaryWST/blob/develop/.travis.yml). Note, that `kiss-my-app-xxxxx.json` is the configuration file associated with the Google App Engine that our repository deploys to. Inheritors will have to set up their own TravisCI connections, but the `.travis.yml` should work for many things not related to specific accounts (like Slack).
+
+## SauceLabs
+
+SauceLabs is a fantastic front end automated testing tool that allows users to run front end tests on multiple environments/browsers in parallel. Their list of potential environments is extensive and their customer service excellent. Upon `npm test`, our SauceLabs tests in `test` (using `util`) will connect to SauceLabs to run tests on the environments specified in parallel. Inheritors will have to create their own account and modify the revelant API connection info accordingly.

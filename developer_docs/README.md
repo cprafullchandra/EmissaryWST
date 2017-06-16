@@ -54,6 +54,6 @@ We have the corresponding project board setup [here](https://github.com/cse112-k
 
 As we've inherited code from past years, the project has grown and shrunk in many respects. Lots of code has been added and removed which can cause quite a bit of confusion as to what is going on. After inheriting the code, our developers paid special attention to sanitization and improving overall code quality in many regards: bug fixing, refactoring, removal of stale, unused code, removal of extra libs and/or files, plugins, integrations that weren't being used, etc...Currently we use `gulp` to handle all client-side building, and `node` + `express` for backend routing.
 
-Furthermore, we've documented heavily what we use, why, and how it all fits together. Hopefully this will enable you to come up to speed pretty quickly and painlessly.
+Furthermore, we've documented heavily what we use, why, and how it all fits together. Hopefully this will enable you to come up to speed pretty quickly and painlessly and to construct your own Pipeline accordingly.
 
 To see our documentation on our Stack & Integrations, visit [this](https://github.com/cse112-kissmyapp/EmissaryWST/blob/develop/developer_docs/INTEGRATIONS.md).
