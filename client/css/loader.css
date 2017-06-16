@@ -75,29 +75,31 @@
   }
 }
 .loader {
+  animation: loader 2s infinite ease;
+  border: 4px solid #Fff;
   display: inline-block;
-  width: 30px;
   height: 30px;
   position: relative;
-  border: 4px solid #Fff;
   top: 50%;
-  animation: loader 2s infinite ease;
-}
-.loader2 {
-  display: inline-block;
   width: 30px;
+}
+
+.loader2 {
+  animation: loader 2s infinite ease;
+  border: 4px solid #Fff;
+  display: inline-block;
   height: 30px;
   position: relative;
-  border: 4px solid #Fff;
   top: 40%;
-  animation: loader 2s infinite ease;
+  width: 30px;
 }
+
 .loader-inner {
-  vertical-align: top;
-  display: inline-block;
-  width: 100%;
-  background-color: #fff;
   animation: loader-inner 2s infinite ease-in;
+  background-color: #fff;
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
 }
 
 @keyframes loader {
