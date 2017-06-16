@@ -28,17 +28,16 @@ Backend Testing:
 Frontend Testing:
   - [Selenium](http://www.seleniumhq.org/)
   - [SauceLabs](https://saucelabs.com/)
-  - TODO
 
 Code Coverage:
   - [CodeClimate](https://codeclimate.com/github/cse112-kissmyapp/EmissaryWST/coverage)
   - [CodeCov](https://codecov.io/gh/cse112-kissmyapp/EmissaryWST)
 
 Monitoring:
-  - TODO
+  - [Mouseflow](https://mouseflow.com/)
 
 Hosting:
-  - Us: [Google App Engine](http://kiss-my-app.appspot.com/)
+  - Us: [Google App Engine](https://kiss-my-app.appspot.com/)
   - The Original [WebStormTroopers](https://github.com/danielchristiancazares/Emissary): [Heroku](http://webstormtroopers.herokuapp.com)
 
 We've also enforced a pre-commit check in `package.json` (see ["pre-commit"](https://github.com/cse112-kissmyapp/EmissaryWST/blob/develop/package.json)) that runs all three linters above and before a commit can be made. Ideally, it should force the three linters to completely pass, but since the code we've inherited has quite a lot of issues that we are making progress fixing but haven't be able to fix in one go, we've had to remove the forced compliance for now. In the future it should be fairly simple to make work.
@@ -53,8 +52,8 @@ We have the corresponding project board setup [here](https://github.com/cse112-k
 
 ## Our Stack & Integrations
 
-As we've inherited code from past years, the project has grown and shrunk in many respects. Lots of code has been added and removed which can cause quite a bit of confusion as to what is going on. After inheriting the code, our developers paid special attention to sanitization and improving overall code quality in many regards: bug fixing, refactoring, removal of stale, unused code, removal of extra libs and/or files, plugins, integrations that weren't being used, etc...
+As we've inherited code from past years, the project has grown and shrunk in many respects. Lots of code has been added and removed which can cause quite a bit of confusion as to what is going on. After inheriting the code, our developers paid special attention to sanitization and improving overall code quality in many regards: bug fixing, refactoring, removal of stale, unused code, removal of extra libs and/or files, plugins, integrations that weren't being used, etc...Currently we use `gulp` to handle all client-side building, and `node` + `express` for backend routing.
 
 Furthermore, we've documented heavily what we use, why, and how it all fits together. Hopefully this will enable you to come up to speed pretty quickly and painlessly.
 
-To see our documentation on our Stack & Integrations, visit [this](https://github.com/cse112-kissmyapp/EmissaryWST/blob/develop/developer_docs/STACK.md).
+To see our documentation on our Stack & Integrations, visit [this](https://github.com/cse112-kissmyapp/EmissaryWST/blob/develop/developer_docs/INTEGRATIONS.md).
