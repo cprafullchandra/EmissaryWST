@@ -41,7 +41,7 @@ module.exports.sendEmail = function (patientName, employees, done) {
     for (let index = 0; index < employees.length; index++) {
         // create the email object that will be sent
         let mailOptions = {
-            from: "Robo Betty <testcse112@gmail.com>", // sender address
+            from: "Secretariat <kissmyapp2017@gmail.com>", // sender address
             to: employees[index].email, // list of receivers
             subject: "Patient " + patientName + " is ready", // Subject line
             text: "Your visitorList " + patientName + " is here.", // plaintext body
